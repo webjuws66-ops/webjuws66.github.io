@@ -197,6 +197,30 @@ body {
 .music-section .container {
     position: relative;
     z-index: 1;
+    
+    /* Background pour la section galerie */
+.gallery-section {
+    position: relative;
+    background-image: url('gallery-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.gallery-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 0;
+}
+
+.gallery-section .container {
+    position: relative;
+    z-index: 1;
 }
 .container {
     max-width: 1200px;
