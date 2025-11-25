@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEBJUWS66 - Sound & Vision</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">WEBJUWS66</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Accueil</a></li>
+                <li><a href="#music" class="nav-link">Musique</a></li>
+                <li><a href="#gallery" class="nav-link">Galerie</a></li>
+                <li><a href="#about" class="nav-link">À propos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">WEBJUWS66</h1>
+            <p class="hero-subtitle">Sound Designer × Visual Artist</p>
+            <div class="hero-tags">
+                <span class="tag">Suno AI</span>
+                <span class="tag">Midjourney</span>
+                <span class="tag">Electronic</span>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Music Section -->
+    <section id="music" class="section music-section">
+        <div class="container">
+            <h2 class="section-title">Mes Créations Sonores</h2>
+            <p class="section-subtitle">Compositions créées avec Suno AI</p>
+            
+            <!-- Player Audio -->
+            <div class="audio-player">
+                <div class="player-header">
+                    <div class="track-info">
+                        <h3 class="track-title" id="currentTrack">Sélectionnez un morceau</h3>
+                        <p class="track-artist">WEBJUWS66</p>
+                    </div>
+                    <div class="player-controls">
+                        <button class="control-btn" id="prevBtn">⏮</button>
+                        <button class="control-btn play-btn" id="playBtn">▶</button>
+                        <button class="control-btn" id="nextBtn">⏭</button>
+                    </div>
+                </div>
+                <div class="progress-container">
+                    <div class="time" id="currentTime">0:00</div>
+                    <div class="progress-bar">
+                        <div class="progress" id="progress"></div>
+                    </div>
+                    <div class="time" id="duration">0:00</div>
+                </div>
+                <audio id="audioPlayer"></audio>
+            </div>
+
+            <!-- Liste des morceaux -->
+            <div class="playlist">
+                <div class="playlist-item" data-src="musique/track1.mp3">
+                    <span class="track-number">01</span>
+                    <span class="track-name">Votre Premier Titre</span>
+                    <span class="track-duration">3:45</span>
+                </div>
+                <div class="playlist-item" data-src="musique/track2.mp3">
+                    <span class="track-number">02</span>
+                    <span class="track-name">Votre Deuxième Titre</span>
+                    <span class="track-duration">4:12</span>
+                </div>
+                <div class="playlist-item" data-src="musique/track3.mp3">
+                    <span class="track-number">03</span>
+                    <span class="track-name">Votre Troisième Titre</span>
+                    <span class="track-duration">3:58</span>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <p>💡 <strong>Comment ajouter vos musiques :</strong></p>
+                <ol>
+                    <li>Créez un dossier "musique" dans votre repository GitHub</li>
+                    <li>Uploadez vos fichiers MP3 (nommez-les : track1.mp3, track2.mp3, etc.)</li>
+                    <li>Modifiez les titres et durées dans ce fichier HTML</li>
+                </ol>
+                <p><strong>Alternative :</strong> Utilisez SoundCloud (gratuit) et remplacez les liens dans le code</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section gallery-section">
+        <div class="container">
+            <h2 class="section-title">Galerie Visuelle</h2>
+            <p class="section-subtitle">Créations générées avec Midjourney</p>
+            
+            <div class="gallery-grid">
+                <!-- Placeholders - Remplacez par vos images -->
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x500/8B5CF6/ffffff?text=Visuel+1" alt="Création 1">
+                    <div class="gallery-overlay">
+                        <p class="gallery-title">Titre de l'oeuvre 1</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x500/EC4899/ffffff?text=Visuel+2" alt="Création 2">
+                    <div class="gallery-overlay">
+                        <p class="gallery-title">Titre de l'oeuvre 2</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x500/8B5CF6/ffffff?text=Visuel+3" alt="Création 3">
+                    <div class="gallery-overlay">
+                        <p class="gallery-title">Titre de l'oeuvre 3</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x500/EC4899/ffffff?text=Visuel+4" alt="Création 4">
+                    <div class="gallery-overlay">
+                        <p class="gallery-title">Titre de l'oeuvre 4</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x500/8B5CF6/ffffff?text=Visuel+5" alt="Création 5">
+                    <div class="gallery-overlay">
+                        <p class="gallery-title">Titre de l'oeuvre 5</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x500/EC4899/ffffff?text=Visuel+6" alt="Création 6">
+                    <div class="gallery-overlay">
+                        <p class="gallery-title">Titre de l'oeuvre 6</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <p>💡 <strong>Comment ajouter vos visuels Midjourney :</strong></p>
+                <ol>
+                    <li>Créez un dossier "images" dans votre repository</li>
+                    <li>Uploadez vos créations (format : JPG ou PNG)</li>
+                    <li>Remplacez les liens "placeholder" par : images/votre-image.jpg</li>
+                    <li>Modifiez les titres dans le code HTML</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <h2 class="section-title">À Propos</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Bienvenue sur mon espace créatif où la musique et l'art visuel se rencontrent.</p>
+                    <p>Je crée des compositions musicales avec <strong>Suno AI</strong> et des univers visuels avec <strong>Midjourney</strong>, explorant les possibilités infinies de la création assistée par intelligence artificielle.</p>
+                    <p>Chaque morceau raconte une histoire, chaque image capture une émotion.</p>
+                </div>
+                <div class="social-links">
+                    <h3>Retrouvez-moi</h3>
+                    <a href="#" class="social-link">SoundCloud</a>
+                    <a href="#" class="social-link">Instagram</a>
+                    <a href="#" class="social-link">YouTube</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 WEBJUWS66 - Créé avec passion</p>
+        <p class="footer-tech">Suno AI × Midjourney × GitHub Pages</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
