@@ -75,11 +75,34 @@ body {
     align-items: center;
     position: relative;
     padding-top: 80px;
+    
+    /* Background image */
+    background-image: url('hero-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Overlay sombre pour rendre le texte lisible */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg, 
+        rgba(5, 5, 16, 0.75), 
+        rgba(139, 92, 246, 0.25)
+    );
+    z-index: 0;
 }
 
 .hero-content {
     text-align: center;
     z-index: 1;
+    position: relative;
 }
 
 .hero-title {
@@ -127,6 +150,8 @@ body {
     gap: 0.5rem;
     color: var(--gray);
     animation: bounce 2s infinite;
+    z-index: 1;
+}
 }
 
 @keyframes bounce {
