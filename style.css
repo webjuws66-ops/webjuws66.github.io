@@ -198,7 +198,7 @@ body {
     position: relative;
     z-index: 1;
     
-    /* Background pour la section galerie */
+/* Background pour la section galerie */
 .gallery-section {
     position: relative;
     background-image: url('gallery-background.jpg');
