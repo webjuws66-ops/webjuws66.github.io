@@ -170,7 +170,34 @@ body {
     min-height: 100vh;
     padding: 6rem 2rem;
 }
+/* Background pour la section musique */
+.music-section {
+    position: relative;
+    background-image: url('music-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
 
+.music-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg, 
+        rgba(5, 5, 16, 0.85), 
+        rgba(139, 92, 246, 0.3)
+    );
+    z-index: 0;
+}
+
+.music-section .container {
+    position: relative;
+    z-index: 1;
+}
 .container {
     max-width: 1200px;
     margin: 0 auto;
