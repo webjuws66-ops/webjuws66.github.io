@@ -23,7 +23,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Global offset for fixed navbar */
+/* Offset de scroll pour la navbar fixe */
 section {
     scroll-margin-top: 100px;
 }
@@ -100,7 +100,7 @@ section {
     z-index: 0;
 }
 
-/* ⬇️ FONDU BAS HERO (corrige la coupure brutale) */
+/* fondu bas du hero */
 .hero::after {
     content: "";
     position: absolute;
@@ -164,17 +164,34 @@ section {
 }
 
 /* =========================================================
-   MUSIC SECTION
+   TITRES DE SECTIONS
 ========================================================= */
 .section {
     padding: 6rem 2rem;
 }
 
+.section-title {
+    font-size: 2.6rem;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.section-subtitle {
+    color: var(--gray);
+    margin-bottom: 2rem;
+}
+
+/* =========================================================
+   MUSIC SECTION
+========================================================= */
 .music-section {
     position: relative;
 
-    /* ⬇️ correction : on la descend pour éviter le chevauchement */
-    padding-top: 180px !important;
+    /* descend la section musique sous le hero */
+    padding-top: 180px;
 
     background-image: url('music-background.jpg');
     background-size: cover;
@@ -195,18 +212,111 @@ section {
     z-index: 2;
 }
 
+/* =========================================================
+   AUDIO PLAYER (complet)
+========================================================= */
+
 .audio-player {
-    background: rgba(15,15,35,0.8);
-    border: 1px solid rgba(139,92,246,0.3);
+    background: rgba(15, 15, 35, 0.8);
+    border: 1px solid rgba(139, 92, 246, 0.3);
     border-radius: 20px;
     padding: 2rem;
     margin-bottom: 2rem;
     backdrop-filter: blur(10px);
 }
 
+.player-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.track-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.track-artist {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.player-controls {
+    display: flex;
+    gap: 1rem;
+}
+
+.control-btn {
+    background: rgba(139, 92, 246, 0.2);
+    border: 1px solid var(--primary);
+    color: var(--light);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1.2rem;
+}
+
+.control-btn:hover {
+    background: var(--primary);
+    transform: scale(1.1);
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.time {
+    font-size: 0.8rem;
+    color: var(--gray);
+}
+
+.progress-bar {
+    flex-grow: 1;
+    height: 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 10px;
+    transition: width 0.1s linear;
+}
+
+/* Playlist */
 .playlist {
     max-width: 800px;
     margin: 0 auto;
+}
+
+.playlist-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.playlist-item:hover {
+    color: var(--primary);
+    transform: translateX(4px);
+}
+
+.track-number,
+.track-name,
+.track-duration {
+    font-size: 1rem;
 }
 
 /* =========================================================
@@ -215,8 +325,8 @@ section {
 .gallery-section {
     position: relative;
 
-    /* ⬇️ correction : espace en haut pour éviter collage section musique */
-    padding: 120px 1rem 12rem !important;
+    /* espace au-dessus + grand bas pour laisser flotter ABOUT */
+    padding: 120px 1rem 12rem;
 
     background-image: url('gallery-background.jpg');
     background-size: cover;
@@ -224,7 +334,7 @@ section {
     background-attachment: fixed;
 }
 
-/* ⬇️ FONDU BAS GALERIE (pour flotter avec ABOUT) */
+/* fondu bas galerie */
 .gallery-section::after {
     content: "";
     position: absolute;
@@ -274,10 +384,7 @@ section {
 ========================================================= */
 #about {
     position: relative;
-
-    /* ⬇️ correction : on remonte, mais moins fort */
-    margin-top: -40px !important;
-
+    margin-top: -40px;      /* remonte un peu la carte dans le dégradé rose */
     padding: 80px 1.5rem 8rem;
     z-index: 10;
 
@@ -374,107 +481,10 @@ section {
    RESPONSIVE
 ========================================================= */
 @media (max-width: 768px) {
-    .about-card { padding: 40px 24px; }
-    .about-title { font-size: 2rem; }
-}
-/* =========================================================
-   AUDIO PLAYER (Restauration complète)
-========================================================= */
-
-.audio-player {
-    background: rgba(15, 15, 35, 0.8);
-    border: 1px solid rgba(139, 92, 246, 0.3);
-    border-radius: 20px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    backdrop-filter: blur(10px);
-}
-
-.player-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
-}
-
-.track-info h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.track-artist {
-    color: var(--gray);
-    font-size: 0.9rem;
-}
-
-.player-controls {
-    display: flex;
-    gap: 1rem;
-}
-
-.control-btn {
-    background: rgba(139, 92, 246, 0.2);
-    border: 1px solid var(--primary);
-    color: var(--light);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-size: 1.2rem;
-}
-
-.control-btn:hover {
-    background: var(--primary);
-    transform: scale(1.1);
-}
-
-.progress-container {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.time {
-    font-size: 0.8rem;
-    color: var(--gray);
-}
-
-/* Barre de progression */
-.progress-bar {
-    flex-grow: 1;
-    height: 8px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 10px;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.progress {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    border-radius: 10px;
-    transition: width 0.1s linear;
-}
-
-/* Playlist */
-.playlist-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.6rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.playlist-item:hover {
-    color: var(--primary);
-    transform: translateX(4px);
-}
-
-.track-number,
-.track-name,
-.track-duration {
-    font-size: 1rem;
+    .about-card {
+        padding: 40px 24px;
+    }
+    .about-title {
+        font-size: 2rem;
+    }
 }
