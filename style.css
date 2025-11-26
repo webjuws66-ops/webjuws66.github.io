@@ -216,6 +216,13 @@ body {
     background-position: center;
     background-attachment: fixed;
 }
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px; /* ou la largeur que tu veux pour la galerie */
+    margin: 0 auto; /* pour centrer la grille */
+}
 
 .container {
     max-width: 1200px;
