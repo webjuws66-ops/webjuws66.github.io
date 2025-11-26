@@ -198,3 +198,120 @@
     </div>
   </div>
 </section>
+</section>
+
+<!-- === LECTEUR AUDIO : SCRIPT COMPLET === -->
+<script>
+// ==== RÉFÉRENCES DOM ====
+const audio       = document.getElementById('audioPlayer');
+const playBtn     = document.getElementById('playBtn');
+const prevBtn     = document.getElementById('prevBtn');
+const nextBtn     = document.getElementById('nextBtn');
+
+const currentTimeEl = document.getElementById('currentTime');
+const durationEl    = document.getElementById('duration');
+const progressBar   = document.querySelector('.progress-bar');
+const progress      = document.getElementById('progress');
+const trackTitleEl  = document.getElementById('currentTrack');
+
+const playlistItems = Array.from(document.querySelectorAll('.playlist-item'));
+
+let currentIndex = 0;
+let isPlaying    = false;
+
+// ==== UTIL ====
+function formatTime(sec) {
+  if (isNaN(sec)) return "0:00";
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60).toString().padStart(2, "0");
+  return `${m}:${s}`;
+}
+
+function loadTrack(index) {
+  const item = playlistItems[index];
+  if (!item) return;
+
+  const src  = item.dataset.src;
+  const name = item.querySelector('.track-name')?.textContent || 'Titre';
+
+  audio.src = src;
+  trackTitleEl.textContent = name;
+
+  playlistItems.forEach(el => el.classList.remove('active-track'));
+  item.classList.add('active-track');
+}
+
+function playTrack() {
+  if (!audio.src) {
+    loadTrack(currentIndex);
+  }
+  audio.play().then(() => {
+    isPlaying = true;
+    playBtn.textContent = '⏸';
+  }).catch(err => {
+    console.error("Erreur lecture audio :", err);
+  });
+}
+
+function pauseTrack() {
+  audio.pause();
+  isPlaying = false;
+  playBtn.textContent = '▶';
+}
+
+function togglePlay() {
+  if (isPlaying) pauseTrack();
+  else playTrack();
+}
+
+function playNext() {
+  currentIndex = (currentIndex + 1) % playlistItems.length;
+  loadTrack(currentIndex);
+  playTrack();
+}
+
+function playPrev() {
+  currentIndex = (currentIndex - 1 + playlistItems.length) % playlistItems.length;
+  loadTrack(currentIndex);
+  playTrack();
+}
+
+playBtn.addEventListener('click', togglePlay);
+nextBtn.addEventListener('click', playNext);
+prevBtn.addEventListener('click', playPrev);
+
+playlistItems.forEach((item, index) => {
+  item.addEventListener('click', () => {
+    currentIndex = index;
+    loadTrack(currentIndex);
+    playTrack();
+  });
+});
+
+audio.addEventListener('timeupdate', () => {
+  currentTimeEl.textContent = formatTime(audio.currentTime);
+  durationEl.textContent    = formatTime(audio.duration);
+
+  if (audio.duration) {
+    const percent = (audio.currentTime / audio.duration) * 100;
+    progress.style.width = `${percent}%`;
+  }
+});
+
+progressBar.addEventListener('click', (e) => {
+  const rect    = progressBar.getBoundingClientRect();
+  const x       = e.clientX - rect.left;
+  const percent = x / rect.width;
+  audio.currentTime = percent * audio.duration;
+});
+
+audio.addEventListener('ended', playNext);
+
+// Charger la première piste au démarrage
+if (playlistItems.length > 0) {
+  loadTrack(0);
+}
+</script>
+
+</body>
+</html>
