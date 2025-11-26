@@ -365,24 +365,20 @@ body {
 
 /* ABOUT SECTION */
 .about-section {
-  margin-top: 6rem;
-}
-
-.about-section {
-  background-image: url('images/about-background.jpg'); /* adapte le chemin si besoin */
+  background-image: url('images/about-background.jpg'); /* adapte si besoin */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
 
   padding: 6rem 1rem 6rem;
-  min-height: 100vh;          /* occupe toute la hauteur */
-  scroll-margin-top: 100px;   /* pour le clic sur le menu */
+  min-height: 100vh;            /* prend toute la hauteur de l'écran */
+  scroll-margin-top: 100px;     /* pour le clic du menu */
 }
 
-/* Pavé central */
+/* Bloc central */
 .about-content {
   max-width: 900px;
-  margin: 0 auto;             /* centre le bloc */
+  margin: 0 auto;               /* centre le bloc */
   background: rgba(0, 0, 0, 0.55);
   padding: 3rem;
   border-radius: 25px;
