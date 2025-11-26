@@ -74,7 +74,6 @@ body {
 ========================================================= */
 
 .hero {
-   background-image: url('hero-background.jpg');
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -85,6 +84,9 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+}
+.hero {
+    background-image: url('hero-background.jpg');
 }
 
 .hero::before {
