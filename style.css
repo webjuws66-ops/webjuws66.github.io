@@ -383,5 +383,5 @@ body {
   text-align: center;
   color: white;
   box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-  margin: 0 1rem;  /* évite de coller sur les bords en mobile */
+  margin: 0 1rem;
 }
