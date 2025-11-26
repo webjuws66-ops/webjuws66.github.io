@@ -202,6 +202,11 @@ body {
     align-items: center;
     margin-bottom: 0.5rem;
 }
+.playlist {
+    max-width: 800px; /* ou la taille que tu préfères */
+    margin: 0 auto; /* pour centrer la liste */
+    font-size: 1.1rem; /* pour agrandir un peu le texte si tu veux */
+}
 
 /* Background pour la section galerie */
 .gallery-section {
