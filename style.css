@@ -188,6 +188,20 @@ body {
     position: relative;
     z-index: 1;
 }
+/* Pour centrer et limiter la largeur du lecteur et de la playlist */
+.music-section .audio-player, .music-section .playlist {
+    max-width: 800px; /* ou la largeur que tu préfères */
+    margin: 0 auto; /* pour centrer */
+    padding: 1rem;
+}
+
+/* Pour que la playlist s’affiche bien en dessous */
+.playlist-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
 
 /* Background pour la section galerie */
 .gallery-section {
