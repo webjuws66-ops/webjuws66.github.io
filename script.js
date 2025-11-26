@@ -146,6 +146,71 @@ document.querySelectorAll('.gallery-item').forEach(item => {
     observer.observe(item);
 });
 
+// ============================================
+// 🆕 FONCTION D'IMPORT D'IMAGES - NOUVEAU CODE
+// ============================================
+
+const fileUpload = document.getElementById('file-upload');
+const galleryGrid = document.querySelector('.gallery-grid');
+
+// Compteur pour les nouvelles créations
+let creationCounter = 7; // On commence à 7 car il y a déjà 6 créations
+
+fileUpload.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    
+    if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        
+        reader.onload = function(event) {
+            // Créer un nouvel élément de galerie
+            const newItem = document.createElement('article');
+            newItem.className = 'gallery-item';
+            
+            // Créer le contenu HTML
+            newItem.innerHTML = `
+                <img src="${event.target.result}" alt="Création ${creationCounter}">
+                <h3>Création ${creationCounter}</h3>
+                <p>Titre de l'œuvre ${creationCounter}</p>
+            `;
+            
+            // Ajouter l'animation d'apparition
+            newItem.style.opacity = '0';
+            newItem.style.transform = 'translateY(20px)';
+            newItem.style.transition = 'opacity 0.5s, transform 0.5s';
+            
+            // Ajouter à la galerie
+            galleryGrid.appendChild(newItem);
+            
+            // Animation d'apparition après un court délai
+            setTimeout(() => {
+                newItem.style.opacity = '1';
+                newItem.style.transform = 'translateY(0)';
+            }, 100);
+            
+            // Observer le nouvel élément
+            observer.observe(newItem);
+            
+            // Incrémenter le compteur
+            creationCounter++;
+            
+            // Message de confirmation dans la console
+            console.log(`✅ Image ajoutée : Création ${creationCounter - 1}`);
+        };
+        
+        reader.readAsDataURL(file);
+    } else {
+        alert('⚠️ Veuillez sélectionner un fichier image valide (JPG, PNG, etc.)');
+    }
+    
+    // Réinitialiser l'input pour permettre d'ajouter la même image plusieurs fois
+    e.target.value = '';
+});
+
+// ============================================
+// FIN DU NOUVEAU CODE
+// ============================================
+
 // Charger la première piste au chargement
 window.addEventListener('load', () => {
     if (playlistItems.length > 0) {
@@ -155,3 +220,4 @@ window.addEventListener('load', () => {
 
 console.log('🎵 WEBJUWS66 Site loaded successfully!');
 console.log('⌨️ Raccourcis: Espace = Play/Pause, ← → = Piste précédente/suivante');
+console.log('📸 Fonction d\'import d\'images activée !');
