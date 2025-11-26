@@ -367,7 +367,7 @@ body {
   background-position: center;
   background-attachment: fixed;
   padding: 8rem 1rem 8rem;
-  min-height: calc(100vh - 80px);
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
