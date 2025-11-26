@@ -218,7 +218,9 @@ body {
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  padding: 6rem 1rem 6rem; /* plus d'espace haut/bas */
+  padding: 4rem 1rem 6rem; /* plus d'espace haut/bas */
+  min-height: calc(100vh - 80px);
+  scroll-margin-top: 80px;
 }
 
 .gallery-content {
