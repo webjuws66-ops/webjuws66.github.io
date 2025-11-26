@@ -144,6 +144,10 @@ body {
 /* =========================================================
    MUSIC SECTION
 ========================================================= */
+.music-section {
+    background-image: url('music-background.jpg');
+}
+
 .section {
     padding: 6rem 2rem;
 }
@@ -184,6 +188,10 @@ body {
 /* =========================================================
    GALLERY
 ========================================================= */
+.gallery-section {
+    background-image: url('gallery-background.jpg');
+}
+
 .gallery-section {
     background-size: cover;
     background-position: center;
