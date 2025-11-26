@@ -210,6 +210,10 @@ body {
 
 /* Section galerie sur fond plein écran */
 .gallery-section {
+  scroll-margin-top: 120px; /* adapte selon hauteur de ta navbar */
+}
+
+.gallery-section {
   background-image: url('gallery-background.jpg');
   background-size: cover;
   background-position: center;
