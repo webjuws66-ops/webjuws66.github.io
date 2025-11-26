@@ -358,3 +358,33 @@ body {
 
 .play-btn {
 
+/* ========================= */
+/* SECTION À PROPOS          */
+/* ========================= */
+
+.about-section {
+  position: relative;
+  background-image: url('about-background.jpg'); /* Mets ton image ici */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  padding: 8rem 1rem 8rem;
+  min-height: calc(100vh - 80px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  scroll-margin-top: 100px;
+}
+
+/* Pavé central */
+.about-content {
+  max-width: 900px;
+  background: rgba(0,0,0,0.55);
+  padding: 3rem;
+  border-radius: 25px;
+  backdrop-filter: blur(12px);
+  text-align: center;
+  color
