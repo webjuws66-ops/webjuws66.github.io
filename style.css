@@ -382,6 +382,12 @@ body {
     object-fit: cover;
     transition: transform 0.5s;
 }
+.gallery-section {
+    background-image: url('gallery-background.jpg');
+    background-size: cover;
+    background-position: center;
+    /* Et tes autres styles pour la galerie */
+}
 
 .gallery-item:hover img {
     transform: scale(1.1);
