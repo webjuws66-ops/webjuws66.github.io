@@ -72,7 +72,9 @@ body {
 /* =========================================================
    HERO
 ========================================================= */
+
 .hero {
+   background-image: url('hero-background.jpg');
     height: 100vh;
     display: flex;
     flex-direction: column;
