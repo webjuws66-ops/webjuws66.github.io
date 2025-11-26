@@ -362,28 +362,21 @@ body {
 
 .play-btn {
 
-/* ========================= */
-/* SECTION À PROPOS          */
-/* ========================= */
-
+/* ABOUT SECTION */
 .about-section {
   position: relative;
-  background-image: url('about-background.jpg'); /* Mets ton image ici */
+  background-image: url('images/about-background.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-
   padding: 8rem 1rem 8rem;
   min-height: calc(100vh - 80px);
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   scroll-margin-top: 100px;
 }
 
-/* Pavé central */
 .about-content {
   max-width: 900px;
   background: rgba(0,0,0,0.55);
@@ -391,4 +384,45 @@ body {
   border-radius: 25px;
   backdrop-filter: blur(12px);
   text-align: center;
-  color
+  color: white;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.about-title {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about-text {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 1.8rem;
+}
+
+.about-subtitle {
+  font-size: 1.8rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--secondary);
+}
+
+.about-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.about-links a {
+  color: var(--primary);
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.about-links a:hover {
+  color: #ffffff;
+  text-shadow: 0 0 10px var(--primary);
+}
