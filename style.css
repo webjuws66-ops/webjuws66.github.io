@@ -75,7 +75,7 @@ body {
     align-items: center;
     position: relative;
     padding-top: 80px;
-    
+  }  
     /* Background image */
     background-image: url('hero-background.jpg');
     background-size: cover;
