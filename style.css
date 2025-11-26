@@ -174,7 +174,7 @@ section {
     position: relative;
 
     /* ⬇️ correction : on la descend pour éviter le chevauchement */
-    padding-top: 260px !important;
+    padding-top: 180px !important;
 
     background-image: url('music-background.jpg');
     background-size: cover;
@@ -216,7 +216,7 @@ section {
     position: relative;
 
     /* ⬇️ correction : espace en haut pour éviter collage section musique */
-    padding: 180px 1rem 12rem !important;
+    padding: 120px 1rem 12rem !important;
 
     background-image: url('gallery-background.jpg');
     background-size: cover;
@@ -276,7 +276,7 @@ section {
     position: relative;
 
     /* ⬇️ correction : on remonte, mais moins fort */
-    margin-top: -80px !important;
+    margin-top: -40px !important;
 
     padding: 80px 1.5rem 8rem;
     z-index: 10;
