@@ -365,6 +365,10 @@ body {
 
 /* ABOUT SECTION */
 .about-section {
+  margin-top: 6rem;
+}
+
+.about-section {
   background-image: url('images/about-background.jpg'); /* adapte le chemin si besoin */
   background-size: cover;
   background-position: center;
