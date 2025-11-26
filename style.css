@@ -1,4 +1,6 @@
-
+/* =========================================================
+   RESET
+========================================================= */
 * {
     margin: 0;
     padding: 0;
@@ -16,12 +18,14 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+    background: linear-gradient(135deg, var(--darker), var(--dark));
     color: var(--light);
     overflow-x: hidden;
 }
 
-/* Navigation */
+/* =========================================================
+   NAVIGATION
+========================================================= */
 .nav {
     position: fixed;
     top: 0;
@@ -47,7 +51,6 @@ body {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
 .nav-menu {
@@ -59,67 +62,58 @@ body {
 .nav-link {
     color: var(--light);
     text-decoration: none;
-    transition: color 0.3s;
+    transition: 0.3s;
 }
 
 .nav-link:hover {
     color: var(--primary);
 }
 
-/* Hero Section */
+/* =========================================================
+   HERO SECTION
+========================================================= */
 .hero {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
     padding-top: 80px;
-    background-image: url('hero-background.jpg');
+    position: relative;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 
-/* Overlay sombre pour rendre le texte lisible */
 .hero::before {
-    content: '';
+    content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-        135deg, 
-        rgba(5, 5, 16, 0.75), 
-        rgba(139, 92, 246, 0.25)
-    );
-    z-index: 0;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(5,5,16,0.75), rgba(139,92,246,0.25));
 }
 
 .hero-content {
-    text-align: center;
-    z-index: 1;
     position: relative;
+    text-align: center;
+    z-index: 2;
 }
 
 .hero-title {
     font-size: 5rem;
     font-weight: bold;
-    margin-bottom: 1rem;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
 .hero-subtitle {
     font-size: 1.5rem;
     color: var(--gray);
-    margin-bottom: 2rem;
+    margin-top: 1rem;
 }
 
 .hero-tags {
+    margin-top: 2rem;
     display: flex;
     gap: 1rem;
     justify-content: center;
@@ -127,494 +121,210 @@ body {
 
 .tag {
     padding: 0.5rem 1rem;
-    background: rgba(139, 92, 246, 0.2);
-    border: 1px solid var(--primary);
     border-radius: 20px;
-    font-size: 0.9rem;
+    background: rgba(139,92,246,0.2);
+    border: 1px solid var(--primary);
 }
 
 .scroll-indicator {
     position: absolute;
     bottom: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
     color: var(--gray);
     animation: bounce 2s infinite;
 }
 
 @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
     50% { transform: translateY(10px); }
 }
 
-.scroll-line {
-    width: 2px;
-    height: 30px;
-    background: linear-gradient(to bottom, var(--primary), transparent);
-}
-
-/* Sections */
+/* =========================================================
+   MUSIC SECTION
+========================================================= */
 .section {
-    min-height: 100vh;
     padding: 6rem 2rem;
 }
 
-/* Background pour la section musique */
 .music-section {
-    position: relative;
-    background-image: url('music-background.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    position: relative;
 }
 
 .music-section::before {
-    content: '';
+    content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-        135deg, 
-        rgba(5, 5, 16, 0.85), 
-        rgba(139, 92, 246, 0.3)
-    );
-    z-index: 0;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(5,5,16,0.85), rgba(139,92,246,0.3));
 }
 
 .music-section .container {
     position: relative;
-    z-index: 1;
-}
-/* Pour centrer et limiter la largeur du lecteur et de la playlist */
-.music-section .audio-player, .music-section .playlist {
-    max-width: 800px; /* ou la largeur que tu préfères */
-    margin: 0 auto; /* pour centrer */
-    padding: 1rem;
+    z-index: 2;
 }
 
-/* Pour que la playlist s’affiche bien en dessous */
-.playlist-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.5rem;
-}
-.playlist {
-    max-width: 800px; /* ou la taille que tu préfères */
-    margin: 0 auto; /* pour centrer la liste */
-    font-size: 1.1rem; /* pour agrandir un peu le texte si tu veux */
-}
-
-/* Section galerie sur fond plein écran */
-.gallery-section {
-  scroll-margin-top: 120px; /* adapte selon hauteur de ta navbar */
-}
-
-.gallery-section {
-  background-image: url('gallery-background.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  padding: 4rem 1rem 6rem; /* plus d'espace haut/bas */
-  min-height: calc(100vh - 80px);
-  scroll-margin-top: 80px;
-}
-
-.gallery-content {
-  max-width: 1400px;      /* plus large */
-  margin: 0 auto;
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-  gap: 2.5rem;
-  margin-top: 3rem;
-}
-
-/* Carte */
-.gallery-item {
-  background: rgba(0,0,0,0.35);
-  border-radius: 20px;
-  padding: 1.5rem;
-  text-align: center;
-  box-shadow: 0 20px 45px rgba(0,0,0,0.35);
-  backdrop-filter: blur(10px);
-}
-
-/* Image */
-.gallery-item img {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  border-radius: 15px;
-  margin-bottom: 1rem;
-}
-
-
-/* Carte individuelle */
-.gallery-item {
-  background: rgba(0, 0, 0, 0.35);
-  border-radius: 18px;
-  padding: 1.5rem;
-  text-align: center;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
-}
-
-/* Image dans la carte */
-.gallery-item img {
-  display: block;
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 1rem;
-}
-
-
-/* Titres d’œuvres */
-.gallery-item h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.4rem;
-}
-
-.gallery-item p {
-  font-size: 0.95rem;
-  opacity: 0.9;
-}
-
-/* Bloc d’aide en dessous */
-.gallery-help {
-  margin-top: 3rem;
-  font-size: 0.95rem;
-}
-
-
-.section-title {
-    font-size: 3rem;
-    text-align: center;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.section-subtitle {
-    text-align: center;
-    color: var(--gray);
-    margin-bottom: 3rem;
-}
-
-/* Audio Player */
+/* Player */
 .audio-player {
-    background: rgba(15, 15, 35, 0.8);
-    border: 1px solid rgba(139, 92, 246, 0.3);
+    background: rgba(15,15,35,0.8);
+    border: 1px solid rgba(139,92,246,0.3);
     border-radius: 20px;
     padding: 2rem;
     margin-bottom: 2rem;
     backdrop-filter: blur(10px);
 }
 
-.player-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
+.playlist {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.track-info h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+/* =========================================================
+   GALLERY SECTION
+========================================================= */
+.gallery-section {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 4rem 1rem 9rem;
+    position: relative;
 }
 
-.track-artist {
-    color: var(--gray);
+.gallery-content {
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-.player-controls {
-    display: flex;
-    gap: 1rem;
+.gallery-grid {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    gap: 2.5rem;
 }
 
-.control-btn {
-    background: rgba(139, 92, 246, 0.2);
-    border: 1px solid var(--primary);
-    color: var(--light);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.control-btn:hover {
-    background: var(--primary);
-    transform: scale(1.1);
-}
-
-.play-btn {
-}
-    #about {
-  padding-top: 4rem;
-}
-/* ABOUT SECTION */
-.about-section {
-  /* tu peux remettre ton image ici si tu veux */
-  /* background-image: url('images/about-background.jpg'); */
-  background: radial-gradient(circle at top, #3c275f 0%, #050714 55%, #020308 100%);
-
-  padding: 6rem 1.5rem 6rem;
-  min-height: 100vh;
-  scroll-margin-top: 100px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;   /* <-- centre la carte au milieu de l'écran */
-}
-
-.upload-container {
+.gallery-item {
+    background: rgba(0,0,0,0.3);
+    border-radius: 18px;
+    padding: 1.5rem;
     text-align: center;
-    margin: 2rem 0;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.35);
 }
 
-.upload-btn {
-    background: #9A4DFF;
-    color: white;
-    padding: 12px 25px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: 0.3s;
-    display: inline-block;
+.gallery-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
 }
 
-.upload-btn:hover {
-    background: #B97AFF;
-}
-
-#file-upload {
-    display: none;
-}
-
-/* Carte centrale */
-.about-content {
-  max-width: 960px;
-  margin: 0 auto;
-  background: rgba(3, 3, 14, 0.92);
-  padding: 3.5rem 3rem;
-  border-radius: 32px;
-  box-shadow:
-    0 28px 70px rgba(0, 0, 0, 0.75),
-    0 0 0 1px rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(16px);
-  text-align: center;
-  color: #ffffff;
-}
-
-/* Titre */
-.about-title {
-  font-size: 2.6rem;
-  margin-bottom: 1.6rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.about-text {
-  font-size: 1.15rem;
-  line-height: 1.9;
-  margin-bottom: 1.4rem;
-  opacity: 0.96;
-}
-
-.about-subtitle {
-  font-size: 1.3rem;
-  margin-top: 1rem;
-  margin-bottom: 0.8rem;
-  font-weight: 600;
-  color: var(--secondary);
-}
-
-/* Liens sociaux en “pills” */
-.about-links {
-  display: flex;
-  justify-content: center;
-  gap: 1.4rem;
-  margin-top: 0.4rem;
-}
-
-.about-links a {
-  padding: 0.55rem 1.5rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  font-size: 0.95rem;
-  text-decoration: none;
-  color: #ffffff;
-  opacity: 0.9;
-  transition: 0.2s ease;
-}
-
-.about-links a:hover {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  border-color: transparent;
-  opacity: 1;
-}
-/* --- SECTION A PROPOS --- */
+/* =========================================================
+   ABOUT SECTION — OPTION 3 (CARTE FLOTTANTE 🔥)
+========================================================= */
 
 #about {
-  padding: 40px 16px 120px;
-  display: flex;
-  justify-content: center;
-}
+    position: relative;
+    padding: 0 1.5rem 8rem;
+    margin-top: -120px; /* <-- Fait remonter la carte dans la galerie */
+    z-index: 10;
 
-.about-card {
-  max-width: 760px;
-  width: 100%;
-  border-radius: 32px;
-  padding: 56px clamp(24px, 4vw, 56px);
-  background:
-    radial-gradient(circle at top left, rgba(255, 120, 250, 0.18), transparent 55%),
-    radial-gradient(circle at bottom right, rgba(120, 180, 255, 0.18), transparent 55%),
-    rgba(3, 3, 12, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 32px 120px rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(18px);
-  text-align: center;
-}
-
-/* petit texte au-dessus du titre */
-.about-kicker {
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 0.75rem;
-  margin-bottom: 10px;
-  color: rgba(255, 255, 255, 0.55);
-}
-
-/* titre avec effet léger */
-.about-title {
-  font-size: clamp(2rem, 3vw, 2.4rem);
-  margin-bottom: 24px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  background: linear-gradient(120deg, #ff78ff, #ffd0ff);
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-/* paragraphes */
-.about-text {
-  font-size: 0.98rem;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.82);
-  margin-bottom: 12px;
-}
-
-/* mini tags */
-.about-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-  margin: 28px 0 10px;
-}
-
-.about-tags span {
-  font-size: 0.8rem;
-  padding: 6px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.06), transparent 60%);
-  color: rgba(255, 255, 255, 0.82);
-}
-
-/* "Retrouvez-moi" */
-.about-subtitle {
-  margin-top: 22px;
-  margin-bottom: 14px;
-  font-weight: 700;
-  color: #ff6adf;
-}
-
-/* boutons réseaux */
-.about-actions {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-.about-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 22px;
-  border-radius: 999px;
-  font-size: 0.9rem;
-  text-decoration: none;
-  cursor: pointer;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease,
-    border-color 0.18s ease, color 0.18s ease;
-}
-
-/* bouton principal */
-.about-btn-primary {
-  background: linear-gradient(120deg, #ff6adf, #ff9ff3);
-  color: #05050b;
-  border: none;
-  box-shadow: 0 10px 30px rgba(255, 106, 223, 0.35);
-}
-
-.about-btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 16px 40px rgba(255, 106, 223, 0.6);
-}
-
-/* bouton transparent */
-.about-btn-ghost {
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  color: rgba(255, 255, 255, 0.85);
-  background: rgba(10, 10, 20, 0.3);
-}
-
-.about-btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.06);
-  transform: translateY(-2px);
-}
-/* Marge avant la section À PROPOS */
-#about {
-  margin-top: -40px !important;
-}
-
-@media (max-width: 768px) {
-  .about-card {
-    border-radius: 24px;
-    padding: 32px 20px;
-  }
-
-  .about-title {
-    font-size: 1.7rem;
-  }
-
-  .about-text {
-    font-size: 0.9rem;
-  }
-}
-/* Transition douce entre la galerie et la section À propos */
-#about {
-  background: linear-gradient(
-      to top,
-      rgba(5, 5, 15, 1) 40%,
-      rgba(5, 5, 15, 0.6) 70%,
-      rgba(5, 5, 15, 0) 100%
+    /* transition douce */
+    background: linear-gradient(
+        to top,
+        rgba(5, 5, 15, 1) 60%,
+        rgba(5, 5, 15, 0.5) 80%,
+        rgba(5, 5, 15, 0) 100%
     );
 }
 
+.about-card {
+    max-width: 780px;
+    margin: 0 auto;
+    background: rgba(3,3,12,0.92);
+    border-radius: 32px;
+    padding: 56px clamp(24px, 4vw, 56px);
+    text-align: center;
+
+    box-shadow: 
+        0 32px 120px rgba(0,0,0,0.85),
+        0 0 0 1px rgba(255,255,255,0.06);
+    backdrop-filter: blur(18px);
+}
+
+/* Petit sous-titre */
+.about-kicker {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 10px;
+}
+
+/* GRAND TITRE */
+.about-title {
+    font-size: clamp(2.2rem, 3vw, 2.6rem);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 800;
+    margin-bottom: 24px;
+
+    background: linear-gradient(120deg, #ff78ff, #ffd0ff);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+/* Texte */
+.about-text {
+    font-size: 1.02rem;
+    line-height: 1.7;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+}
+
+/* Tags */
+.about-tags {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 24px 0 14px;
+}
+
+.about-tags span {
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* Boutons */
+.about-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+}
+
+.about-btn {
+    padding: 10px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: 0.2s ease;
+}
+
+.about-btn-primary {
+    background: linear-gradient(120deg,#ff6adf,#ff9ff3);
+    box-shadow: 0 10px 30px rgba(255,106,223,0.35);
+    color: #05050b;
+}
+
+.about-btn-ghost {
+    border: 1px solid rgba(255,255,255,0.35);
+    background: rgba(20,20,30,0.4);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+@media (max-width: 768px) {
+    .about-card { padding: 40px 24px; }
+    .about-title { font-size: 2rem; }
+}
