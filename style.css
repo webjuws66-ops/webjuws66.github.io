@@ -23,6 +23,11 @@ body {
     overflow-x: hidden;
 }
 
+/* global spacing for nav offset */
+section {
+    scroll-margin-top: 100px;
+}
+
 /* =========================================================
    NAVIGATION
 ========================================================= */
@@ -73,17 +78,15 @@ body {
    HERO
 ========================================================= */
 .hero {
-    background-image: url('hero-background.jpg');
-}
-
-.hero {
     height: 100vh;
+    padding-top: 80px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 80px;
     position: relative;
+
+    background-image: url('hero-background.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -144,19 +147,18 @@ body {
 /* =========================================================
    MUSIC SECTION
 ========================================================= */
-.music-section {
-    background-image: url('music-background.jpg');
-}
-
 .section {
     padding: 6rem 2rem;
 }
 
 .music-section {
+    position: relative;
+    padding-top: 160px !important;
+
+    background-image: url('music-background.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    position: relative;
 }
 
 .music-section::before {
@@ -189,24 +191,23 @@ body {
    GALLERY
 ========================================================= */
 .gallery-section {
-    background-image: url('gallery-background.jpg');
-}
+    position: relative;
+    padding: 180px 1rem 12rem !important;
 
-.gallery-section {
+    background-image: url('gallery-background.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    padding: 4rem 1rem 12rem; /* bas augmenté car la carte remonte */
-    position: relative;
 }
 
+/* Smooth fade to black before ABOUT */
 .gallery-section::after {
     content: "";
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
-    height: 220px; /* fondu final galerie → about */
+    height: 220px;
     background: linear-gradient(
         to bottom,
         rgba(5,5,15,0) 0%,
@@ -245,18 +246,18 @@ body {
 }
 
 /* =========================================================
-   ABOUT — Option 3 (carte flottante)
+   ABOUT — Option 3 (carte flottante maîtrisée)
 ========================================================= */
 #about {
     position: relative;
-    margin-top: -130px;  /* fait remonter la carte */
-    padding: 0 1.5rem 8rem;
+    margin-top: -80px !important; /* ajusté pour éviter chevauchement excessif */
+    padding: 80px 1.5rem 8rem;
     z-index: 10;
 
     background: linear-gradient(
         to top,
         rgba(5,5,15,1) 60%,
-        rgba(5,5,15,0.5) 80%,
+        rgba(5,5,15,0.4) 80%,
         rgba(5,5,15,0) 100%
     );
 }
@@ -270,13 +271,13 @@ body {
     text-align: center;
 
     box-shadow:
-        0 0 50px rgba(139,92,246,0.2),      /* glow AI léger */
+        0 0 50px rgba(139,92,246,0.18),
         0 32px 120px rgba(0,0,0,0.85),
         0 0 0 1px rgba(255,255,255,0.06);
     backdrop-filter: blur(18px);
 }
 
-/* Sous-titre */
+/* Textes */
 .about-kicker {
     font-size: 0.75rem;
     letter-spacing: 0.2em;
@@ -284,7 +285,6 @@ body {
     margin-bottom: 10px;
 }
 
-/* Titre */
 .about-title {
     font-size: clamp(2.2rem, 3vw, 2.6rem);
     text-transform: uppercase;
@@ -297,7 +297,6 @@ body {
     color: transparent;
 }
 
-/* Texte */
 .about-text {
     font-size: 1.02rem;
     line-height: 1.7;
@@ -320,7 +319,7 @@ body {
     border: 1px solid rgba(255,255,255,0.15);
 }
 
-/* Boutons */
+/* Buttons */
 .about-actions {
     margin-top: 1rem;
     display: flex;
