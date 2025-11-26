@@ -220,8 +220,11 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    max-width: 1200px; /* ou la largeur que tu veux pour la galerie */
+    width: 100%; ; /* ou la largeur que tu veux pour la galerie */
     margin: 0 auto; /* pour centrer la grille */
+}
+.gallery-section .container {
+  max-width: 100%;
 }
 
 .container {
