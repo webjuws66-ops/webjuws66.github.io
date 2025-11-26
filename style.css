@@ -377,6 +377,29 @@ body {
   align-items: center;   /* <-- centre la carte au milieu de l'écran */
 }
 
+.upload-container {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.upload-btn {
+    background: #9A4DFF;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.upload-btn:hover {
+    background: #B97AFF;
+}
+
+#file-upload {
+    display: none;
+}
 
 /* Carte centrale */
 .about-content {
