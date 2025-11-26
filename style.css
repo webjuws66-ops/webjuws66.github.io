@@ -469,7 +469,7 @@ body {
 /* --- SECTION A PROPOS --- */
 
 #about {
-  padding: 80px 16px 140px;
+  padding: 40px 16px 120px;
   display: flex;
   justify-content: center;
 }
@@ -607,5 +607,14 @@ body {
   .about-text {
     font-size: 0.9rem;
   }
+}
+/* Transition douce entre la galerie et la section À propos */
+#about {
+  background: linear-gradient(
+      to top,
+      rgba(5, 5, 15, 1) 40%,
+      rgba(5, 5, 15, 0.6) 70%,
+      rgba(5, 5, 15, 0) 100%
+    );
 }
 
