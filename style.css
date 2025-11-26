@@ -364,29 +364,30 @@ body {
 }
 /* ABOUT SECTION */
 .about-section {
-  /* soit ton image, soit un joli dégradé */
+  /* tu peux remettre ton image ici si tu veux */
   /* background-image: url('images/about-background.jpg'); */
-  background: radial-gradient(circle at top, #39235d 0%, #050714 55%, #020308 100%);
+  background: radial-gradient(circle at top, #3c275f 0%, #050714 55%, #020308 100%);
 
-  padding: 8rem 1.5rem 6rem;
+  padding: 6rem 1.5rem 6rem;
   min-height: 100vh;
   scroll-margin-top: 100px;
 
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;   /* <-- centre la carte au milieu de l'écran */
 }
+
 
 /* Carte centrale */
 .about-content {
-  max-width: 900px;
+  max-width: 960px;
   margin: 0 auto;
   background: rgba(3, 3, 14, 0.92);
   padding: 3.5rem 3rem;
-  border-radius: 30px;
+  border-radius: 32px;
   box-shadow:
-    0 24px 60px rgba(0, 0, 0, 0.7),
-    0 0 0 1px rgba(255, 255, 255, 0.03);
+    0 28px 70px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(16px);
   text-align: center;
   color: #ffffff;
@@ -394,8 +395,8 @@ body {
 
 /* Titre */
 .about-title {
-  font-size: 2.4rem;
-  margin-bottom: 1.5rem;
+  font-size: 2.6rem;
+  margin-bottom: 1.6rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -403,33 +404,31 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-/* Paragraphes */
 .about-text {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   line-height: 1.9;
   margin-bottom: 1.4rem;
-  opacity: 0.95;
+  opacity: 0.96;
 }
 
-/* Sous-titre "Retrouvez-moi" */
 .about-subtitle {
   font-size: 1.3rem;
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   font-weight: 600;
   color: var(--secondary);
 }
 
-/* Liens sociaux */
+/* Liens sociaux en “pills” */
 .about-links {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
-  margin-top: 0.5rem;
+  gap: 1.4rem;
+  margin-top: 0.4rem;
 }
 
 .about-links a {
-  padding: 0.55rem 1.4rem;
+  padding: 0.55rem 1.5rem;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.25);
   font-size: 0.95rem;
