@@ -1,101 +1,124 @@
-// Audio Player
-const audioPlayer = document.getElementById('audioPlayer');
+// ==== ELEMENTS DU LECTEUR ====
+const audio = document.getElementById('audioPlayer');
 const playBtn = document.getElementById('playBtn');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
-const progress = document.getElementById('progress');
-const progressBar = document.querySelector('.progress-bar');
+
 const currentTimeEl = document.getElementById('currentTime');
 const durationEl = document.getElementById('duration');
-const currentTrackEl = document.getElementById('currentTrack');
-const playlistItems = document.querySelectorAll('.playlist-item');
+const progressBar = document.querySelector('.progress-bar');
+const progress = document.getElementById('progress');
 
-let currentTrackIndex = 0;
+const trackTitleEl = document.getElementById('currentTrack');
+
+// Playlist
+const playlistItems = Array.from(document.querySelectorAll('.playlist-item'));
+
+let currentIndex = 0;
 let isPlaying = false;
 
-// Charger une piste
+// ==== FONCTIONS UTILITAIRES ====
+function formatTime(sec) {
+  if (isNaN(sec)) return "0:00";
+  const minutes = Math.floor(sec / 60);
+  const seconds = Math.floor(sec % 60).toString().padStart(2, '0');
+  return `${minutes}:${seconds}`;
+}
+
 function loadTrack(index) {
-    const item = playlistItems[index];
-    const src = item.getAttribute('data-src');
-    const name = item.querySelector('.track-name').textContent;
-    
-    audioPlayer.src = src;
-    currentTrackEl.textContent = name;
-    
-    // Retirer la classe active de tous les items
-    playlistItems.forEach(item => item.classList.remove('active'));
-    // Ajouter la classe active à l'item actuel
-    item.classList.add('active');
-    
-    currentTrackIndex = index;
+  const item = playlistItems[index];
+  if (!item) return;
+
+  const src = item.dataset.src;
+  const name = item.querySelector('.track-name')?.textContent || 'Titre';
+
+  audio.src = src;
+  trackTitleEl.textContent = name;
+
+  // Marquage visuel de la piste active
+  playlistItems.forEach(el => el.classList.remove('active-track'));
+  item.classList.add('active-track');
 }
 
-// Play/Pause
-playBtn.addEventListener('click', () => {
-    if (isPlaying) {
-        audioPlayer.pause();
-        playBtn.textContent = '▶';
-    } else {
-        audioPlayer.play();
-        playBtn.textContent = '⏸';
-    }
-    isPlaying = !isPlaying;
-});
+function playTrack() {
+  if (!audio.src) {
+    loadTrack(currentIndex);
+  }
+  audio.play().then(() => {
+    isPlaying = true;
+    playBtn.textContent = '⏸';
+  }).catch(err => {
+    console.error('Erreur lecture audio :', err);
+  });
+}
 
-// Bouton précédent
-prevBtn.addEventListener('click', () => {
-    currentTrackIndex = (currentTrackIndex - 1 + playlistItems.length) % playlistItems.length;
-    loadTrack(currentTrackIndex);
-    if (isPlaying) audioPlayer.play();
-});
+function pauseTrack() {
+  audio.pause();
+  isPlaying = false;
+  playBtn.textContent = '▶';
+}
 
-// Bouton suivant
-nextBtn.addEventListener('click', () => {
-    currentTrackIndex = (currentTrackIndex + 1) % playlistItems.length;
-    loadTrack(currentTrackIndex);
-    if (isPlaying) audioPlayer.play();
-});
+function togglePlay() {
+  if (isPlaying) {
+    pauseTrack();
+  } else {
+    playTrack();
+  }
+}
 
-// Clic sur un item de la playlist
+function playNext() {
+  currentIndex = (currentIndex + 1) % playlistItems.length;
+  loadTrack(currentIndex);
+  playTrack();
+}
+
+function playPrev() {
+  currentIndex = (currentIndex - 1 + playlistItems.length) % playlistItems.length;
+  loadTrack(currentIndex);
+  playTrack();
+}
+
+// ==== EVENEMENTS ====
+playBtn.addEventListener('click', togglePlay);
+nextBtn.addEventListener('click', playNext);
+prevBtn.addEventListener('click', playPrev);
+
+// Clique sur une piste dans la playlist
 playlistItems.forEach((item, index) => {
-    item.addEventListener('click', () => {
-        loadTrack(index);
-        audioPlayer.play();
-        playBtn.textContent = '⏸';
-        isPlaying = true;
-    });
+  item.addEventListener('click', () => {
+    currentIndex = index;
+    loadTrack(currentIndex);
+    playTrack();
+  });
 });
 
-// Mise à jour de la barre de progression
-audioPlayer.addEventListener('timeupdate', () => {
-    const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-    progress.style.width = percent + '%';
-    
-    currentTimeEl.textContent = formatTime(audioPlayer.currentTime);
-    durationEl.textContent = formatTime(audioPlayer.duration);
+// Mise à jour du temps + barre de progression
+audio.addEventListener('timeupdate', () => {
+  currentTimeEl.textContent = formatTime(audio.currentTime);
+  durationEl.textContent = formatTime(audio.duration);
+
+  if (audio.duration) {
+    const percent = (audio.currentTime / audio.duration) * 100;
+    progress.style.width = `${percent}%`;
+  }
 });
 
-// Clic sur la barre de progression
+// Seek : clic dans la barre de progression
 progressBar.addEventListener('click', (e) => {
-    const rect = progressBar.getBoundingClientRect();
-    const percent = (e.clientX - rect.left) / rect.width;
-    audioPlayer.currentTime = percent * audioPlayer.duration;
+  const rect = progressBar.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const percent = x / rect.width;
+  audio.currentTime = percent * audio.duration;
 });
 
-// Piste suivante automatique à la fin
-audioPlayer.addEventListener('ended', () => {
-    currentTrackIndex = (currentTrackIndex + 1) % playlistItems.length;
-    loadTrack(currentTrackIndex);
-    audioPlayer.play();
-});
+// Quand la piste est finie → passe à la suivante
+audio.addEventListener('ended', playNext);
 
-// Formater le temps
-function formatTime(seconds) {
-    if (isNaN(seconds)) return '0:00';
-    const mins = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+// Charger la première piste au démarrage
+if (playlistItems.length > 0) {
+  loadTrack(0);
 }
+
 
 // Raccourcis clavier
 document.addEventListener('keydown', (e) => {
