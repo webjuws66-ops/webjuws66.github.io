@@ -377,3 +377,104 @@ section {
     .about-card { padding: 40px 24px; }
     .about-title { font-size: 2rem; }
 }
+/* =========================================================
+   AUDIO PLAYER (Restauration complète)
+========================================================= */
+
+.audio-player {
+    background: rgba(15, 15, 35, 0.8);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+}
+
+.player-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.track-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.track-artist {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.player-controls {
+    display: flex;
+    gap: 1rem;
+}
+
+.control-btn {
+    background: rgba(139, 92, 246, 0.2);
+    border: 1px solid var(--primary);
+    color: var(--light);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1.2rem;
+}
+
+.control-btn:hover {
+    background: var(--primary);
+    transform: scale(1.1);
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.time {
+    font-size: 0.8rem;
+    color: var(--gray);
+}
+
+/* Barre de progression */
+.progress-bar {
+    flex-grow: 1;
+    height: 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 10px;
+    transition: width 0.1s linear;
+}
+
+/* Playlist */
+.playlist-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.playlist-item:hover {
+    color: var(--primary);
+    transform: translateX(4px);
+}
+
+.track-number,
+.track-name,
+.track-duration {
+    font-size: 1rem;
+}
