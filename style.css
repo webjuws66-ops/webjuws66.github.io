@@ -313,6 +313,9 @@ section {
    GALLERY — VERSION CORRIGÉE
 ========================================================= */
 .gallery-section {
+    padding-top: 120px !important;
+}
+
     position: relative;
     padding: 80px 2rem 60px;  /* réduit le bas */
     background-image: url('gallery-background.jpg');
