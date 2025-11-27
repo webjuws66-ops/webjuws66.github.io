@@ -41,20 +41,19 @@
 </section>
 
 
-<!-- ==================== MUSIQUE ==================== -->
-<section id="music" class="section music-section">
+<!-- MUSIC SECTION -->
+<section id="music" class="music-section">
     <div class="container">
         <h2 class="section-title">Mes Créations Sonores</h2>
         <p class="section-subtitle">Compositions créées avec IA</p>
 
-        <!-- Player Audio -->
+        <!-- PLAYER -->
         <div class="audio-player">
             <div class="player-header">
                 <div class="track-info">
                     <h3 class="track-title" id="currentTrack">Sélectionnez un morceau</h3>
                     <p class="track-artist">WEBJUWS66</p>
                 </div>
-
                 <div class="player-controls">
                     <button class="control-btn" id="prevBtn">⏮</button>
                     <button class="control-btn play-btn" id="playBtn">▶</button>
@@ -64,14 +63,16 @@
 
             <div class="progress-container">
                 <div class="time" id="currentTime">0:00</div>
-                <div class="progress-bar"><div class="progress" id="progress"></div></div>
+                <div class="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
                 <div class="time" id="duration">0:00</div>
             </div>
 
             <audio id="audioPlayer"></audio>
         </div>
 
-        <!-- Playlist -->
+        <!-- PLAYLIST -->
         <div class="playlist">
             <div class="playlist-item" data-src="musique/001-Du-Chaos-au-lendemain.mp3">
                 <span class="track-number">01</span>
@@ -113,70 +114,58 @@
 </section>
 
 
-
-<!-- ==================== GALERIE ==================== -->
+<!-- GALLERY SECTION (UNIQUE) -->
 <section id="galerie" class="gallery-section">
-    <div class="gallery-content">
+  <div class="gallery-content">
+    <h2 class="section-title">Galerie Visuelle</h2>
+    <p class="section-subtitle">Créations générées à l’aide de l’IA</p>
 
-        <h2 class="section-title">Galerie Visuelle</h2>
-        <p class="section-subtitle">Créations générées à l’aide de l’IA</p>
+    <div class="upload-container">
+        <label for="file-upload" class="upload-btn">Importer une image</label>
+        <input id="file-upload" type="file" accept="image/*">
+    </div>
 
-        <div class="upload-container">
-            <label for="file-upload" class="upload-btn">Importer une image</label>
-            <input id="file-upload" type="file" accept="image/*">
-        </div>
+    <div class="gallery-grid">
 
-        <div class="gallery-grid">
+      <article class="gallery-item">
+        <img src="images/creation1.png" alt="Création 1">
+        <h3>Création 1</h3>
+        <p>Titre de l’œuvre 1</p>
+      </article>
 
-            <article class="gallery-item">
-                <img src="images/creation1.png" alt="Création 1">
-                <h3>Création 1</h3>
-                <p>Titre de l’œuvre 1</p>
-            </article>
+      <article class="gallery-item">
+        <img src="images/creation2.png" alt="Création 2">
+        <h3>Création 2</h3>
+        <p>Titre de l’œuvre 2</p>
+      </article>
 
-            <article class="gallery-item">
-                <img src="images/creation2.png" alt="Création 2">
-                <h3>Création 2</h3>
-                <p>Titre de l’œuvre 2</p>
-            </article>
+      <article class="gallery-item">
+        <img src="images/creation3.png" alt="Création 3">
+        <h3>Création 3</h3>
+        <p>Titre de l’œuvre 3</p>
+      </article>
 
-            <article class="gallery-item">
-                <img src="images/creation3.png" alt="Création 3">
-                <h3>Création 3</h3>
-                <p>Titre de l’œuvre 3</p>
-            </article>
+      <article class="gallery-item">
+        <img src="images/creation4.png" alt="Création 4">
+        <h3>Création 4</h3>
+        <p>Titre de l’œuvre 4</p>
+      </article>
 
-            <article class="gallery-item">
-                <img src="images/creation4.png" alt="Création 4">
-                <h3>Création 4</h3>
-                <p>Titre de l’œuvre 4</p>
-            </article>
+      <article class="gallery-item">
+        <img src="images/creation5.png" alt="Création 5">
+        <h3>Création 5</h3>
+        <p>Titre de l’œuvre 5</p>
+      </article>
 
-            <article class="gallery-item">
-                <img src="images/creation5.png" alt="Création 5">
-                <h3>Création 5</h3>
-                <p>Titre de l’œuvre 5</p>
-            </article>
-
-            <article class="gallery-item">
-                <img src="images/creation6.png" alt="Création 6">
-                <h3>Création 6</h3>
-                <p>Titre de l’œuvre 6</p>
-            </article>
-
-        </div>
-
-        <div class="gallery-help">
-            <h4>💡 Comment ajouter vos visuels Midjourney :</h4>
-            <ol>
-                <li>Créez un dossier <strong>images</strong> dans votre repository.</li>
-                <li>Upload les visuels (JPG ou PNG).</li>
-                <li>Remplace les liens <code>creation1.jpg</code>.</li>
-                <li>Modifiez les titres dans le HTML.</li>
-            </ol>
-        </div>
+      <article class="gallery-item">
+        <img src="images/creation6.png" alt="Création 6">
+        <h3>Création 6</h3>
+        <p>Titre de l’œuvre 6</p>
+      </article>
 
     </div>
+
+  </div>
 </section>
 
 
