@@ -1,139 +1,145 @@
-// ==========================
-// CONFIGURATION DES MORCEAUX
-// ==========================
-const tracks = [
-    { title: "Du Chaos au lendemain", file: "audio/track1.mp3", duration: "3:30" },
-    { title: "Ce monde entre leurs mains", file: "audio/track2.mp3", duration: "3:30" },
-    { title: "Écoute", file: "audio/track3.mp3", duration: "3:30" },
-    { title: "Le monde qu'on veut encore", file: "audio/track4.mp3", duration: "3:30" },
-    { title: "Les enfants d'aujourd'hui", file: "audio/track5.mp3", duration: "3:30" },
-    { title: "Un avenir debout", file: "audio/track6.mp3", duration: "3:30" }
-];
+// =============================
+// VARIABLES
+// =============================
+const audio = document.getElementById("audioPlayer");
 
-let currentTrack = 0;
+const playBtn = document.getElementById("playBtn");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+const currentTrackTitle = document.getElementById("currentTrack");
+const currentTimeEl = document.getElementById("currentTime");
+const durationEl = document.getElementById("duration");
+const progress = document.getElementById("progress");
+
+// On récupère la playlist déjà dans ton HTML
+const tracks = Array.from(document.querySelectorAll(".track"));
+
+let currentIndex = 0;
 let isPlaying = false;
 
-const audio = new Audio(tracks[currentTrack].file);
 
-// Elements
-const titleEl = document.getElementById("current-title");
-const playBtn = document.getElementById("play-btn");
-const prevBtn = document.getElementById("prev-btn");
-const nextBtn = document.getElementById("next-btn");
-const progress = document.getElementById("progress");
-const currentTimeEl = document.getElementById("current-time");
-const totalTimeEl = document.getElementById("total-time");
-const playlistEl = document.getElementById("playlist");
+// =============================
+// MET A JOUR LA TRACK
+// =============================
+function loadTrack(index) {
+    currentIndex = index;
 
-// ==========================
-// CONSTRUCTION DE LA PLAYLIST
-// ==========================
-tracks.forEach((track, index) => {
-    const div = document.createElement("div");
-    div.classList.add("track");
-    div.dataset.index = index;
+    const track = tracks[index];
+    const src = track.dataset.src;
+    const label = track.textContent.replace(/\s*\d+:\d+\s*/, "").trim();
 
-    div.innerHTML = `
-        <span>${String(index + 1).padStart(2, "0")}</span>
-        <span>${track.title}</span>
-        <span>${track.duration}</span>
-    `;
+    audio.src = src;
 
-    playlistEl.appendChild(div);
-});
-
-// ==========================
-// METTRE À JOUR L'AFFICHAGE
-// ==========================
-function updateTrack() {
-    audio.src = tracks[currentTrack].file;
-    titleEl.textContent = tracks[currentTrack].title;
-    totalTimeEl.textContent = tracks[currentTrack].duration;
+    currentTrackTitle.textContent = label;
 
     highlightTrack();
 }
 
+
+// =============================
+// HIGHLIGHT VISUEL
+// =============================
 function highlightTrack() {
-    document.querySelectorAll(".track").forEach(el => el.classList.remove("active"));
-    playlistEl.children[currentTrack].classList.add("active");
+    tracks.forEach(t => t.classList.remove("active"));
+    tracks[currentIndex].classList.add("active");
 }
 
-// ==========================
-// LECTURE / PAUSE
-// ==========================
+
+// =============================
+// PLAY / PAUSE
+// =============================
 function playTrack() {
     audio.play();
     isPlaying = true;
-    playBtn.innerHTML = "⏸️";
+    playBtn.textContent = "⏸";
 }
 
 function pauseTrack() {
     audio.pause();
     isPlaying = false;
-    playBtn.innerHTML = "▶️";
+    playBtn.textContent = "▶";
 }
 
 playBtn.addEventListener("click", () => {
+    if (!audio.src) loadTrack(0);
     isPlaying ? pauseTrack() : playTrack();
 });
 
-// ==========================
-// BOUTONS SUIVANT / PRECEDENT
-// ==========================
-nextBtn.addEventListener("click", () => {
-    currentTrack = (currentTrack + 1) % tracks.length;
-    updateTrack();
-    playTrack();
-});
 
+// =============================
+// PRECEDENT / SUIVANT
+// =============================
 prevBtn.addEventListener("click", () => {
-    currentTrack = currentTrack === 0 ? tracks.length - 1 : currentTrack - 1;
-    updateTrack();
-    playTrack();
+    if (currentIndex > 0) {
+        loadTrack(currentIndex - 1);
+        playTrack();
+    }
 });
 
-// ==========================
-// PROGRESSION DU MORCEAU
-// ==========================
+nextBtn.addEventListener("click", () => {
+    if (currentIndex < tracks.length - 1) {
+        loadTrack(currentIndex + 1);
+        playTrack();
+    }
+});
+
+
+// =============================
+// CLIQUER SUR UNE PISTE
+// =============================
+tracks.forEach((track, index) => {
+    track.addEventListener("click", () => {
+        loadTrack(index);
+        playTrack();
+    });
+});
+
+
+// =============================
+// BARRE DE PROGRESSION
+// =============================
 audio.addEventListener("timeupdate", () => {
-    const progressPercent = (audio.currentTime / audio.duration) * 100;
-    progress.style.width = progressPercent + "%";
-
     currentTimeEl.textContent = formatTime(audio.currentTime);
+
+    if (audio.duration) {
+        progress.style.width = (audio.currentTime / audio.duration) * 100 + "%";
+    }
 });
 
-// ==========================
-// CLIC SUR UN MORCEAU
-// ==========================
-playlistEl.addEventListener("click", (event) => {
-    const trackDiv = event.target.closest(".track");
-    if (!trackDiv) return;
-
-    currentTrack = parseInt(trackDiv.dataset.index);
-    updateTrack();
-    playTrack();
+audio.addEventListener("loadedmetadata", () => {
+    durationEl.textContent = formatTime(audio.duration);
 });
 
-// ==========================
-// FONCTION FORMATAGE TEMPS
-// ==========================
-function formatTime(seconds) {
-    if (isNaN(seconds)) return "0:00";
 
-    const m = Math.floor(seconds / 60);
-    const s = Math.floor(seconds % 60).toString().padStart(2, "0");
+// =============================
+// FORMAT TEMPS
+// =============================
+function formatTime(sec) {
+    if (!sec || isNaN(sec)) return "0:00";
+
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60).toString().padStart(2, "0");
 
     return `${m}:${s}`;
 }
 
-// ==========================
-// LECTURE AUTO MORCEAU SUIVANT
-// ==========================
+
+// =============================
+// AUTO NEXT
+// =============================
 audio.addEventListener("ended", () => {
-    currentTrack = (currentTrack + 1) % tracks.length;
-    updateTrack();
-    playTrack();
+    if (currentIndex < tracks.length - 1) {
+        loadTrack(currentIndex + 1);
+        playTrack();
+    } else {
+        playBtn.textContent = "▶";
+        isPlaying = false;
+    }
 });
 
-// Init affichage
-updateTrack();
+
+// =============================
+// INIT
+// =============================
+loadTrack(0);
