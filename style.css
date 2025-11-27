@@ -374,18 +374,14 @@ section {
 /* =========================================================
    ABOUT — VERSION CORRIGÉE
 ========================================================= */
-#about {
-    padding: 120px 1.5rem 120px;
-    margin-top: 0;
-    background: linear-gradient(
-        to top,
-        rgba(5,5,15,1) 60%,
-        rgba(5,5,15,0.35) 80%,
-        rgba(5,5,15,0) 100%
-    );
-    position: relative;
-    z-index: 10;
+.music-section {
+    padding: 80px 2rem 80px;
+    background-image: url('music-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
+
 
 .about-card {
     max-width: 780px;
