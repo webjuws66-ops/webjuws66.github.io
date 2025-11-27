@@ -27,6 +27,10 @@ body {
 section {
     scroll-margin-top: 100px;
 }
+section {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
 
 /* =========================================================
    NAVIGATION
