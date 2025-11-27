@@ -1,145 +1,341 @@
-// =============================
-// VARIABLES
-// =============================
-const audio = document.getElementById("audioPlayer");
-
-const playBtn = document.getElementById("playBtn");
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
-
-const currentTrackTitle = document.getElementById("currentTrack");
-const currentTimeEl = document.getElementById("currentTime");
-const durationEl = document.getElementById("duration");
-const progress = document.getElementById("progress");
-
-// On récupère la playlist déjà dans ton HTML
-const tracks = Array.from(document.querySelectorAll(".track"));
-
-let currentIndex = 0;
-let isPlaying = false;
-
-
-// =============================
-// MET A JOUR LA TRACK
-// =============================
-function loadTrack(index) {
-    currentIndex = index;
-
-    const track = tracks[index];
-    const src = track.dataset.src;
-    const label = track.textContent.replace(/\s*\d+:\d+\s*/, "").trim();
-
-    audio.src = src;
-
-    currentTrackTitle.textContent = label;
-
-    highlightTrack();
-}
-
-
-// =============================
-// HIGHLIGHT VISUEL
-// =============================
-function highlightTrack() {
-    tracks.forEach(t => t.classList.remove("active"));
-    tracks[currentIndex].classList.add("active");
-}
-
-
-// =============================
-// PLAY / PAUSE
-// =============================
-function playTrack() {
-    audio.play();
-    isPlaying = true;
-    playBtn.textContent = "⏸";
-}
-
-function pauseTrack() {
-    audio.pause();
-    isPlaying = false;
-    playBtn.textContent = "▶";
-}
-
-playBtn.addEventListener("click", () => {
-    if (!audio.src) loadTrack(0);
-    isPlaying ? pauseTrack() : playTrack();
+// Navigation entre sections
+document.addEventListener('DOMContentLoaded', () => {
+    initNavigation();
+    initMusicPlayer();
+    initGallery();
+    initParticles();
 });
 
+// ========== NAVIGATION ==========
+function initNavigation() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.section');
 
-// =============================
-// PRECEDENT / SUIVANT
-// =============================
-prevBtn.addEventListener("click", () => {
-    if (currentIndex > 0) {
-        loadTrack(currentIndex - 1);
-        playTrack();
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+
+            // Mise à jour des liens actifs
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+
+            // Affichage de la section correspondante
+            sections.forEach(section => {
+                section.classList.remove('active');
+                if (section.id === targetId) {
+                    section.classList.add('active');
+                }
+            });
+
+            // Scroll vers le haut
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
+
+    // Navigation depuis les boutons de la page d'accueil
+    const heroButtons = document.querySelectorAll('.hero-buttons .btn');
+    heroButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = btn.getAttribute('href').substring(1);
+            
+            // Active le lien de navigation correspondant
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${targetId}`) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Affiche la section
+            sections.forEach(section => {
+                section.classList.remove('active');
+                if (section.id === targetId) {
+                    section.classList.add('active');
+                }
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
+}
+
+// ========== LECTEUR DE MUSIQUE ==========
+function initMusicPlayer() {
+    const audioPlayer = document.getElementById('audio-player');
+    const playBtn = document.getElementById('play-btn');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const progressBar = document.querySelector('.progress-bar');
+    const progressFill = document.querySelector('.progress-fill');
+    const currentTimeEl = document.getElementById('current-time');
+    const durationEl = document.getElementById('duration');
+    const trackTitle = document.getElementById('track-title');
+    const trackArtist = document.getElementById('track-artist');
+    const playlistContainer = document.getElementById('playlist');
+
+    // Playlist - Remplacez par vos vrais fichiers audio
+    const playlist = [
+        {
+            title: "Du Chaos au lendemain",
+            artist: "webjuws66",
+            duration: "3:45",
+            url: "musique/001-Du-Chaos-au-lendemain.mp3"
+        },
+        {
+            title: "Digital Horizon",
+            artist: "webjuws66",
+            duration: "4:12",
+            url: "musique/track2.mp3"
+        },
+        {
+            title: "Neon Nights",
+            artist: "webjuws66",
+            duration: "3:28",
+            url: "musique/track3.mp3"
+        },
+        {
+            title: "AI Symphony",
+            artist: "webjuws66",
+            duration: "5:03",
+            url: "musique/track4.mp3"
+        }
+    ];
+
+    let currentTrackIndex = 0;
+    let isPlaying = false;
+
+    // Génération de la playlist
+    function renderPlaylist() {
+        playlistContainer.innerHTML = '';
+        playlist.forEach((track, index) => {
+            const item = document.createElement('div');
+            item.className = `playlist-item ${index === currentTrackIndex ? 'active' : ''}`;
+            item.innerHTML = `
+                <div class="playlist-item-info">
+                    <h4>${track.title}</h4>
+                    <p>${track.artist}</p>
+                </div>
+                <span class="playlist-item-duration">${track.duration}</span>
+            `;
+            item.addEventListener('click', () => loadTrack(index));
+            playlistContainer.appendChild(item);
+        });
     }
-});
 
-nextBtn.addEventListener("click", () => {
-    if (currentIndex < tracks.length - 1) {
-        loadTrack(currentIndex + 1);
-        playTrack();
+    // Charger une piste
+    function loadTrack(index) {
+        currentTrackIndex = index;
+        const track = playlist[currentTrackIndex];
+        
+        trackTitle.textContent = track.title;
+        trackArtist.textContent = track.artist;
+        audioPlayer.src = track.url;
+        
+        // Mise à jour de la playlist visuelle
+        document.querySelectorAll('.playlist-item').forEach((item, i) => {
+            item.classList.toggle('active', i === currentTrackIndex);
+        });
+
+        if (isPlaying) {
+            audioPlayer.play();
+        }
     }
-});
 
+    // Lecture/Pause
+    playBtn.addEventListener('click', () => {
+        if (isPlaying) {
+            audioPlayer.pause();
+            playBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+        } else {
+            audioPlayer.play();
+            playBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zm8 0h4v16h-4z"/></svg>';
+        }
+        isPlaying = !isPlaying;
+    });
 
-// =============================
-// CLIQUER SUR UNE PISTE
-// =============================
-tracks.forEach((track, index) => {
-    track.addEventListener("click", () => {
-        loadTrack(index);
-        playTrack();
+    // Piste précédente
+    prevBtn.addEventListener('click', () => {
+        currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
+        loadTrack(currentTrackIndex);
+        if (isPlaying) audioPlayer.play();
+    });
+
+    // Piste suivante
+    nextBtn.addEventListener('click', () => {
+        currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+        loadTrack(currentTrackIndex);
+        if (isPlaying) audioPlayer.play();
+    });
+
+    // Mise à jour de la progression
+    audioPlayer.addEventListener('timeupdate', () => {
+        const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+        progressFill.style.width = `${progress}%`;
+        currentTimeEl.textContent = formatTime(audioPlayer.currentTime);
+    });
+
+    // Durée de la piste
+    audioPlayer.addEventListener('loadedmetadata', () => {
+        durationEl.textContent = formatTime(audioPlayer.duration);
+    });
+
+    // Clic sur la barre de progression
+    progressBar.addEventListener('click', (e) => {
+        const rect = progressBar.getBoundingClientRect();
+        const percent = (e.clientX - rect.left) / rect.width;
+        audioPlayer.currentTime = percent * audioPlayer.duration;
+    });
+
+    // Piste suivante automatique
+    audioPlayer.addEventListener('ended', () => {
+        currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+        loadTrack(currentTrackIndex);
+        audioPlayer.play();
+    });
+
+    // Formater le temps
+    function formatTime(seconds) {
+        if (isNaN(seconds)) return '0:00';
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    // Animation des ondes
+    audioPlayer.addEventListener('play', () => {
+        document.querySelectorAll('.wave').forEach(wave => {
+            wave.style.animationPlayState = 'running';
+        });
+    });
+
+    audioPlayer.addEventListener('pause', () => {
+        document.querySelectorAll('.wave').forEach(wave => {
+            wave.style.animationPlayState = 'paused';
+        });
+    });
+
+    // Initialisation
+    renderPlaylist();
+    loadTrack(0);
+}
+
+// ========== GALERIE D'IMAGES ==========
+function initGallery() {
+    const galleryContainer = document.getElementById('gallery');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxClose = document.querySelector('.lightbox-close');
+
+    // Galerie - Remplacez par vos vraies images
+    const images = [
+        {
+            url: "images/image1.jpg",
+            title: "Cybernetic Vision",
+            description: "Création Midjourney - Thème cyberpunk"
+        },
+        {
+            url: "images/image2.jpg",
+            title: "Digital Dreams",
+            description: "Création Midjourney - Surréalisme numérique"
+        },
+        {
+            url: "images/image3.jpg",
+            title: "Neon Future",
+            description: "Création Midjourney - Architecture futuriste"
+        },
+        {
+            url: "images/image4.jpg",
+            title: "Abstract Mind",
+            description: "Création Midjourney - Art abstrait"
+        },
+        {
+            url: "images/image5.jpg",
+            title: "Virtual Reality",
+            description: "Création Midjourney - Mondes virtuels"
+        },
+        {
+            url: "images/image6.jpg",
+            title: "Tech Paradise",
+            description: "Création Midjourney - Nature et technologie"
+        }
+    ];
+
+    // Génération de la galerie
+    images.forEach((image, index) => {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        item.innerHTML = `
+            <img src="${image.url}" alt="${image.title}" loading="lazy">
+            <div class="gallery-item-overlay">
+                <h4>${image.title}</h4>
+                <p>${image.description}</p>
+            </div>
+        `;
+        item.addEventListener('click', () => openLightbox(index));
+        galleryContainer.appendChild(item);
+    });
+
+    // Ouvrir la lightbox
+    function openLightbox(index) {
+        const image = images[index];
+        lightboxImg.src = image.url;
+        lightboxCaption.textContent = `${image.title} - ${image.description}`;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Fermer la lightbox
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    // Fermer avec la touche Echap
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+}
+
+// ========== PARTICULES D'ARRIÈRE-PLAN ==========
+function initParticles() {
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = 50;
+
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        // Position aléatoire
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        
+        // Délai d'animation aléatoire
+        particle.style.animationDelay = `${Math.random() * 20}s`;
+        particle.style.animationDuration = `${15 + Math.random() * 10}s`;
+        
+        particlesContainer.appendChild(particle);
+    }
+}
+
+// ========== ANIMATIONS AU SCROLL ==========
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const particles = document.querySelectorAll('.particle');
+    
+    particles.forEach((particle, index) => {
+        const speed = (index % 3 + 1) * 0.5;
+        particle.style.transform = `translateY(${scrolled * speed}px)`;
     });
 });
-
-
-// =============================
-// BARRE DE PROGRESSION
-// =============================
-audio.addEventListener("timeupdate", () => {
-    currentTimeEl.textContent = formatTime(audio.currentTime);
-
-    if (audio.duration) {
-        progress.style.width = (audio.currentTime / audio.duration) * 100 + "%";
-    }
-});
-
-audio.addEventListener("loadedmetadata", () => {
-    durationEl.textContent = formatTime(audio.duration);
-});
-
-
-// =============================
-// FORMAT TEMPS
-// =============================
-function formatTime(sec) {
-    if (!sec || isNaN(sec)) return "0:00";
-
-    const m = Math.floor(sec / 60);
-    const s = Math.floor(sec % 60).toString().padStart(2, "0");
-
-    return `${m}:${s}`;
-}
-
-
-// =============================
-// AUTO NEXT
-// =============================
-audio.addEventListener("ended", () => {
-    if (currentIndex < tracks.length - 1) {
-        loadTrack(currentIndex + 1);
-        playTrack();
-    } else {
-        playBtn.textContent = "▶";
-        isPlaying = false;
-    }
-});
-
-
-// =============================
-// INIT
-// =============================
-loadTrack(0);
