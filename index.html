@@ -6,317 +6,213 @@
     <title>WEBJUWS66 - Sound & Vision</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <div class="logo">WEBJUWS66</div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Accueil</a></li>
-                <li><a href="#music" class="nav-link">Musique</a></li>
-                <li><a href="#galerie" class="nav-link">Galerie</a></li>
-                <li><a href="#about" class="nav-link">À propos</a></li>
-            </ul>
+
+<!-- Navigation -->
+<nav class="nav">
+    <div class="nav-container">
+        <div class="logo">WEBJUWS66</div>
+        <ul class="nav-menu">
+            <li><a href="#home" class="nav-link">Accueil</a></li>
+            <li><a href="#music" class="nav-link">Musique</a></li>
+            <li><a href="#galerie" class="nav-link">Galerie</a></li>
+            <li><a href="#about" class="nav-link">À propos</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">WEBJUWS66</h1>
+        <p class="hero-subtitle">Compositions originales assistées par IA</p>
+        <div class="hero-tags">
+            <span class="tag">Compositions originales</span>
+            <span class="tag">Midjourney</span>
+            <span class="tag">IA Créative</span>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">WEBJUWS66</h1>
-            <p class="hero-subtitle">Compositions originales assistées par IA</p>
-            <div class="hero-tags">
-                <span class="tag">Compositions originales</span>
-                <span class="tag">Midjourney</span>
-                <span class="tag">IA Créative</span>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <span>Scroll</span>
-            <div class="scroll-line"></div>
-        </div>
-    </section>
-
-    <!-- Music Section -->
-    <section id="music" class="section music-section">
-        <div class="container">
-            <h2 class="section-title">Mes Créations Sonores</h2>
-            <p class="section-subtitle">Compositions créées avec IA</p>
-            
-            <!-- Player Audio -->
-            <div class="audio-player">
-                <div class="player-header">
-                    <div class="track-info">
-                        <h3 class="track-title" id="currentTrack">Sélectionnez un morceau</h3>
-                        <p class="track-artist">WEBJUWS66</p>
-                    </div>
-                    <div class="player-controls">
-                        <button class="control-btn" id="prevBtn">⏮</button>
-                        <button class="control-btn play-btn" id="playBtn">▶</button>
-                        <button class="control-btn" id="nextBtn">⏭</button>
-                    </div>
-                </div>
-                <div class="progress-container">
-                    <div class="time" id="currentTime">0:00</div>
-                    <div class="progress-bar">
-                        <div class="progress" id="progress"></div>
-                    </div>
-                    <div class="time" id="duration">0:00</div>
-                </div>
-                <audio id="audioPlayer"></audio>
-            </div>
-
-            <!-- Liste des morceaux -->
-            <div class="playlist">
-    <div class="playlist-item" data-src="musique/001-Du-Chaos-au-lendemain.mp3">
-        <span class="track-number">01</span>
-        <span class="track-name">Du Chaos au lendemain</span>
-        <span class="track-duration">3:30</span>
     </div>
 
-    <div class="playlist-item" data-src="musique/002 Ce monde entre leurs mains.mp3">
-        <span class="track-number">02</span>
-        <span class="track-name">Ce monde entre leurs mains</span>
-        <span class="track-duration">3:30</span>
+    <div class="scroll-indicator">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
     </div>
-
-    <div class="playlist-item" data-src="musique/Ecoute(1).mp3">
-        <span class="track-number">03</span>
-        <span class="track-name">Écoute</span>
-        <span class="track-duration">3:30</span>
-    </div>
-
-    <div class="playlist-item" data-src="musique/Le monde qu'on veut encore.mp3">
-        <span class="track-number">04</span>
-        <span class="track-name">Le monde qu'on veut encore</span>
-        <span class="track-duration">3:30</span>
-    </div>
-
-    <div class="playlist-item" data-src="musique/Les enfants d'aujourd'hui.mp3">
-        <span class="track-number">05</span>
-        <span class="track-name">Les enfants d'aujourd'hui</span>
-        <span class="track-duration">3:30</span>
-    </div>
-
-    <div class="playlist-item" data-src="musique/Un avenir debout.mp3">
-        <span class="track-number">06</span>
-        <span class="track-name">Un avenir debout</span>
-        <span class="track-duration">3:30</span>
-    </div>
-</div>
-
-<section class="gallery-section" id="galerie">
-  <div class="gallery-content">
-    <h2 class="section-title">Galerie Visuelle</h2>
-    <p class="section-subtitle">Créations générées à l’aide de l’IA</p>
-<div class="upload-container">
-    <label for="file-upload" class="upload-btn">Importer une image</label>
-    <input id="file-upload" type="file" accept="image/*">
-</div>
-
-    <div class="gallery-grid">
-
-      <article class="gallery-item">
-        <img src="images/creation1.png" alt="Création 1">
-        <h3>Création 1</h3>
-        <p>Titre de l’œuvre 1</p>
-      </article>
-
-      <article class="gallery-item">
-        <img src="images/creation2.png" alt="Création 2">
-        <h3>Création 2</h3>
-        <p>Titre de l’œuvre 2</p>
-      </article>
-
-      <article class="gallery-item">
-        <img src="images/creation3.png" alt="Création 3">
-        <h3>Création 3</h3>
-        <p>Titre de l’œuvre 3</p>
-      </article>
-
-      <article class="gallery-item">
-        <img src="images/creation4.png" alt="Création 4">
-        <h3>Création 4</h3>
-        <p>Titre de l’œuvre 4</p>
-      </article>
-
-      <article class="gallery-item">
-        <img src="images/creation5.png" alt="Création 5">
-        <h3>Création 5</h3>
-        <p>Titre de l’œuvre 5</p>
-      </article>
-
-      <article class="gallery-item">
-        <img src="images/creation6.png" alt="Création 6">
-        <h3>Création 6</h3>
-        <p>Titre de l’œuvre 6</p>
-      </article>
-
-    </div>
-
-    <div class="gallery-help">
-      <h4>💡 Comment ajouter vos visuels Midjourney :</h4>
-      <ol>
-        <li>Créez un dossier <strong>images</strong> dans votre repository.</li>
-        <li>Upload les visuels (JPG ou PNG).</li>
-        <li>Remplace les liens <code>creation1.jpg</code>.</li>
-        <li>Modifiez les titres dans le HTML.</li>
-      </ol>
-    </div>
-
-  </div>
 </section>
 
 
-    </section>
+<!-- ==================== MUSIQUE ==================== -->
+<section id="music" class="section music-section">
+    <div class="container">
+        <h2 class="section-title">Mes Créations Sonores</h2>
+        <p class="section-subtitle">Compositions créées avec IA</p>
 
+        <!-- Player Audio -->
+        <div class="audio-player">
+            <div class="player-header">
+                <div class="track-info">
+                    <h3 class="track-title" id="currentTrack">Sélectionnez un morceau</h3>
+                    <p class="track-artist">WEBJUWS66</p>
+                </div>
+
+                <div class="player-controls">
+                    <button class="control-btn" id="prevBtn">⏮</button>
+                    <button class="control-btn play-btn" id="playBtn">▶</button>
+                    <button class="control-btn" id="nextBtn">⏭</button>
+                </div>
+            </div>
+
+            <div class="progress-container">
+                <div class="time" id="currentTime">0:00</div>
+                <div class="progress-bar"><div class="progress" id="progress"></div></div>
+                <div class="time" id="duration">0:00</div>
+            </div>
+
+            <audio id="audioPlayer"></audio>
+        </div>
+
+        <!-- Playlist -->
+        <div class="playlist">
+            <div class="playlist-item" data-src="musique/001-Du-Chaos-au-lendemain.mp3">
+                <span class="track-number">01</span>
+                <span class="track-name">Du Chaos au lendemain</span>
+                <span class="track-duration">3:30</span>
+            </div>
+
+            <div class="playlist-item" data-src="musique/002 Ce monde entre leurs mains.mp3">
+                <span class="track-number">02</span>
+                <span class="track-name">Ce monde entre leurs mains</span>
+                <span class="track-duration">3:30</span>
+            </div>
+
+            <div class="playlist-item" data-src="musique/Ecoute(1).mp3">
+                <span class="track-number">03</span>
+                <span class="track-name">Écoute</span>
+                <span class="track-duration">3:30</span>
+            </div>
+
+            <div class="playlist-item" data-src="musique/Le monde qu'on veut encore.mp3">
+                <span class="track-number">04</span>
+                <span class="track-name">Le monde qu'on veut encore</span>
+                <span class="track-duration">3:30</span>
+            </div>
+
+            <div class="playlist-item" data-src="musique/Les enfants d'aujourd'hui.mp3">
+                <span class="track-number">05</span>
+                <span class="track-name">Les enfants d'aujourd'hui</span>
+                <span class="track-duration">3:30</span>
+            </div>
+
+            <div class="playlist-item" data-src="musique/Un avenir debout.mp3">
+                <span class="track-number">06</span>
+                <span class="track-name">Un avenir debout</span>
+                <span class="track-duration">3:30</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ==================== GALERIE ==================== -->
+<section id="galerie" class="gallery-section">
+    <div class="gallery-content">
+
+        <h2 class="section-title">Galerie Visuelle</h2>
+        <p class="section-subtitle">Créations générées à l’aide de l’IA</p>
+
+        <div class="upload-container">
+            <label for="file-upload" class="upload-btn">Importer une image</label>
+            <input id="file-upload" type="file" accept="image/*">
+        </div>
+
+        <div class="gallery-grid">
+
+            <article class="gallery-item">
+                <img src="images/creation1.png" alt="Création 1">
+                <h3>Création 1</h3>
+                <p>Titre de l’œuvre 1</p>
+            </article>
+
+            <article class="gallery-item">
+                <img src="images/creation2.png" alt="Création 2">
+                <h3>Création 2</h3>
+                <p>Titre de l’œuvre 2</p>
+            </article>
+
+            <article class="gallery-item">
+                <img src="images/creation3.png" alt="Création 3">
+                <h3>Création 3</h3>
+                <p>Titre de l’œuvre 3</p>
+            </article>
+
+            <article class="gallery-item">
+                <img src="images/creation4.png" alt="Création 4">
+                <h3>Création 4</h3>
+                <p>Titre de l’œuvre 4</p>
+            </article>
+
+            <article class="gallery-item">
+                <img src="images/creation5.png" alt="Création 5">
+                <h3>Création 5</h3>
+                <p>Titre de l’œuvre 5</p>
+            </article>
+
+            <article class="gallery-item">
+                <img src="images/creation6.png" alt="Création 6">
+                <h3>Création 6</h3>
+                <p>Titre de l’œuvre 6</p>
+            </article>
+
+        </div>
+
+        <div class="gallery-help">
+            <h4>💡 Comment ajouter vos visuels Midjourney :</h4>
+            <ol>
+                <li>Créez un dossier <strong>images</strong> dans votre repository.</li>
+                <li>Upload les visuels (JPG ou PNG).</li>
+                <li>Remplace les liens <code>creation1.jpg</code>.</li>
+                <li>Modifiez les titres dans le HTML.</li>
+            </ol>
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- ==================== À PROPOS ==================== -->
 <section id="about">
-  <div class="about-card">
-    <p class="about-kicker">Univers créatif</p>
+    <div class="about-card">
+        <p class="about-kicker">Univers créatif</p>
+        <h2 class="about-title">À propos</h2>
 
-    <h2 class="about-title">À propos</h2>
+        <p class="about-text">
+            Bienvenue dans mon univers, où la musique et l’art visuel se rencontrent.
+            J’utilise <strong>Suno AI</strong> pour composer des morceaux originaux,
+            et <strong>Midjourney</strong> pour donner vie à des visuels uniques.
+        </p>
 
-    <p class="about-text">
-      Bienvenue dans mon univers, où la musique et l’art visuel se rencontrent.
-      J’utilise <strong>Suno AI</strong> pour composer des morceaux originaux,
-      et <strong>Midjourney</strong> pour donner vie à des visuels uniques.
-    </p>
+        <p class="about-text">
+            Chaque création explore les possibilités infinies de l’intelligence artificielle :
+            émotions, couleurs, histoires. Chaque morceau raconte quelque chose,
+            chaque image capture une sensation. Merci d’explorer cet espace avec moi.
+        </p>
 
-    <p class="about-text">
-      Chaque création explore les possibilités infinies de l’intelligence
-      artificielle&nbsp;: émotions, couleurs, histoires. Chaque morceau raconte
-      quelque chose, chaque image capture une sensation. Merci d’explorer cet
-      espace avec moi.
-    </p>
+        <div class="about-tags">
+            <span>Musique</span>
+            <span>Visuels AI</span>
+            <span>Expérimentations</span>
+        </div>
 
-    <div class="about-tags">
-      <span>Musique</span>
-      <span>Visuels AI</span>
-      <span>Expérimentations</span>
+        <p class="about-subtitle">Retrouvez-moi</p>
+
+        <div class="about-actions">
+            <a href="#" class="about-btn about-btn-primary">Instagram</a>
+            <a href="#" class="about-btn about-btn-ghost">YouTube</a>
+        </div>
     </div>
-
-    <p class="about-subtitle">Retrouvez-moi</p>
-
-    <div class="about-actions">
-      <a href="#" class="about-btn about-btn-primary">Instagram</a>
-      <a href="#" class="about-btn about-btn-ghost">YouTube</a>
-    </div>
-  </div>
 </section>
-</section>
-
-<!-- === LECTEUR AUDIO : SCRIPT COMPLET === -->
-<script>
-// ==== RÉFÉRENCES DOM ====
-const audio       = document.getElementById('audioPlayer');
-const playBtn     = document.getElementById('playBtn');
-const prevBtn     = document.getElementById('prevBtn');
-const nextBtn     = document.getElementById('nextBtn');
-
-const currentTimeEl = document.getElementById('currentTime');
-const durationEl    = document.getElementById('duration');
-const progressBar   = document.querySelector('.progress-bar');
-const progress      = document.getElementById('progress');
-const trackTitleEl  = document.getElementById('currentTrack');
-
-const playlistItems = Array.from(document.querySelectorAll('.playlist-item'));
-
-let currentIndex = 0;
-let isPlaying    = false;
-
-// ==== UTIL ====
-function formatTime(sec) {
-  if (isNaN(sec)) return "0:00";
-  const m = Math.floor(sec / 60);
-  const s = Math.floor(sec % 60).toString().padStart(2, "0");
-  return `${m}:${s}`;
-}
-
-function loadTrack(index) {
-  const item = playlistItems[index];
-  if (!item) return;
-
-  const src  = item.dataset.src;
-  const name = item.querySelector('.track-name')?.textContent || 'Titre';
-
-  audio.src = src;
-  trackTitleEl.textContent = name;
-
-  playlistItems.forEach(el => el.classList.remove('active-track'));
-  item.classList.add('active-track');
-}
-
-function playTrack() {
-  if (!audio.src) {
-    loadTrack(currentIndex);
-  }
-  audio.play().then(() => {
-    isPlaying = true;
-    playBtn.textContent = '⏸';
-  }).catch(err => {
-    console.error("Erreur lecture audio :", err);
-  });
-}
-
-function pauseTrack() {
-  audio.pause();
-  isPlaying = false;
-  playBtn.textContent = '▶';
-}
-
-function togglePlay() {
-  if (isPlaying) pauseTrack();
-  else playTrack();
-}
-
-function playNext() {
-  currentIndex = (currentIndex + 1) % playlistItems.length;
-  loadTrack(currentIndex);
-  playTrack();
-}
-
-function playPrev() {
-  currentIndex = (currentIndex - 1 + playlistItems.length) % playlistItems.length;
-  loadTrack(currentIndex);
-  playTrack();
-}
-
-playBtn.addEventListener('click', togglePlay);
-nextBtn.addEventListener('click', playNext);
-prevBtn.addEventListener('click', playPrev);
-
-playlistItems.forEach((item, index) => {
-  item.addEventListener('click', () => {
-    currentIndex = index;
-    loadTrack(currentIndex);
-    playTrack();
-  });
-});
-
-audio.addEventListener('timeupdate', () => {
-  currentTimeEl.textContent = formatTime(audio.currentTime);
-  durationEl.textContent    = formatTime(audio.duration);
-
-  if (audio.duration) {
-    const percent = (audio.currentTime / audio.duration) * 100;
-    progress.style.width = `${percent}%`;
-  }
-});
-
-progressBar.addEventListener('click', (e) => {
-  const rect    = progressBar.getBoundingClientRect();
-  const x       = e.clientX - rect.left;
-  const percent = x / rect.width;
-  audio.currentTime = percent * audio.duration;
-});
-
-audio.addEventListener('ended', playNext);
-
-// Charger la première piste au démarrage
-if (playlistItems.length > 0) {
-  loadTrack(0);
-}
-</script>
 
 </body>
 </html>
