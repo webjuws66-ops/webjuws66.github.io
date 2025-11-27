@@ -8,19 +8,26 @@
 }
 
 :root {
-    --primary: #8B5CF6;
-    --secondary: #EC4899;
-    --dark: #0f0f23;
-    --darker: #050510;
-    --light: #ffffff;
-    --gray: #b8b8b8;
-    --muted: rgba(255,255,255,0.6);
+    --bg-dark: #050510;
+    --bg-darker: #02020a;
+
+    --primary: #9d7bff;
+    --secondary: #ff6adf;
+
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.15);
+
+    --text-light: #ffffff;
+    --text-muted: rgba(255,255,255,0.55);
+
+    --shadow-glow: 0 0 25px rgba(160, 100, 255, 0.35);
+    --shadow-card: 0 20px 60px rgba(0,0,0,0.45);
 }
 
 body {
-    font-family: "Segoe UI", sans-serif;
-    background: linear-gradient(135deg, var(--darker), var(--dark));
-    color: var(--light);
+    background: linear-gradient(135deg, var(--bg-darker), var(--bg-dark));
+    font-family: 'Segoe UI', sans-serif;
+    color: var(--text-light);
     overflow-x: hidden;
 }
 
@@ -29,16 +36,16 @@ section {
 }
 
 /* =========================================================
-   NAVIGATION
+   HEADER
 ========================================================= */
 .nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(10, 10, 30, 0.9);
+    background: rgba(5,5,15,0.85);
     backdrop-filter: blur(12px);
     z-index: 1000;
-    border-bottom: 1px solid rgba(139,92,246,0.25);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.4);
 }
 
 .nav-container {
@@ -60,55 +67,50 @@ section {
 
 .nav-menu {
     display: flex;
-    list-style: none;
     gap: 2rem;
+    list-style: none;
 }
 
 .nav-link {
-    color: var(--light);
+    color: var(--text-light);
     text-decoration: none;
-    transition: 0.3s;
+    font-size: 0.95rem;
+    transition: 0.3s ease;
 }
+
 .nav-link:hover {
     color: var(--primary);
 }
 
+
 /* =========================================================
    HERO
 ========================================================= */
-#home {
-    height: 100vh;
-    padding-top: 120px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 
-    background-image: url('hero-background.jpg');
-    background-size: cover;
-    background-position: center;
+.hero {
+    height: 100vh;
+    padding-top: 160px;
+    text-align: center;
     position: relative;
+
+    background: radial-gradient(circle at top, rgba(100, 0, 200, 0.4), transparent 70%);
 }
 
-#home::before {
-    content: "";
+.hero-glow {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        135deg,
-        rgba(0,0,15,0.8),
-        rgba(139,92,246,0.25)
-    );
-}
-
-.hero-content {
-    z-index: 2;
-    text-align: center;
+    background: radial-gradient(circle at center, rgba(150, 80, 255, 0.25), transparent 70%);
+    filter: blur(120px);
+    z-index: 0;
 }
 
 .hero-title {
     font-size: 4.5rem;
-    font-weight: 800;
+    font-weight: 900;
+    position: relative;
+    z-index: 2;
+    letter-spacing: -1px;
+
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -116,7 +118,9 @@ section {
 
 .hero-subtitle {
     margin-top: 1rem;
-    color: var(--muted);
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    z-index: 2;
 }
 
 .hero-tags {
@@ -124,206 +128,237 @@ section {
     display: flex;
     gap: 1rem;
     justify-content: center;
-}
-
-.tag {
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    background: rgba(139,92,246,0.25);
-    border: 1px solid var(--primary);
-}
-
-/* =========================================================
-   ESPACEMENT DES SECTIONS
-========================================================= */
-#music {
-    padding: 100px 2rem 140px;
-}
-
-#galerie {
-    padding: 160px 2rem 180px;
-}
-
-#about {
-    padding: 180px 2rem 200px;
-}
-
-/* =========================================================
-   MUSIQUE
-========================================================= */
-.music-section {
-    background-size: 100% auto;
-    background-repeat: no-repeat;
-    background-position: top center;
-    padding-bottom: 40px !important;
-}
-
-
-.music-section::after {
-    height: 200px !important;
-}
-
-.music-section .container {
-    position: relative;
     z-index: 2;
 }
 
+.hero-tags span {
+    padding: 0.4rem 1rem;
+    border-radius: 30px;
+    border: 1px solid var(--primary);
+    background: rgba(150, 80, 255, 0.15);
+    font-size: 0.85rem;
+}
+
+
+
+/* =========================================================
+   SECTIONS BASE
+========================================================= */
+.section {
+    padding: 120px 2rem;
+}
+
+.dark-section {
+    background: linear-gradient(
+        to bottom,
+        rgba(5,5,15,0.4),
+        rgba(5,5,15,1)
+    );
+}
+
+.gradient-section {
+    background: linear-gradient(
+        180deg,
+        rgba(180,120,255,0.10),
+        rgba(250,180,255,0.10),
+        rgba(180,120,255,0.10)
+    );
+}
+
 .section-title {
-    font-size: 2.6rem;
-    margin-bottom: 0.5rem;
+    font-size: 2.7rem;
+    font-weight: 800;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .section-subtitle {
-    color: var(--muted);
+    color: var(--text-muted);
+    margin-top: 0.5rem;
 }
 
-/* PLAYER */
-.audio-player {
-    background: rgba(10,10,30,0.7);
-    padding: 2rem;
-    border-radius: 20px;
-    border: 1px solid rgba(139,92,246,0.3);
-    backdrop-filter: blur(10px);
-    margin-bottom: 2rem;
+
+
+/* =========================================================
+   GLASS EFFECT
+========================================================= */
+.glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(18px);
+    border-radius: 22px;
+    box-shadow: var(--shadow-glow), var(--shadow-card);
 }
+
+
+
+/* =========================================================
+   MUSIC PLAYER
+========================================================= */
+
+.audio-card {
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 900px;
+}
+
 .player-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.control-btn {
-    width: 46px;
-    height: 46px;
+
+.track-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.player-controls {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn {
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     border: 1px solid var(--primary);
-    background: rgba(139,92,246,0.25);
+    background: rgba(150,80,255,0.2);
+    color: white;
     cursor: pointer;
+    transition: 0.25s;
     font-size: 1.2rem;
 }
-.control-btn:hover {
+
+.btn:hover {
     background: var(--primary);
+    transform: scale(1.1);
 }
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.progress-bar {
+    flex-grow: 1;
+    height: 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 10px;
+}
+
+.time {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.playlist {
+    margin: 3rem auto;
+    max-width: 900px;
+}
+
+.track {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.track:hover {
+    color: var(--primary);
+}
+
+
 
 /* =========================================================
-   GALERIE
+   GALLERY
 ========================================================= */
-.gallery-section {
-    background-image: url('gallery-background.jpg');
-    background-size: cover;
-    background-position: top;
-}
-
-.gallery-content {
-    max-width: 1400px;
-    margin: auto;
-}
 
 .upload-btn {
-    padding: 10px 18px;
+    display: inline-block;
+    margin: 1rem 0 2rem;
+    padding: 0.7rem 1.4rem;
     border-radius: 30px;
-    background: rgba(139,92,246,0.35);
+    background: rgba(140,80,255,0.25);
     border: 1px solid var(--primary);
     cursor: pointer;
 }
-#file-upload { display: none; }
+
+#file-upload {
+    display: none;
+}
 
 .gallery-grid {
-    margin-top: 3rem;
+    margin-top: 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-    gap: 2.4rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2.2rem;
 }
 
 .gallery-item {
-    background: rgba(0,0,0,0.45);
-    padding: 1.5rem;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
+    padding: 1rem;
     text-align: center;
 }
+
 .gallery-item img {
     width: 100%;
-    border-radius: 14px;
-    height: 220px;
+    height: 200px;
     object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 1rem;
 }
+
 
 /* =========================================================
    ABOUT
 ========================================================= */
-#about {
-    background: linear-gradient(
-        to top,
-        rgba(5,5,15,1),
-        rgba(5,5,15,0.7),
-        rgba(5,5,15,0)
-    );
-}
 
 .about-card {
     max-width: 800px;
     margin: auto;
-    padding: 60px;
-    background: rgba(10,10,30,0.85);
-    border-radius: 30px;
-    backdrop-filter: blur(18px);
-    box-shadow:
-        0 0 40px rgba(139,92,246,0.3),
-        0 0 0 1px rgba(255,255,255,0.06);
+    padding: 3rem;
     text-align: center;
 }
 
-.about-title {
-    font-size: 2.8rem;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.about-text {
+    margin: 1rem 0;
+    color: var(--text-muted);
 }
 
-.about-tags {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin: 1.5rem 0;
-}
-
-.about-tags span {
-    padding: 8px 14px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.1);
-}
-
-/* Buttons */
-.about-actions {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+.about-links {
     margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
 }
-.about-btn {
-    padding: 10px 20px;
+
+.btn-primary {
+    padding: 0.7rem 1.5rem;
     border-radius: 30px;
+    background: var(--primary);
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn-secondary {
+    padding: 0.7rem 1.5rem;
+    border-radius: 30px;
+    border: 1px solid var(--primary);
+    background: transparent;
+    color: white;
     text-decoration: none;
 }
-.about-btn-primary {
-    background: linear-gradient(135deg,#ff6adf,#ff9ff3);
-    color: black;
-}
-.about-btn-ghost {
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.4);
-}
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-@media (max-width: 768px) {
-
-    .hero-title { font-size: 3.2rem; }
-
-    .about-card { padding: 40px 20px; }
-}
