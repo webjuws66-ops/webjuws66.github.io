@@ -10,55 +10,47 @@ document.addEventListener('DOMContentLoaded', () => {
 function initNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.section');
+    const heroButtons = document.querySelectorAll('.hero-buttons a');
 
+    // Navigation depuis le menu
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const targetId = link.getAttribute('href').substring(1);
-
-            // Mise à jour des liens actifs
-            navLinks.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
-
-            // Affichage de la section correspondante
-            sections.forEach(section => {
-                section.classList.remove('active');
-                if (section.id === targetId) {
-                    section.classList.add('active');
-                }
-            });
-
-            // Scroll vers le haut
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            showSection(targetId);
         });
     });
 
     // Navigation depuis les boutons de la page d'accueil
-    const heroButtons = document.querySelectorAll('.hero-buttons .btn');
     heroButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             const targetId = btn.getAttribute('href').substring(1);
-            
-            // Active le lien de navigation correspondant
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${targetId}`) {
-                    link.classList.add('active');
-                }
-            });
-
-            // Affiche la section
-            sections.forEach(section => {
-                section.classList.remove('active');
-                if (section.id === targetId) {
-                    section.classList.add('active');
-                }
-            });
-
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            showSection(targetId);
         });
     });
+
+    // Fonction pour afficher une section
+    function showSection(targetId) {
+        // Mise à jour des liens actifs
+        navLinks.forEach(l => l.classList.remove('active'));
+        navLinks.forEach(l => {
+            if (l.getAttribute('href') === `#${targetId}`) {
+                l.classList.add('active');
+            }
+        });
+
+        // Affichage de la section correspondante
+        sections.forEach(section => {
+            section.classList.remove('active');
+            if (section.id === targetId) {
+                section.classList.add('active');
+            }
+        });
+
+        // Scroll vers le haut
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 }
 
 // ========== LECTEUR DE MUSIQUE ==========
@@ -139,7 +131,7 @@ function initMusicPlayer() {
         });
 
         if (isPlaying) {
-            audioPlayer.play();
+            audioPlayer.play().catch(err => console.log('Erreur lecture audio:', err));
         }
     }
 
@@ -149,7 +141,7 @@ function initMusicPlayer() {
             audioPlayer.pause();
             playBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
         } else {
-            audioPlayer.play();
+            audioPlayer.play().catch(err => console.log('Erreur lecture audio:', err));
             playBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zm8 0h4v16h-4z"/></svg>';
         }
         isPlaying = !isPlaying;
@@ -159,14 +151,14 @@ function initMusicPlayer() {
     prevBtn.addEventListener('click', () => {
         currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
         loadTrack(currentTrackIndex);
-        if (isPlaying) audioPlayer.play();
+        if (isPlaying) audioPlayer.play().catch(err => console.log('Erreur lecture audio:', err));
     });
 
     // Piste suivante
     nextBtn.addEventListener('click', () => {
         currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
         loadTrack(currentTrackIndex);
-        if (isPlaying) audioPlayer.play();
+        if (isPlaying) audioPlayer.play().catch(err => console.log('Erreur lecture audio:', err));
     });
 
     // Mise à jour de la progression
@@ -192,7 +184,7 @@ function initMusicPlayer() {
     audioPlayer.addEventListener('ended', () => {
         currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
         loadTrack(currentTrackIndex);
-        audioPlayer.play();
+        audioPlayer.play().catch(err => console.log('Erreur lecture audio:', err));
     });
 
     // Formater le temps
@@ -268,7 +260,7 @@ function initGallery() {
         const item = document.createElement('div');
         item.className = 'gallery-item';
         item.innerHTML = `
-            <img src="${image.url}" alt="${image.title}" loading="lazy">
+            <img src="${image.url}" alt="${image.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/600x600/0a0a0f/00f3ff?text=Image+${index+1}'">
             <div class="gallery-item-overlay">
                 <h4>${image.title}</h4>
                 <p>${image.description}</p>
