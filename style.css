@@ -100,7 +100,6 @@ section {
     z-index: 0;
 }
 
-/* fondu bas du hero */
 .hero::after {
     content: "";
     position: absolute;
@@ -164,7 +163,7 @@ section {
 }
 
 /* =========================================================
-   TITRES DE SECTIONS
+   TITRES SECTIONS
 ========================================================= */
 .section {
     padding: 6rem 2rem;
@@ -184,10 +183,12 @@ section {
     margin-bottom: 2rem;
 }
 
-/* ========== MUSIC SECTION ========== */
+/* =========================================================
+   MUSIC SECTION — VERSION CORRIGÉE
+========================================================= */
 .music-section {
     position: relative;
-    padding: 80px 2rem;               /* propre, cohérent, régulier */
+    padding: 80px 2rem;
     background-image: url('music-background.jpg');
     background-size: cover;
     background-position: center;
@@ -207,11 +208,7 @@ section {
     z-index: 2;
 }
 
-
-/* =========================================================
-   AUDIO PLAYER (complet)
-========================================================= */
-
+/* AUDIO PLAYER */
 .audio-player {
     background: rgba(15, 15, 35, 0.8);
     border: 1px solid rgba(139, 92, 246, 0.3);
@@ -309,16 +306,12 @@ section {
     transform: translateX(4px);
 }
 
-.track-number,
-.track-name,
-.track-duration {
-    font-size: 1rem;
-}
-
-/* ========== GALLERY SECTION ========== */
+/* =========================================================
+   GALLERY — VERSION CORRIGÉE
+========================================================= */
 .gallery-section {
     position: relative;
-    padding: 80px 2rem 120px;       /* propre */
+    padding: 80px 2rem 120px;
     background-image: url('gallery-background.jpg');
     background-size: cover;
     background-position: center;
@@ -331,7 +324,7 @@ section {
     left: 0;
     right: 0;
     bottom: 0;
-    height: 160px; /* réduit pour mieux enchainer */
+    height: 160px;
     background: linear-gradient(
         to bottom,
         rgba(5,5,15,0) 0%,
@@ -346,12 +339,29 @@ section {
     margin: 0 auto;
 }
 
+.upload-container {
+    margin-bottom: 1.5rem;
+}
+
+.upload-btn {
+    padding: 10px 18px;
+    border-radius: 30px;
+    background: rgba(139,92,246,0.35);
+    border: 1px solid var(--primary);
+    color: var(--light);
+    cursor: pointer;
+}
+
+#file-upload {
+    display: none;
+}
+
 .gallery-grid {
     margin-top: 3rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
     gap: 2rem;
-    place-items: center;               /* **** NOUVEAU : centre tout */
+    place-items: center;
 }
 
 .gallery-item {
@@ -359,27 +369,32 @@ section {
     border-radius: 18px;
     padding: 1.5rem;
     width: 100%;
-    max-width: 340px;                  /* **** fixe la largeur propre */
+    max-width: 340px;
     text-align: center;
     backdrop-filter: blur(10px);
 }
 
+.gallery-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+}
 
 /* =========================================================
-   ABOUT — CARTE FLOTTANTE
+   ABOUT — VERSION CORRIGÉE
 ========================================================= */
 #about {
-    position: relative;
-    margin-top: -40px;      /* remonte un peu la carte dans le dégradé rose */
-    padding: 80px 1.5rem 8rem;
-    z-index: 10;
-
+    padding: 120px 1.5rem 120px;
+    margin-top: 0;
     background: linear-gradient(
         to top,
         rgba(5,5,15,1) 60%,
         rgba(5,5,15,0.35) 80%,
         rgba(5,5,15,0) 100%
     );
+    position: relative;
+    z-index: 10;
 }
 
 .about-card {
@@ -389,12 +404,11 @@ section {
     border-radius: 32px;
     padding: 56px clamp(24px, 4vw, 56px);
     text-align: center;
-
+    backdrop-filter: blur(18px);
     box-shadow:
         0 0 50px rgba(139,92,246,0.18),
         0 32px 120px rgba(0,0,0,0.85),
         0 0 0 1px rgba(255,255,255,0.06);
-    backdrop-filter: blur(18px);
 }
 
 .about-kicker {
@@ -410,7 +424,6 @@ section {
     letter-spacing: 0.1em;
     font-weight: 800;
     margin-bottom: 24px;
-
     background: linear-gradient(120deg, #ff78ff, #ffd0ff);
     -webkit-background-clip: text;
     color: transparent;
