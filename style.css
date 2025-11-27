@@ -393,4 +393,37 @@ section {
 #gallery {
     margin-top: 0 !important;
 }
+/* ===========================
+   CORRECTION DES ESPACES ENTRE SECTIONS
+   =========================== */
+
+/* Réduit l’énorme vide sous "Musiques générées" */
+#music.section {
+    padding-bottom: 60px !important;
+}
+
+/* Réduit le vide au-dessus de la Galerie */
+#gallery.section {
+    padding-top: 80px !important;
+}
+
+/* Réduit le vide sous la Galerie */
+#gallery {
+    padding-bottom: 80px !important;
+}
+
+/* Réduit l’espace avant "À propos" */
+#about.section {
+    padding-top: 80px !important;
+}
+
+/* Évite le trou après la carte "A propos" */
+.about-card {
+    margin-bottom: 40px !important;
+}
+
+/* Supprime tout gap résiduel généré par le glow des cards */
+.glass {
+    margin-top: 0 !important;
+    margin-bottom:
 
