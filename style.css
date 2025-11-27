@@ -187,12 +187,11 @@ section {
    MUSIC SECTION — VERSION CORRIGÉE
 ========================================================= */
 .music-section {
-    position: relative;
-    padding: 80px 2rem;
+    padding: 80px 2rem 80px;
     background-image: url('music-background.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 .music-section::before {
