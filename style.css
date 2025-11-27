@@ -184,15 +184,10 @@ section {
     margin-bottom: 2rem;
 }
 
-/* =========================================================
-   MUSIC SECTION
-========================================================= */
+/* ========== MUSIC SECTION ========== */
 .music-section {
     position: relative;
-
-    /* descend la section musique sous le hero */
-    padding-top: 180px;
-
+    padding: 80px 2rem;               /* propre, cohérent, régulier */
     background-image: url('music-background.jpg');
     background-size: cover;
     background-position: center;
@@ -203,7 +198,7 @@ section {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(5,5,16,0.85), rgba(139,92,246,0.3));
+    background: linear-gradient(135deg, rgba(5,5,16,0.85), rgba(139,92,246,0.25));
     z-index: 0;
 }
 
@@ -211,6 +206,7 @@ section {
     position: relative;
     z-index: 2;
 }
+
 
 /* =========================================================
    AUDIO PLAYER (complet)
@@ -319,29 +315,23 @@ section {
     font-size: 1rem;
 }
 
-/* =========================================================
-   GALLERY
-========================================================= */
+/* ========== GALLERY SECTION ========== */
 .gallery-section {
     position: relative;
-
-    /* espace au-dessus + grand bas pour laisser flotter ABOUT */
-    padding: 120px 1rem 12rem;
-
+    padding: 80px 2rem 120px;       /* propre */
     background-image: url('gallery-background.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 
-/* fondu bas galerie */
 .gallery-section::after {
     content: "";
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
-    height: 220px;
+    height: 160px; /* réduit pour mieux enchainer */
     background: linear-gradient(
         to bottom,
         rgba(5,5,15,0) 0%,
@@ -360,24 +350,20 @@ section {
     margin-top: 3rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-    gap: 2.5rem;
+    gap: 2rem;
+    place-items: center;               /* **** NOUVEAU : centre tout */
 }
 
 .gallery-item {
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.35);
     border-radius: 18px;
     padding: 1.5rem;
+    width: 100%;
+    max-width: 340px;                  /* **** fixe la largeur propre */
     text-align: center;
     backdrop-filter: blur(10px);
-    box-shadow: 0 18px 40px rgba(0,0,0,0.35);
 }
 
-.gallery-item img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 12px;
-}
 
 /* =========================================================
    ABOUT — CARTE FLOTTANTE
