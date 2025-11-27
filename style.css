@@ -361,4 +361,36 @@ section {
     color: white;
     text-decoration: none;
 }
+/* Fix scroll / bloc musique trop grand */
+.audio-card {
+    overflow: visible !important;
+}
+
+/* Empêche l’effet “bande sombre” entre sections */
+.section {
+    position: relative;
+    z-index: 1;
+}
+
+.dark-section {
+    background: linear-gradient(
+        to bottom,
+        rgba(5,5,15,0.4),
+        rgba(5,5,15,1)
+    );
+    padding-bottom: 150px;
+}
+
+.gradient-section {
+    margin-top: 0 !important;
+    padding-top: 120px !important;
+}
+
+/* Supprime le mini gap parasite entre Musique et Galerie */
+#music {
+    margin-bottom: 0 !important;
+}
+#gallery {
+    margin-top: 0 !important;
+}
 
