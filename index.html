@@ -1,207 +1,145 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WEBJUWS66 - Sound & Vision</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WEBJUWS66 – Sound & Vision</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-<!-- Navigation -->
-<nav class="nav">
-    <div class="nav-container">
-        <div class="logo">WEBJUWS66</div>
-        <ul class="nav-menu">
-            <li><a href="#home" class="nav-link">Accueil</a></li>
-            <li><a href="#music" class="nav-link">Musique</a></li>
-            <li><a href="#galerie" class="nav-link">Galerie</a></li>
-            <li><a href="#about" class="nav-link">À propos</a></li>
-        </ul>
-    </div>
-</nav>
-
-<!-- Hero Section -->
-<section id="home" class="hero">
-    <div class="hero-content">
-        <h1 class="hero-title">WEBJUWS66</h1>
-        <p class="hero-subtitle">Compositions originales assistées par IA</p>
-        <div class="hero-tags">
-            <span class="tag">Compositions originales</span>
-            <span class="tag">Midjourney</span>
-            <span class="tag">IA Créative</span>
+    <!-- HEADER -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">WEBJUWS66</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Accueil</a></li>
+                <li><a href="#music" class="nav-link">Musique</a></li>
+                <li><a href="#gallery" class="nav-link">Galerie</a></li>
+                <li><a href="#about" class="nav-link">À propos</a></li>
+            </ul>
         </div>
-    </div>
+    </nav>
 
-    <div class="scroll-indicator">
-        <span>Scroll</span>
-        <div class="scroll-line"></div>
-    </div>
-</section>
+    <!-- HERO -->
+    <header id="home" class="hero">
+        <div class="hero-glow"></div>
+        <h1 class="hero-title">WEBJUWS66</h1>
+        <p class="hero-subtitle">Créations IA · Musique · Visuels</p>
+        <div class="hero-tags">
+            <span>IA Créative</span>
+            <span>Midjourney</span>
+            <span>Audio Art</span>
+        </div>
+    </header>
 
+    <!-- MUSIC SECTION -->
+    <section id="music" class="section dark-section">
 
-<!-- MUSIC SECTION -->
-<section id="music" class="music-section">
-    <div class="container">
-        <h2 class="section-title">Mes Créations Sonores</h2>
-        <p class="section-subtitle">Compositions créées avec IA</p>
+        <h2 class="section-title">Musiques générées</h2>
+        <p class="section-subtitle">Compositions réalisées à l’aide de l’IA Suno</p>
 
-        <!-- PLAYER -->
-        <div class="audio-player">
+        <div class="audio-card glass">
+
             <div class="player-header">
                 <div class="track-info">
-                    <h3 class="track-title" id="currentTrack">Sélectionnez un morceau</h3>
+                    <h3 id="currentTrack" class="track-title">Sélectionnez un morceau</h3>
                     <p class="track-artist">WEBJUWS66</p>
                 </div>
+
                 <div class="player-controls">
-                    <button class="control-btn" id="prevBtn">⏮</button>
-                    <button class="control-btn play-btn" id="playBtn">▶</button>
-                    <button class="control-btn" id="nextBtn">⏭</button>
+                    <button class="btn" id="prevBtn">⏮</button>
+                    <button class="btn" id="playBtn">▶</button>
+                    <button class="btn" id="nextBtn">⏭</button>
                 </div>
             </div>
 
             <div class="progress-container">
                 <div class="time" id="currentTime">0:00</div>
-                <div class="progress-bar">
-                    <div class="progress" id="progress"></div>
-                </div>
+                <div class="progress-bar"><div id="progress" class="progress"></div></div>
                 <div class="time" id="duration">0:00</div>
             </div>
 
             <audio id="audioPlayer"></audio>
         </div>
 
-        <!-- PLAYLIST -->
         <div class="playlist">
-            <div class="playlist-item" data-src="musique/001-Du-Chaos-au-lendemain.mp3">
-                <span class="track-number">01</span>
-                <span class="track-name">Du Chaos au lendemain</span>
-                <span class="track-duration">3:30</span>
-            </div>
-
-            <div class="playlist-item" data-src="musique/002 Ce monde entre leurs mains.mp3">
-                <span class="track-number">02</span>
-                <span class="track-name">Ce monde entre leurs mains</span>
-                <span class="track-duration">3:30</span>
-            </div>
-
-            <div class="playlist-item" data-src="musique/Ecoute(1).mp3">
-                <span class="track-number">03</span>
-                <span class="track-name">Écoute</span>
-                <span class="track-duration">3:30</span>
-            </div>
-
-            <div class="playlist-item" data-src="musique/Le monde qu'on veut encore.mp3">
-                <span class="track-number">04</span>
-                <span class="track-name">Le monde qu'on veut encore</span>
-                <span class="track-duration">3:30</span>
-            </div>
-
-            <div class="playlist-item" data-src="musique/Les enfants d'aujourd'hui.mp3">
-                <span class="track-number">05</span>
-                <span class="track-name">Les enfants d'aujourd'hui</span>
-                <span class="track-duration">3:30</span>
-            </div>
-
-            <div class="playlist-item" data-src="musique/Un avenir debout.mp3">
-                <span class="track-number">06</span>
-                <span class="track-name">Un avenir debout</span>
-                <span class="track-duration">3:30</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<!-- GALLERY SECTION (UNIQUE) -->
-<section id="galerie" class="gallery-section">
-  <div class="gallery-content">
-    <h2 class="section-title">Galerie Visuelle</h2>
-    <p class="section-subtitle">Créations générées à l’aide de l’IA</p>
-
-    <div class="upload-container">
-        <label for="file-upload" class="upload-btn">Importer une image</label>
-        <input id="file-upload" type="file" accept="image/*">
-    </div>
-
-    <div class="gallery-grid">
-
-      <article class="gallery-item">
-        <img src="images/creation1.png" alt="Création 1">
-        <h3>Création 1</h3>
-        <p>Titre de l’œuvre 1</p>
-      </article>
-
-      <article class="gallery-item">
-        <img src="images/creation2.png" alt="Création 2">
-        <h3>Création 2</h3>
-        <p>Titre de l’œuvre 2</p>
-      </article>
-
-      <article class="gallery-item">
-        <img src="images/creation3.png" alt="Création 3">
-        <h3>Création 3</h3>
-        <p>Titre de l’œuvre 3</p>
-      </article>
-
-      <article class="gallery-item">
-        <img src="images/creation4.png" alt="Création 4">
-        <h3>Création 4</h3>
-        <p>Titre de l’œuvre 4</p>
-      </article>
-
-      <article class="gallery-item">
-        <img src="images/creation5.png" alt="Création 5">
-        <h3>Création 5</h3>
-        <p>Titre de l’œuvre 5</p>
-      </article>
-
-      <article class="gallery-item">
-        <img src="images/creation6.png" alt="Création 6">
-        <h3>Création 6</h3>
-        <p>Titre de l’œuvre 6</p>
-      </article>
-
-    </div>
-
-  </div>
-</section>
-
-
-
-<!-- ==================== À PROPOS ==================== -->
-<section id="about">
-    <div class="about-card">
-        <p class="about-kicker">Univers créatif</p>
-        <h2 class="about-title">À propos</h2>
-
-        <p class="about-text">
-            Bienvenue dans mon univers, où la musique et l’art visuel se rencontrent.
-            J’utilise <strong>Suno AI</strong> pour composer des morceaux originaux,
-            et <strong>Midjourney</strong> pour donner vie à des visuels uniques.
-        </p>
-
-        <p class="about-text">
-            Chaque création explore les possibilités infinies de l’intelligence artificielle :
-            émotions, couleurs, histoires. Chaque morceau raconte quelque chose,
-            chaque image capture une sensation. Merci d’explorer cet espace avec moi.
-        </p>
-
-        <div class="about-tags">
-            <span>Musique</span>
-            <span>Visuels AI</span>
-            <span>Expérimentations</span>
+            <div class="track" data-src="musique/001-Du-Chaos-au-lendemain.mp3">01 — Du Chaos au lendemain <span>3:30</span></div>
+            <div class="track" data-src="musique/002 Ce monde entre leurs mains.mp3">02 — Ce monde entre leurs mains <span>3:30</span></div>
+            <div class="track" data-src="musique/Ecoute(1).mp3">03 — Écoute <span>3:30</span></div>
+            <div class="track" data-src="musique/Le monde qu'on veut encore.mp3">04 — Le monde qu'on veut encore <span>3:30</span></div>
+            <div class="track" data-src="musique/Les enfants d'aujourd'hui.mp3">05 — Les enfants d'aujourd'hui <span>3:30</span></div>
+            <div class="track" data-src="musique/Un avenir debout.mp3">06 — Un avenir debout <span>3:30</span></div>
         </div>
 
-        <p class="about-subtitle">Retrouvez-moi</p>
+    </section>
 
-        <div class="about-actions">
-            <a href="#" class="about-btn about-btn-primary">Instagram</a>
-            <a href="#" class="about-btn about-btn-ghost">YouTube</a>
+    <!-- GALLERY -->
+    <section id="gallery" class="section gradient-section">
+
+        <h2 class="section-title">Galerie Visuelle</h2>
+        <p class="section-subtitle">Images générées avec Midjourney</p>
+
+        <label for="file-upload" class="upload-btn glass">Importer une image</label>
+        <input type="file" id="file-upload" accept="image/*" />
+
+        <div class="gallery-grid">
+
+            <div class="gallery-item glass">
+                <img src="images/creation1.png" alt="">
+                <h3>Création 1</h3>
+            </div>
+
+            <div class="gallery-item glass">
+                <img src="images/creation2.png" alt="">
+                <h3>Création 2</h3>
+            </div>
+
+            <div class="gallery-item glass">
+                <img src="images/creation3.png" alt="">
+                <h3>Création 3</h3>
+            </div>
+
+            <div class="gallery-item glass">
+                <img src="images/creation4.png" alt="">
+                <h3>Création 4</h3>
+            </div>
+
+            <div class="gallery-item glass">
+                <img src="images/creation5.png" alt="">
+                <h3>Création 5</h3>
+            </div>
+
+            <div class="gallery-item glass">
+                <img src="images/creation6.png" alt="">
+                <h3>Création 6</h3>
+            </div>
+
         </div>
-    </div>
-</section>
+
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section dark-section">
+        <div class="about-card glass">
+            <h2 class="section-title">À propos</h2>
+            <p class="about-text">
+                Je crée de la musique et des visuels grâce à l’intelligence artificielle :
+                Suno pour les sons, Midjourney pour les images.  
+            </p>
+            <p class="about-text">
+                Chaque création explore les émotions, l’imaginaire et l’esthétique futuriste.
+            </p>
+
+            <div class="about-links">
+                <a href="#" class="btn-primary">Instagram</a>
+                <a href="#" class="btn-secondary">YouTube</a>
+            </div>
+        </div>
+    </section>
 
 </body>
+
+<script src="script.js"></script>
 </html>
