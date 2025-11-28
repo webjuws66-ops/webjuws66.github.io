@@ -3,181 +3,1179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>webjuws66 | Créations IA</title>
-    <link rel="stylesheet" href="style.css">
+    <title>L'Intelligence Artificielle - Exploration Moderne</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0d0221;
+            --secondary: #1a0b2e;
+            --accent: #c724ff;
+            --accent-glow: #9d4edd;
+            --neon-pink: #ff006e;
+            --neon-cyan: #00f5ff;
+            --neon-purple: #b537f2;
+            --text: #f0e6ff;
+            --text-dim: #b8a5d6;
+            --surface: #1f0e3e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Neon Grid Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, rgba(197, 36, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(197, 36, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            animation: gridPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes gridPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(20px);
+            background: rgba(13, 2, 33, 0.9);
+            z-index: 1000;
+            border-bottom: 2px solid var(--accent);
+            box-shadow: 0 0 30px rgba(197, 36, 255, 0.5);
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: var(--accent);
+            text-shadow: 
+                0 0 10px var(--accent),
+                0 0 20px var(--accent),
+                0 0 40px var(--accent-glow);
+            animation: neonPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes neonPulse {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 10px var(--accent),
+                    0 0 20px var(--accent),
+                    0 0 40px var(--accent-glow);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 20px var(--accent),
+                    0 0 40px var(--accent),
+                    0 0 60px var(--accent-glow),
+                    0 0 80px var(--neon-purple);
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            transition: all 0.3s;
+            text-shadow: 0 0 5px rgba(197, 36, 255, 0.3);
+        }
+
+        .nav-links a::before {
+            content: '▸';
+            position: absolute;
+            left: -20px;
+            opacity: 0;
+            transition: all 0.3s;
+            color: var(--neon-cyan);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+            text-shadow: 
+                0 0 10px var(--accent),
+                0 0 20px var(--accent);
+        }
+
+        .nav-links a:hover::before {
+            opacity: 1;
+            left: -15px;
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+            text-shadow: 
+                0 0 10px var(--accent),
+                0 0 20px var(--accent);
+        }
+
+        /* Page Container */
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding-top: 100px;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Home Page */
+        .hero {
+            height: calc(100vh - 100px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(197, 36, 255, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: orbPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes orbPulse {
+            0%, 100% { 
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.5;
+            }
+            50% { 
+                transform: translate(-50%, -50%) scale(1.3);
+                opacity: 0.8;
+            }
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 245, 255, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: orbFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-50px, 50px); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            max-width: 1200px;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 7rem;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: 8px;
+            margin-bottom: 2rem;
+            color: var(--text);
+            text-shadow: 
+                0 0 20px var(--accent),
+                0 0 40px var(--accent),
+                0 0 60px var(--neon-purple),
+                0 0 100px var(--neon-pink);
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 20px var(--accent),
+                    0 0 40px var(--accent),
+                    0 0 60px var(--neon-purple);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 30px var(--accent),
+                    0 0 60px var(--accent),
+                    0 0 90px var(--neon-purple),
+                    0 0 120px var(--neon-pink);
+            }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--text-dim);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            font-weight: 400;
+            line-height: 1.8;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.3rem 3.5rem;
+            background: transparent;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border: 3px solid var(--accent);
+            border-radius: 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 
+                0 0 20px rgba(197, 36, 255, 0.5),
+                inset 0 0 20px rgba(197, 36, 255, 0.1);
+            animation: fadeIn 1.8s ease;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            transition: left 0.3s;
+            z-index: -1;
+        }
+
+        .cta-button:hover {
+            color: var(--primary);
+            box-shadow: 
+                0 0 40px rgba(197, 36, 255, 0.8),
+                0 0 60px rgba(197, 36, 255, 0.6);
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        .features {
+            padding: 8rem 3rem;
+            background: var(--secondary);
+            position: relative;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 0, 110, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(0, 245, 255, 0.1) 0%, transparent 50%);
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card {
+            padding: 3rem;
+            background: rgba(31, 14, 62, 0.6);
+            border: 2px solid transparent;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+            animation: fadeInUp 0.8s ease backwards;
+        }
+
+        .feature-card:nth-child(1) { 
+            animation-delay: 0.2s; 
+            border-color: rgba(197, 36, 255, 0.3);
+        }
+        .feature-card:nth-child(2) { 
+            animation-delay: 0.4s; 
+            border-color: rgba(255, 0, 110, 0.3);
+        }
+        .feature-card:nth-child(3) { 
+            animation-delay: 0.6s; 
+            border-color: rgba(0, 245, 255, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--accent), var(--neon-pink), var(--neon-cyan), var(--accent));
+            background-size: 400%;
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: -1;
+            animation: borderGlow 3s linear infinite;
+        }
+
+        @keyframes borderGlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 400% 50%; }
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 
+                0 20px 60px rgba(197, 36, 255, 0.4),
+                0 0 40px rgba(197, 36, 255, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 10px var(--accent));
+        }
+
+        .feature-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            text-shadow: 0 0 10px rgba(197, 36, 255, 0.5);
+        }
+
+        .feature-card p {
+            color: var(--text-dim);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Music Page */
+        .music-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
+            font-weight: 900;
+            letter-spacing: 6px;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--accent);
+            text-shadow: 
+                0 0 20px var(--accent),
+                0 0 40px var(--accent),
+                0 0 60px var(--neon-purple);
+            animation: neonPulse 3s ease-in-out infinite;
+        }
+
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .music-card {
+            background: var(--surface);
+            border: 2px solid var(--accent);
+            overflow: hidden;
+            transition: all 0.4s;
+            position: relative;
+        }
+
+        .music-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(197, 36, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .music-card:hover::after {
+            left: 100%;
+        }
+
+        .music-card:hover {
+            transform: scale(1.05);
+            box-shadow: 
+                0 0 40px rgba(197, 36, 255, 0.6),
+                0 0 60px rgba(157, 78, 221, 0.4);
+            border-color: var(--neon-cyan);
+        }
+
+        .music-header {
+            height: 200px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--neon-pink) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .music-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.05) 10px,
+                rgba(255, 255, 255, 0.05) 20px
+            );
+            animation: scanline 3s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(20px); }
+        }
+
+        .music-body {
+            padding: 2.5rem;
+        }
+
+        .music-body h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            text-shadow: 0 0 10px rgba(197, 36, 255, 0.5);
+        }
+
+        .music-body p {
+            color: var(--text-dim);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .music-tag {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background: transparent;
+            border: 1px solid var(--neon-cyan);
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            margin-top: 0.5rem;
+            color: var(--neon-cyan);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+        }
+
+        .music-tag:hover {
+            background: var(--neon-cyan);
+            color: var(--primary);
+            box-shadow: 0 0 20px rgba(0, 245, 255, 0.6);
+        }
+
+        /* Images Page */
+        .images-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 3rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 16/10;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s;
+            border: 3px solid var(--accent);
+            box-shadow: 
+                0 0 30px rgba(197, 36, 255, 0.4),
+                inset 0 0 30px rgba(197, 36, 255, 0.1);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            border-color: var(--neon-cyan);
+            box-shadow: 
+                0 0 50px rgba(0, 245, 255, 0.6),
+                0 0 80px rgba(197, 36, 255, 0.4);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--neon-pink) 50%, var(--neon-cyan) 100%);
+            z-index: 1;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 0.8;
+        }
+
+        .gallery-item::after {
+            content: attr(data-title);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2.5rem;
+            background: linear-gradient(to top, rgba(13, 2, 33, 0.95), transparent);
+            z-index: 2;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 
+                0 0 10px var(--accent),
+                0 0 20px var(--accent);
+            transform: translateY(100%);
+            transition: transform 0.4s;
+        }
+
+        .gallery-item:hover::after {
+            transform: translateY(0);
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 7rem;
+            position: relative;
+            z-index: 0;
+            background: rgba(31, 14, 62, 0.5);
+        }
+
+        .image-description {
+            max-width: 900px;
+            margin: 6rem auto;
+            padding: 3rem;
+            background: var(--surface);
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 40px rgba(197, 36, 255, 0.3);
+        }
+
+        .image-description h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            text-shadow: 0 0 10px rgba(197, 36, 255, 0.5);
+        }
+
+        .image-description p {
+            color: var(--text-dim);
+            line-height: 2;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* About Page */
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem;
+        }
+
+        .about-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            padding: 2rem;
+            background: rgba(31, 14, 62, 0.5);
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 30px rgba(197, 36, 255, 0.3);
+        }
+
+        .about-intro p {
+            color: var(--text-dim);
+            font-size: 1.3rem;
+            line-height: 2;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 4rem 0;
+            margin-top: 4rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, 
+                var(--accent) 0%, 
+                var(--neon-pink) 50%, 
+                var(--neon-cyan) 100%);
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px var(--accent);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 5rem;
+            position: relative;
+            animation: fadeInUp 0.8s ease backwards;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+            animation-delay: 0.2s;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+            animation-delay: 0.4s;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 2.5rem;
+            background: var(--surface);
+            border: 2px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, transparent, rgba(197, 36, 255, 0.1));
+            transition: top 0.4s;
+        }
+
+        .timeline-content:hover::before {
+            top: 0;
+        }
+
+        .timeline-content:hover {
+            border-color: var(--neon-cyan);
+            transform: scale(1.05);
+            box-shadow: 
+                0 0 40px rgba(197, 36, 255, 0.5),
+                0 0 60px rgba(0, 245, 255, 0.3);
+        }
+
+        .timeline-year {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+            text-shadow: 
+                0 0 10px var(--accent),
+                0 0 20px var(--accent);
+        }
+
+        .timeline-content h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+        }
+
+        .timeline-content p {
+            color: var(--text-dim);
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 4px solid var(--primary);
+            box-shadow: 
+                0 0 30px var(--accent),
+                0 0 50px var(--accent-glow);
+            z-index: 10;
+            animation: dotPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes dotPulse {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 30px var(--accent),
+                    0 0 50px var(--accent-glow);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 40px var(--accent),
+                    0 0 70px var(--accent-glow),
+                    0 0 100px var(--neon-pink);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            nav {
+                padding: 1rem 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+                letter-spacing: 3px;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 3rem;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                flex-direction: row;
+                padding-left: 70px;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .music-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 6px;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--neon-cyan);
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Navigation -->
-        <nav class="nav">
-            <div class="logo">webjuws66</div>
-            <ul class="nav-links">
-                <li><a href="#home" class="nav-link active">Accueil</a></li>
-                <li><a href="#music" class="nav-link">Musique</a></li>
-                <li><a href="#visuals" class="nav-link">Visuels</a></li>
-                <li><a href="#about" class="nav-link">À Propos</a></li>
-            </ul>
-        </nav>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">◢ INTELLIGENCE ARTIFICIELLE ◣</div>
+        <ul class="nav-links">
+            <li><a href="#" data-page="home" class="nav-link active">Accueil</a></li>
+            <li><a href="#" data-page="music" class="nav-link">Musique</a></li>
+            <li><a href="#" data-page="images" class="nav-link">Images</a></li>
+            <li><a href="#" data-page="about" class="nav-link">À Propos</a></li>
+        </ul>
+    </nav>
 
-        <!-- Section Accueil -->
-        <section id="home" class="section active">
-            <div class="hero">
-                <h1 class="hero-title glitch" data-text="CRÉATIONS IA">CRÉATIONS IA</h1>
-                <p class="hero-subtitle">Musique & Art Visuel générés par Intelligence Artificielle</p>
-                <div class="hero-description">
-                    <p>Bienvenue dans l'univers de webjuws66</p>
-                    <p>Explorez mes créations musicales avec Suno AI et mes œuvres visuelles avec Midjourney</p>
-                </div>
-                <div class="hero-buttons">
-                    <a href="#music" class="btn btn-primary">Écouter la Musique</a>
-                    <a href="#visuals" class="btn btn-secondary">Découvrir les Visuels</a>
-                </div>
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>INTELLIGENCE<br>ARTIFICIELLE</h1>
+                <p>Plongez dans l'univers néon de l'IA, où la technologie futuriste rencontre la créativité pour redéfinir les frontières du possible dans un écosystème cyberpunk.</p>
+                <a href="#" class="cta-button" data-page="about">◢ Explorer l'Histoire ◣</a>
             </div>
+        </section>
 
-            <div class="features">
+        <section class="features">
+            <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🎵</div>
-                    <h3>Musique IA</h3>
-                    <p>Compositions originales créées avec Suno AI</p>
+                    <h3>MUSIQUE GÉNÉRATIVE</h3>
+                    <p>L'IA compose, produit et transforme la musique en temps réel, créant des symphonies digitales qui repoussent les limites de la création sonore dans un univers cybernétique sans frontières.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🎨</div>
-                    <h3>Art Visuel</h3>
-                    <p>Œuvres uniques générées par Midjourney</p>
+                    <h3>ART VISUEL</h3>
+                    <p>Des algorithmes génératifs créent des œuvres visuelles stupéfiantes, fusionnant styles artistiques et imagination pour produire des créations uniques dans un océan de néons et de pixels.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <h3>Innovation</h3>
-                    <p>À la pointe de la créativité technologique</p>
+                    <div class="feature-icon">🧠</div>
+                    <h3>INTELLIGENCE COGNITIVE</h3>
+                    <p>Les réseaux neuronaux profonds permettent aux machines d'apprendre, de s'adapter et d'évoluer, créant une intelligence synthétique qui transcende les capacités humaines traditionnelles.</p>
                 </div>
             </div>
         </section>
-
-        <!-- Section Musique -->
-        <section id="music" class="section">
-            <div class="section-header">
-                <h1 class="glitch" data-text="Musique IA">Musique IA</h1>
-                <p class="subtitle">Compositions générées par intelligence artificielle</p>
-            </div>
-            
-            <div class="music-player">
-                <div class="player-visual">
-                    <div class="wave-container">
-                        <div class="wave"></div>
-                        <div class="wave"></div>
-                        <div class="wave"></div>
-                    </div>
-                </div>
-                
-                <div class="player-info">
-                    <h3 id="track-title">Titre de la piste</h3>
-                    <p id="track-artist">webjuws66</p>
-                </div>
-                
-                <div class="player-controls">
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
-                        <div class="time-info">
-                            <span id="current-time">0:00</span>
-                            <span id="duration">0:00</span>
-                        </div>
-                    </div>
-                    
-                    <div class="control-buttons">
-                        <button class="btn-control" id="prev-btn">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
-                            </svg>
-                        </button>
-                        <button class="btn-control btn-play" id="play-btn">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
-                        <button class="btn-control" id="next-btn">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M16 18h2V6h-2zm-11-7l8.5-6v12z"/>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-                
-                <audio id="audio-player" preload="metadata"></audio>
-            </div>
-
-            <div class="playlist">
-                <h3>Playlist</h3>
-                <div class="playlist-items" id="playlist">
-                    <!-- Les pistes seront ajoutées ici via JavaScript -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Section Visuels -->
-        <section id="visuals" class="section">
-            <div class="section-header">
-                <h1 class="glitch" data-text="Visuels IA">Visuels IA</h1>
-                <p class="subtitle">Art généré par Midjourney</p>
-            </div>
-            
-            <div class="gallery">
-                <div class="gallery-grid" id="gallery">
-                    <!-- Les images seront ajoutées ici via JavaScript -->
-                </div>
-            </div>
-
-            <!-- Lightbox pour agrandir les images -->
-            <div class="lightbox" id="lightbox">
-                <span class="lightbox-close">&times;</span>
-                <img class="lightbox-content" id="lightbox-img">
-                <div class="lightbox-caption" id="lightbox-caption"></div>
-            </div>
-        </section>
-
-        <!-- Section À Propos -->
-        <section id="about" class="section">
-            <div class="section-header">
-                <h1 class="glitch" data-text="À Propos">À Propos</h1>
-                <p class="subtitle">Créateur et explorateur d'IA</p>
-            </div>
-            
-            <div class="about-content">
-                <div class="about-card">
-                    <div class="about-icon">🎵</div>
-                    <h3>Musique IA</h3>
-                    <p>Création de compositions musicales uniques utilisant Suno AI, explorant de nouveaux horizons sonores et mélangeant les genres avec l'intelligence artificielle.</p>
-                </div>
-                
-                <div class="about-card">
-                    <div class="about-icon">🎨</div>
-                    <h3>Art Visuel</h3>
-                    <p>Génération d'œuvres visuelles captivantes avec Midjourney, repoussant les limites de la créativité et explorant l'esthétique du futur.</p>
-                </div>
-                
-                <div class="about-card">
-                    <div class="about-icon">💡</div>
-                    <h3>Innovation</h3>
-                    <p>Passionné par l'intersection entre technologie et créativité, je développe des outils et contenus qui explorent le potentiel de l'IA dans les arts.</p>
-                </div>
-            </div>
-
-            <div class="about-bio">
-                <h2>webjuws66</h2>
-                <p>Créateur multimédia spécialisé dans l'utilisation créative de l'intelligence artificielle. À travers la musique et l'art visuel, j'explore les nouvelles possibilités offertes par les outils d'IA générative.</p>
-                <p>Ce site est une vitrine de mes expérimentations et créations, un espace où la technologie rencontre l'expression artistique.</p>
-                
-                <div class="social-links">
-                    <a href="#" class="social-link">YouTube</a>
-                    <a href="#" class="social-link">GitHub</a>
-                    <a href="#" class="social-link">Contact</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Particules de fond -->
-        <div class="particles" id="particles"></div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Music Page -->
+    <div id="music" class="page">
+        <div class="music-container">
+            <h2 class="section-title">◢ MUSIQUE & IA ◣</h2>
+            <div class="music-grid">
+                <div class="music-card">
+                    <div class="music-header">🎹</div>
+                    <div class="music-body">
+                        <h3>COMPOSITION AUTOMATIQUE</h3>
+                        <p>Les algorithmes neuronaux créent des mélodies originales, harmonisent des compositions complexes et produisent des morceaux entiers dans une infinité de styles musicaux, du classique au synthwave en passant par l'ambient électronique.</p>
+                        <span class="music-tag">◢ GÉNÉRATION</span>
+                        <span class="music-tag">◢ CRÉATIVITÉ</span>
+                    </div>
+                </div>
+                <div class="music-card">
+                    <div class="music-header">🎸</div>
+                    <div class="music-body">
+                        <h3>PRODUCTION ASSISTÉE</h3>
+                        <p>L'IA révolutionne la production musicale avec des outils de mixage automatique intelligents, de mastering neural et d'optimisation sonore qui transforment les studios en véritables centrales de création cybernétique.</p>
+                        <span class="music-tag">◢ PRODUCTION</span>
+                        <span class="music-tag">◢ INNOVATION</span>
+                    </div>
+                </div>
+                <div class="music-card">
+                    <div class="music-header">🎤</div>
+                    <div class="music-body">
+                        <h3>SYNTHÈSE VOCALE</h3>
+                        <p>La technologie de synthèse vocale par IA génère des voix chantées ultra-réalistes, clone des timbres vocaux avec une précision parfaite et ressuscite numériquement des voix du passé pour de nouvelles performances.</p>
+                        <span class="music-tag">◢ VOIX</span>
+                        <span class="music-tag">◢ SYNTHÈSE</span>
+                    </div>
+                </div>
+                <div class="music-card">
+                    <div class="music-header">🎧</div>
+                    <div class="music-body">
+                        <h3>RECOMMANDATIONS NEURALES</h3>
+                        <p>Les systèmes d'IA analysent vos patterns d'écoute pour créer des playlists personnalisées en temps réel, découvrir des artistes émergents et vous proposer la bande-son parfaite pour chaque instant de votre vie digitale.</p>
+                        <span class="music-tag">◢ ANALYSE</span>
+                        <span class="music-tag">◢ DÉCOUVERTE</span>
+                    </div>
+                </div>
+                <div class="music-card">
+                    <div class="music-header">🎼</div>
+                    <div class="music-body">
+                        <h3>TRANSCRIPTION QUANTIQUE</h3>
+                        <p>L'IA peut écouter n'importe quelle musique et la transcrire instantanément en partition numérique, identifier les structures harmoniques, détecter les patterns rythmiques et séparer les pistes instrumentales avec une précision atomique.</p>
+                        <span class="music-tag">◢ TRANSCRIPTION</span>
+                        <span class="music-tag">◢ ANALYSE</span>
+                    </div>
+                </div>
+                <div class="music-card">
+                    <div class="music-header">🌟</div>
+                    <div class="music-body">
+                        <h3>COLLABORATION HYBRIDE</h3>
+                        <p>Les musiciens collaborent avec l'IA pour explorer de nouvelles dimensions créatives, improviser en symbiose machine-humain et créer des œuvres hybrides qui fusionnent l'intuition organique et la puissance computationnelle.</p>
+                        <span class="music-tag">◢ COLLABORATION</span>
+                        <span class="music-tag">◢ FUTUR</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Images Page -->
+    <div id="images" class="page">
+        <div class="images-container">
+            <h2 class="section-title">◢ ART VISUEL & IA ◣</h2>
+            <div class="gallery">
+                <div class="gallery-item" data-title="◢ GÉNÉRATION D'ART ◣">
+                    <div class="gallery-placeholder">🖼️</div>
+                </div>
+                <div class="gallery-item" data-title="◢ PORTRAIT SYNTHÉTIQUE ◣">
+                    <div class="gallery-placeholder">👤</div>
+                </div>
+                <div class="gallery-item" data-title="◢ PAYSAGES NÉON ◣">
+                    <div class="gallery-placeholder">🏔️</div>
+                </div>
+                <div class="gallery-item" data-title="◢ STYLE TRANSFER ◣">
+                    <div class="gallery-placeholder">🎨</div>
+                </div>
+                <div class="gallery-item" data-title="◢ ARCHITECTURE CYBER ◣">
+                    <div class="gallery-placeholder">🏛️</div>
+                </div>
+                <div class="gallery-item" data-title="◢ CRÉATURES DIGITALES ◣">
+                    <div class="gallery-placeholder">🐉</div>
+                </div>
+            </div>
+            <div class="image-description">
+                <h3>◢ LA RÉVOLUTION VISUELLE ◣</h3>
+                <p>
+                    L'intelligence artificielle a déclenché une révolution cybernétique dans la création d'images. Des modèles neuronaux comme DALL-E, Midjourney et Stable Diffusion génèrent des visuels photoréalistes ou artistiques à partir de simples prompts textuels, ouvrant les portes d'un univers créatif infini baigné de néons.
+                </p>
+                <p>
+                    Ces technologies exploitent des réseaux neuronaux profonds entraînés sur des millions d'images pour comprendre les concepts visuels, les styles artistiques et les relations spatiales dans un espace latent multidimensionnel. Elles créent des œuvres originales, fusionnent des styles impossibles et imaginent des réalités alternatives qui n'existent que dans le cyberespace.
+                </p>
+                <p>
+                    Au-delà de la génération pure, l'IA transforme également la retouche photo, la restauration d'images anciennes, la création de contenu pour le cinéma et les jeux vidéo, ouvrant des horizons créatifs inexplorés pour les artistes digitaux du monde entier dans une symphonie de pixels luminescents.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page">
+        <div class="about-container">
+            <h2 class="section-title">◢ HISTOIRE DE L'IA ◣</h2>
+            <div class="about-intro">
+                <p>
+                    Des rêves des pionniers aux systèmes neuronaux d'aujourd'hui, découvrez l'odyssée cybernétique de l'intelligence artificielle à travers les décennies, illuminée par les néons du progrès technologique.
+                </p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1950</div>
+                        <h3>◢ Les Fondations ◣</h3>
+                        <p>Alan Turing publie "Computing Machinery and Intelligence" et propose le Test de Turing. C'est la genèse philosophique de l'IA, où l'humanité commence à se demander si les machines peuvent véritablement penser et posséder une conscience artificielle.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1956</div>
+                        <h3>◢ Naissance Officielle ◣</h3>
+                        <p>La conférence de Dartmouth marque la naissance officielle de l'intelligence artificielle. John McCarthy, Marvin Minsky et d'autres visionnaires posent les fondations conceptuelles d'un nouveau paradigme technologique qui transformera le monde.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1960-70</div>
+                        <h3>◢ L'Âge d'Or Initial ◣</h3>
+                        <p>Développement des premiers programmes d'IA capables de jouer aux échecs, de résoudre des problèmes mathématiques complexes et de traiter le langage naturel. C'est l'époque des grands espoirs et des premières démonstrations qui émerveillent le monde scientifique.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1980</div>
+                        <h3>◢ Systèmes Experts ◣</h3>
+                        <p>L'émergence des systèmes experts apporte l'IA dans le monde de l'entreprise. Ces programmes capturent l'expertise humaine dans des domaines spécifiques comme le diagnostic médical, créant les premières applications commerciales de l'intelligence artificielle.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1997</div>
+                        <h3>◢ Deep Blue vs Kasparov ◣</h3>
+                        <p>L'ordinateur Deep Blue d'IBM triomphe du champion du monde d'échecs Garry Kasparov, marquant un tournant historique et symbolique dans la démonstration de la puissance de calcul et de la capacité stratégique des machines face à l'intelligence humaine.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2012</div>
+                        <h3>◢ Deep Learning Renaissance ◣</h3>
+                        <p>AlexNet révolutionne la vision par ordinateur en exploitant l'apprentissage profond sur GPU. C'est le début d'une nouvelle ère cybernétique où les réseaux neuronaux profonds dominent le domaine et ouvrent des possibilités créatives inédites dans un océan de données.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2016</div>
+                        <h3>◢ AlphaGo & Le Go ◣</h3>
+                        <p>AlphaGo de DeepMind bat Lee Sedol au jeu de Go, réputé infiniment plus complexe que les échecs. Cette victoire spectaculaire de l'apprentissage par renforcement marque l'avènement d'une IA capable d'intuition et de créativité stratégique surhumaine.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2017-20</div>
+                        <h3>◢ L'Ère Transformer ◣</h3>
+                        <p>L'architecture Transformer révolutionne le traitement du langage naturel. GPT, BERT et leurs successeurs établissent de nouveaux standards dans la compréhension et la génération de texte, créant des modèles capables de conversations presque humaines dans le cyberespace linguistique.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2022</div>
+                        <h3>◢ IA Générative Mainstream ◣</h3>
+                        <p>ChatGPT, DALL-E 2, Midjourney et Stable Diffusion explosent dans la conscience collective. L'IA générative devient accessible au grand public, transformant radicalement la création de contenu, la programmation et l'art numérique dans une révolution créative sans précédent.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2023-25</div>
+                        <h3>◢ L'Ère Multimodale ◣</h3>
+                        <p>Les modèles d'IA deviennent multimodaux, capables de comprendre et de générer texte, images, audio et vidéo dans un flux continu de données. L'IA s'intègre dans tous les aspects de nos vies, ouvrant des questions éthiques majeures sur l'avenir de l'humanité dans un monde augmenté.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pages = document.querySelectorAll('.page');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetPage = link.getAttribute('data-page');
+                
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                
+                pages.forEach(page => page.classList.remove('active'));
+                document.getElementById(targetPage).classList.add('active');
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // CTA button
+        document.querySelector('.cta-button').addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetPage = e.target.getAttribute('data-page');
+            
+            navLinks.forEach(l => l.classList.remove('active'));
+            document.querySelector(`[data-page="${targetPage}"]`).classList.add('active');
+            
+            pages.forEach(page => page.classList.remove('active'));
+            document.getElementById(targetPage).classList.add('active');
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 </body>
 </html>
