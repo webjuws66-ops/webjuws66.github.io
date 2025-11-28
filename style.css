@@ -1,13 +1,13 @@
 :root {
     --primary: #0d0221;
     --secondary: #1a0b2e;
-    --accent: #c724ff;
-    --accent-glow: #9d4edd;
-    --neon-pink: #ff006e;
-    --neon-cyan: #00f5ff;
-    --neon-purple: #b537f2;
-    --text: #f0e6ff;
-    --text-dim: #b8a5d6;
+    --accent: #8b5cf6;
+    --accent-glow: #7c3aed;
+    --neon-pink: #c084fc;
+    --neon-cyan: #a78bfa;
+    --neon-purple: #9333ea;
+    --text: #e9d5ff;
+    --text-dim: #a78bfa;
     --surface: #1f0e3e;
 }
 
