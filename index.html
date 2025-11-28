@@ -1,787 +1,712 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Journey - L'univers de l'Intelligence Artificielle</title>
-  <script src="/_sdk/element_sdk.js"></script>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Intelligence Artificielle - Possibilités Infinies</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #1a0b2e 0%, #2d1b4e 50%, #1a0b2e 100%);
-      color: #e8d5f2;
-      overflow-x: hidden;
-      width: 100%;
-      min-height: 100%;
-    }
+        :root {
+            --primary: #8b5cf6;
+            --secondary: #a78bfa;
+            --dark: #1a0b2e;
+            --darker: #0f0722;
+            --light: #f3e8ff;
+        }
 
-    .app-container {
-      width: 100%;
-      min-height: 100%;
-      position: relative;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            color: white;
+            overflow-x: hidden;
+        }
 
-    /* Animated background particles */
-    .particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-    }
+        /* Animations de fond */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
 
-    .particle {
-      position: absolute;
-      background: radial-gradient(circle, rgba(200, 150, 255, 0.4) 0%, transparent 70%);
-      border-radius: 50%;
-      animation: float 20s infinite ease-in-out;
-    }
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            animation: float 20s infinite ease-in-out;
+            opacity: 0.1;
+        }
 
-    .particle:nth-child(1) {
-      width: 80px;
-      height: 80px;
-      top: 10%;
-      left: 10%;
-      animation-delay: 0s;
-    }
+        .circle:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
 
-    .particle:nth-child(2) {
-      width: 60px;
-      height: 60px;
-      top: 60%;
-      left: 80%;
-      animation-delay: 5s;
-    }
+        .circle:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 5s;
+        }
 
-    .particle:nth-child(3) {
-      width: 100px;
-      height: 100px;
-      top: 80%;
-      left: 20%;
-      animation-delay: 10s;
-    }
+        .circle:nth-child(3) {
+            width: 500px;
+            height: 500px;
+            bottom: 10%;
+            left: 50%;
+            animation-delay: 10s;
+        }
 
-    .particle:nth-child(4) {
-      width: 70px;
-      height: 70px;
-      top: 30%;
-      left: 70%;
-      animation-delay: 15s;
-    }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, -50px) scale(1.1); }
+            66% { transform: translate(-30px, 30px) scale(0.9); }
+        }
 
-    @keyframes float {
-      0%, 100% {
-        transform: translate(0, 0) scale(1);
-        opacity: 0.3;
-      }
-      50% {
-        transform: translate(50px, 50px) scale(1.2);
-        opacity: 0.6;
-      }
-    }
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 11, 46, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(139, 92, 246, 0.3);
+        }
 
-    /* Navigation */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(26, 11, 46, 0.9);
-      backdrop-filter: blur(10px);
-      padding: 1.5rem 2rem;
-      z-index: 1000;
-      border-bottom: 2px solid rgba(200, 150, 255, 0.3);
-      box-shadow: 0 4px 20px rgba(147, 51, 234, 0.3);
-    }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            list-style: none;
+        }
 
-    .nav-content {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            position: relative;
+        }
 
-    .logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-      background: linear-gradient(135deg, #c8a2ff 0%, #9333ea 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-shadow: 0 0 30px rgba(147, 51, 234, 0.5);
-    }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
 
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
+        nav a:hover::after {
+            width: 100%;
+        }
 
-    .nav-links a {
-      color: #d5b8e8;
-      text-decoration: none;
-      font-size: 1.1rem;
-      transition: all 0.3s ease;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      position: relative;
-    }
+        nav a:hover {
+            color: var(--secondary);
+        }
 
-    .nav-links a:hover {
-      color: #f0d9ff;
-      text-shadow: 0 0 15px rgba(200, 162, 255, 0.8);
-    }
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 8rem 5% 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
-    .nav-links a.active {
-      background: rgba(147, 51, 234, 0.2);
-      border: 1px solid rgba(200, 162, 255, 0.4);
-      box-shadow: 0 0 20px rgba(147, 51, 234, 0.4);
-    }
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s;
+        }
 
-    /* Main content */
-    main {
-      width: 100%;
-      margin-top: 80px;
-      position: relative;
-      z-index: 1;
-    }
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            animation: fadeInUp 1s;
+        }
 
-    .page {
-      display: none;
-      width: 100%;
-      min-height: calc(100% - 80px);
-      padding: 3rem 2rem;
-      animation: fadeIn 0.6s ease;
-    }
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s 0.2s both;
+        }
 
-    .page.active {
-      display: block;
-    }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+        /* Hero Section */
+        #accueil {
+            text-align: center;
+        }
 
-    .page-content {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            animation: fadeInUp 1s 0.4s both;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+        }
 
-    h1 {
-      font-size: 3.5rem;
-      margin-bottom: 2rem;
-      background: linear-gradient(135deg, #f0d9ff 0%, #c8a2ff 50%, #9333ea 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-align: center;
-      text-shadow: 0 0 40px rgba(147, 51, 234, 0.6);
-      animation: glow 3s ease-in-out infinite alternate;
-    }
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.6);
+        }
 
-    @keyframes glow {
-      from {
-        filter: drop-shadow(0 0 10px rgba(200, 162, 255, 0.4));
-      }
-      to {
-        filter: drop-shadow(0 0 30px rgba(147, 51, 234, 0.8));
-      }
-    }
+        /* Cards */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 2rem;
+        }
 
-    h2 {
-      font-size: 2rem;
-      margin: 2rem 0 1rem;
-      color: #c8a2ff;
-      text-shadow: 0 0 20px rgba(200, 162, 255, 0.5);
-    }
+        .card {
+            background: rgba(139, 92, 246, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s;
+            animation: fadeInUp 1s both;
+        }
 
-    p {
-      font-size: 1.2rem;
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
-      color: #d5b8e8;
-    }
+        .card:nth-child(1) { animation-delay: 0.2s; }
+        .card:nth-child(2) { animation-delay: 0.4s; }
+        .card:nth-child(3) { animation-delay: 0.6s; }
 
-    /* Home page hero */
-    .hero {
-      text-align: center;
-      padding: 4rem 0;
-    }
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(139, 92, 246, 0.2);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
+        }
 
-    .hero-subtitle {
-      font-size: 1.5rem;
-      color: #b896d4;
-      margin-bottom: 3rem;
-    }
+        .card h3 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
 
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 4rem;
-    }
+        .card p {
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.8);
+        }
 
-    .feature-card {
-      background: rgba(45, 27, 78, 0.6);
-      border: 2px solid rgba(200, 162, 255, 0.3);
-      border-radius: 20px;
-      padding: 2rem;
-      text-align: center;
-      transition: all 0.4s ease;
-      backdrop-filter: blur(10px);
-    }
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
 
-    .feature-card:hover {
-      transform: translateY(-10px);
-      border-color: rgba(147, 51, 234, 0.6);
-      box-shadow: 0 10px 40px rgba(147, 51, 234, 0.4);
-    }
+        /* Timeline */
+        .timeline {
+            max-width: 900px;
+            margin: 2rem auto;
+            position: relative;
+        }
 
-    .feature-icon {
-      font-size: 4rem;
-      margin-bottom: 1rem;
-    }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
+        }
 
-    .feature-card h3 {
-      font-size: 1.8rem;
-      color: #f0d9ff;
-      margin-bottom: 1rem;
-    }
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+            animation: fadeInUp 1s both;
+        }
 
-    /* Music AI page */
-    .music-examples {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
 
-    .music-card {
-      background: linear-gradient(135deg, rgba(45, 27, 78, 0.8) 0%, rgba(26, 11, 46, 0.9) 100%);
-      border: 2px solid rgba(200, 162, 255, 0.4);
-      border-radius: 15px;
-      padding: 2rem;
-      transition: all 0.3s ease;
-    }
+        .timeline-content {
+            width: 45%;
+            background: rgba(139, 92, 246, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
 
-    .music-card:hover {
-      border-color: rgba(147, 51, 234, 0.8);
-      box-shadow: 0 8px 30px rgba(147, 51, 234, 0.5);
-    }
+        .timeline-content:hover {
+            transform: scale(1.05);
+            background: rgba(139, 92, 246, 0.2);
+        }
 
-    .music-card h3 {
-      color: #c8a2ff;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
+        .timeline-year {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
 
-    .waveform {
-      height: 60px;
-      background: linear-gradient(90deg, rgba(200, 162, 255, 0.3) 0%, rgba(147, 51, 234, 0.5) 50%, rgba(200, 162, 255, 0.3) 100%);
-      border-radius: 10px;
-      margin: 1rem 0;
-      position: relative;
-      overflow: hidden;
-    }
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 4px solid var(--darker);
+            box-shadow: 0 0 20px var(--primary);
+        }
 
-    .waveform::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
-      animation: wave 2s infinite linear;
-    }
+        /* Demo sections */
+        .demo-container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(139, 92, 246, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
 
-    @keyframes wave {
-      from {
-        transform: translateX(-100%);
-      }
-      to {
-        transform: translateX(100%);
-      }
-    }
+        .demo-button {
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 0.5rem;
+        }
 
-    /* Image AI page */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
+        .demo-button:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
 
-    .gallery-item {
-      aspect-ratio: 1;
-      background: linear-gradient(135deg, rgba(200, 162, 255, 0.2) 0%, rgba(147, 51, 234, 0.3) 100%);
-      border: 2px solid rgba(200, 162, 255, 0.4);
-      border-radius: 15px;
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-    }
+        .demo-output {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            min-height: 100px;
+            color: var(--light);
+        }
 
-    .gallery-item:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 40px rgba(147, 51, 234, 0.6);
-    }
+        /* Images grid */
+        .images-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 2rem;
+        }
 
-    .ai-icon {
-      font-size: 5rem;
-      margin-bottom: 1rem;
-    }
+        .image-placeholder {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(167, 139, 250, 0.2) 100%);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
 
-    .gallery-item p {
-      text-align: center;
-      font-size: 1rem;
-      color: #c8a2ff;
-    }
+        .image-placeholder:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+        }
 
-    /* About page timeline */
-    .timeline {
-      position: relative;
-      padding: 2rem 0;
-      margin-top: 3rem;
-    }
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .subtitle { font-size: 1.2rem; }
+            
+            nav ul {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+            }
+            
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                flex-direction: row !important;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px;
+            }
+            
+            .timeline-dot {
+                left: 20px;
+            }
+        }
 
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 3px;
-      height: 100%;
-      background: linear-gradient(180deg, rgba(200, 162, 255, 0.3) 0%, rgba(147, 51, 234, 0.6) 100%);
-    }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
 
-    .timeline-item {
-      margin-bottom: 3rem;
-      position: relative;
-    }
-
-    .timeline-content {
-      background: rgba(45, 27, 78, 0.7);
-      border: 2px solid rgba(200, 162, 255, 0.4);
-      border-radius: 15px;
-      padding: 2rem;
-      width: calc(50% - 40px);
-      backdrop-filter: blur(10px);
-    }
-
-    .timeline-item:nth-child(odd) .timeline-content {
-      margin-left: auto;
-    }
-
-    .timeline-content::before {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: #9333ea;
-      border: 3px solid #c8a2ff;
-      border-radius: 50%;
-      top: 50%;
-      transform: translateY(-50%);
-      box-shadow: 0 0 20px rgba(147, 51, 234, 0.8);
-    }
-
-    .timeline-item:nth-child(odd) .timeline-content::before {
-      left: -50px;
-    }
-
-    .timeline-item:nth-child(even) .timeline-content::before {
-      right: -50px;
-    }
-
-    .timeline-year {
-      color: #9333ea;
-      font-size: 1.8rem;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2.5rem;
-      }
-
-      .nav-links {
-        gap: 1rem;
-      }
-
-      .nav-links a {
-        font-size: 0.9rem;
-        padding: 0.4rem 0.8rem;
-      }
-
-      .timeline::before {
-        left: 20px;
-      }
-
-      .timeline-content {
-        width: calc(100% - 60px);
-        margin-left: 60px !important;
-      }
-
-      .timeline-item:nth-child(odd) .timeline-content::before,
-      .timeline-item:nth-child(even) .timeline-content::before {
-        left: -50px;
-        right: auto;
-      }
-
-      .features-grid,
-      .music-examples,
-      .gallery {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
-  <style>@view-transition { navigation: auto; }</style>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
-  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
- </head>
- <body>
-  <div class="app-container">
-   <div class="particles">
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-   </div>
-   <nav>
-    <div class="nav-content">
-     <div class="logo">
-      ✨ AI Journey
-     </div>
-     <ul class="nav-links">
-      <li><a href="#home" class="nav-link active" data-page="home">Accueil</a></li>
-      <li><a href="#music" class="nav-link" data-page="music">Musique IA</a></li>
-      <li><a href="#image" class="nav-link" data-page="image">Image IA</a></li>
-      <li><a href="#about" class="nav-link" data-page="about">À propos</a></li>
-     </ul>
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
     </div>
-   </nav>
-   <main><!-- Home Page -->
-    <div id="home" class="page active">
-     <div class="page-content">
-      <div class="hero">
-       <h1>Bienvenue dans le futur de l'IA</h1>
-       <p class="hero-subtitle">Découvrez comment l'intelligence artificielle transforme notre monde</p>
-      </div>
-      <div class="features-grid">
-       <div class="feature-card">
-        <div class="feature-icon">
-         🎵
-        </div>
-        <h3>Musique IA</h3>
-        <p>L'IA compose des mélodies uniques et crée de nouveaux genres musicaux</p>
-       </div>
-       <div class="feature-card">
-        <div class="feature-icon">
-         🎨
-        </div>
-        <h3>Image IA</h3>
-        <p>Génération d'œuvres d'art et d'images photoréalistes en quelques secondes</p>
-       </div>
-       <div class="feature-card">
-        <div class="feature-icon">
-         🧠
-        </div>
-        <h3>Histoire</h3>
-        <p>Un voyage fascinant à travers l'évolution de l'intelligence artificielle</p>
-       </div>
-      </div>
-     </div>
-    </div><!-- Music AI Page -->
-    <div id="music" class="page">
-     <div class="page-content">
-      <h1>🎵 Musique IA</h1>
-      <p>L'intelligence artificielle révolutionne la création musicale en permettant de composer, produire et personnaliser la musique de manières inédites.</p>
-      <div class="music-examples">
-       <div class="music-card">
-        <h3>Composition Automatique</h3>
-        <div class="waveform"></div>
-        <p>Les IA comme AIVA et Amper Music composent des morceaux originaux en analysant des millions de partitions existantes.</p>
-       </div>
-       <div class="music-card">
-        <h3>Génération Vocale</h3>
-        <div class="waveform"></div>
-        <p>Des outils comme Vocaloid et Holly+ permettent de créer des voix synthétiques et de cloner des timbres vocaux.</p>
-       </div>
-       <div class="music-card">
-        <h3>Production Assistée</h3>
-        <div class="waveform"></div>
-        <p>L'IA aide au mastering, au mixage et suggère des arrangements pour améliorer les productions musicales.</p>
-       </div>
-       <div class="music-card">
-        <h3>Nouveaux Genres</h3>
-        <div class="waveform"></div>
-        <p>L'IA fusionne différents styles musicaux pour créer des genres hybrides jamais entendus auparavant.</p>
-       </div>
-      </div>
-      <h2>Impact sur l'industrie</h2>
-      <p>La musique IA démocratise la création musicale, permettant à chacun de composer sans formation préalable. Elle ouvre aussi des débats sur la créativité, l'authenticité et les droits d'auteur dans l'art musical.</p>
-     </div>
-    </div><!-- Image AI Page -->
-    <div id="image" class="page">
-     <div class="page-content">
-      <h1>🎨 Image IA</h1>
-      <p>Les intelligences artificielles de génération d'images transforment le monde de l'art visuel, du design et de la création de contenu.</p>
-      <div class="gallery">
-       <div class="gallery-item">
-        <div class="ai-icon">
-         🖼️
-        </div>
-        <p><strong>Art Génératif</strong><br>
-         DALL-E et Midjourney créent des œuvres uniques à partir de descriptions textuelles</p>
-       </div>
-       <div class="gallery-item">
-        <div class="ai-icon">
-         📸
-        </div>
-        <p><strong>Photographie IA</strong><br>
-         Génération d'images photoréalistes de personnes, lieux et objets inexistants</p>
-       </div>
-       <div class="gallery-item">
-        <div class="ai-icon">
-         ✏️
-        </div>
-        <p><strong>Design Assisté</strong><br>
-         Outils comme Adobe Firefly aident les designers dans leur processus créatif</p>
-       </div>
-       <div class="gallery-item">
-        <div class="ai-icon">
-         🎭
-        </div>
-        <p><strong>Style Transfer</strong><br>
-         Application de styles artistiques célèbres sur n'importe quelle image</p>
-       </div>
-       <div class="gallery-item">
-        <div class="ai-icon">
-         🔄
-        </div>
-        <p><strong>Restauration</strong><br>
-         Amélioration et restauration d'anciennes photos avec une qualité exceptionnelle</p>
-       </div>
-       <div class="gallery-item">
-        <div class="ai-icon">
-         🌟
-        </div>
-        <p><strong>Effets Spéciaux</strong><br>
-         Création d'effets visuels complexes pour le cinéma et les jeux vidéo</p>
-       </div>
-      </div>
-      <h2>Technologies clés</h2>
-      <p>Les modèles de diffusion et les réseaux antagonistes génératifs (GAN) permettent de créer des images d'une qualité stupéfiante. Ces technologies apprennent à partir de millions d'images pour comprendre les concepts visuels et les reproduire de manière créative.</p>
-      <h2>Questions éthiques</h2>
-      <p>La génération d'images par IA soulève des questions importantes sur les droits d'auteur, l'authenticité artistique et l'utilisation potentiellement trompeuse des deepfakes. Le débat se poursuit sur l'équilibre entre innovation et protection des créateurs.</p>
-     </div>
-    </div><!-- About Page -->
-    <div id="about" class="page">
-     <div class="page-content">
-      <h1>📚 Histoire de l'Intelligence Artificielle</h1>
-      <p>Voyage à travers les moments clés qui ont façonné l'IA moderne</p>
-      <div class="timeline">
-       <div class="timeline-item">
-        <div class="timeline-content">
-         <div class="timeline-year">
-          1950
-         </div>
-         <h3>Le Test de Turing</h3>
-         <p>Alan Turing propose son célèbre test pour déterminer si une machine peut penser. Il pose la question fondamentale : "Les machines peuvent-elles penser ?"</p>
-        </div>
-       </div>
-       <div class="timeline-item">
-        <div class="timeline-content">
-         <div class="timeline-year">
-          1956
-         </div>
-         <h3>Naissance officielle</h3>
-         <p>Le terme "Intelligence Artificielle" est créé lors de la conférence de Dartmouth. John McCarthy, Marvin Minsky et d'autres pionniers posent les bases de cette nouvelle discipline.</p>
-        </div>
-       </div>
-       <div class="timeline-item">
-        <div class="timeline-content">
-         <div class="timeline-year">
-          1997
-         </div>
-         <h3>Deep Blue bat Kasparov</h3>
-         <p>L'ordinateur Deep Blue d'IBM bat le champion du monde d'échecs Garry Kasparov, marquant une victoire symbolique de l'IA sur l'intelligence humaine dans un domaine spécifique.</p>
-        </div>
-       </div>
-       <div class="timeline-item">
-        <div class="timeline-content">
-         <div class="timeline-year">
-          2011
-         </div>
-         <h3>Watson gagne à Jeopardy!</h3>
-         <p>Le système Watson d'IBM remporte le jeu télévisé Jeopardy!, démontrant des capacités impressionnantes de traitement du langage naturel et de compréhension contextuelle.</p>
-        </div>
-       </div>
-       <div class="timeline-item">
-        <div class="timeline-content">
-         <div class="timeline-year">
-          2012
-         </div>
-         <h3>Deep Learning Renaissance</h3>
-         <p>AlexNet révolutionne la vision par ordinateur lors du concours ImageNet, marquant le début de l'ère du deep learning et des réseaux de neurones profonds.</p>
-        </div>
-       </div>
-       <div class="timeline-item">
-        <div class="timeline-content">
-         <div class="timeline-year">
-          2016
-         </div>
-         <h3>AlphaGo fait sensation</h3>
-         <p>DeepMind's AlphaGo bat Lee Sedol, champion du monde de Go, un jeu considéré comme bien plus complexe que les échecs. Cette victoire surprend toute la communauté scientifique.</p>
-        </div>
-       </div>
-       <div class="timeline-item">
-        <div class="timeline-content">
-         <div class="timeline-year">
-          2020
-         </div>
-         <h3>GPT-3 et les Transformers</h3>
-         <p>OpenAI lance GPT-3, un modèle de langage de 175 milliards de paramètres capable de générer du texte remarquablement cohérent et contextuel.</p>
-        </div>
-       </div>
-       <div class="timeline-item">
-        <div class="timeline-content">
-         <div class="timeline-year">
-          2022-2024
-         </div>
-         <h3>L'IA Générative Grand Public</h3>
-         <p>ChatGPT, DALL-E, Midjourney et Stable Diffusion rendent l'IA accessible à tous. L'IA générative transforme la création de contenu et devient un outil quotidien pour des millions de personnes.</p>
-        </div>
-       </div>
-      </div>
-      <h2>L'avenir de l'IA</h2>
-      <p>Nous vivons une période fascinante où l'IA continue d'évoluer à un rythme exponentiel. Les défis futurs incluent le développement d'une IA générale (AGI), l'éthique et la gouvernance de l'IA, ainsi que l'intégration harmonieuse de ces technologies dans notre société.</p>
-     </div>
-    </div>
-   </main>
-  </div>
-  <script>
-    const defaultConfig = {
-      home_title: "Bienvenue dans le futur de l'IA",
-      music_title: "🎵 Musique IA",
-      image_title: "🎨 Image IA",
-      about_title: "📚 Histoire de l'Intelligence Artificielle",
-      nav_home: "Accueil",
-      nav_music: "Musique IA",
-      nav_image: "Image IA",
-      nav_about: "À propos"
-    };
 
-    // Navigation functionality
-    const navLinks = document.querySelectorAll('.nav-link');
-    const pages = document.querySelectorAll('.page');
+    <nav>
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#musique">IA Musicale</a></li>
+            <li><a href="#images">IA Image</a></li>
+            <li><a href="#histoire">À Propos</a></li>
+        </ul>
+    </nav>
 
-    navLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
+    <section id="accueil">
+        <h1>Intelligence Artificielle</h1>
+        <p class="subtitle">Découvrez les possibilités infinies de l'IA</p>
+        <button class="cta-button" onclick="document.getElementById('musique').scrollIntoView({behavior: 'smooth'})">
+            Explorer
+        </button>
         
-        const targetPage = link.getAttribute('data-page');
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-icon">🎵</div>
+                <h3>Création Musicale</h3>
+                <p>L'IA compose, harmonise et génère des mélodies originales dans tous les styles musicaux imaginables.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🎨</div>
+                <h3>Génération d'Images</h3>
+                <p>Transformez vos idées en œuvres visuelles spectaculaires grâce aux réseaux neuronaux avancés.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🧠</div>
+                <h3>Innovation Continue</h3>
+                <p>Une évolution constante qui repousse les limites de la créativité et de l'intelligence artificielle.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="musique">
+        <h2>IA Musicale</h2>
+        <p class="subtitle">Quand l'intelligence artificielle compose la musique de demain</p>
         
-        // Update active nav link
-        navLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
+        <div class="demo-container">
+            <h3 style="color: var(--secondary); margin-bottom: 1.5rem;">Démonstration Interactive</h3>
+            <p style="margin-bottom: 1rem;">L'IA peut créer de la musique dans différents styles :</p>
+            
+            <div>
+                <button class="demo-button" onclick="generateMusic('classique')">🎻 Classique</button>
+                <button class="demo-button" onclick="generateMusic('jazz')">🎷 Jazz</button>
+                <button class="demo-button" onclick="generateMusic('electronique')">🎹 Électronique</button>
+                <button class="demo-button" onclick="generateMusic('ambient')">🌊 Ambient</button>
+            </div>
+            
+            <div class="demo-output" id="music-output">
+                <p class="pulse">🎵 Cliquez sur un style pour générer une composition...</p>
+            </div>
+            
+            <div style="margin-top: 2rem;">
+                <h4 style="color: var(--secondary);">Capacités de l'IA Musicale :</h4>
+                <ul style="margin-top: 1rem; line-height: 2;">
+                    <li>✨ Composition de mélodies originales</li>
+                    <li>🎼 Harmonisation automatique</li>
+                    <li>🎚️ Arrangement multi-instruments</li>
+                    <li>🎭 Adaptation au style et à l'émotion</li>
+                    <li>🔄 Génération de variations infinies</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="images">
+        <h2>IA & Génération d'Images</h2>
+        <p class="subtitle">De l'imagination à la réalité visuelle en quelques secondes</p>
         
-        // Update active page
-        pages.forEach(page => page.classList.remove('active'));
-        document.getElementById(targetPage).classList.add('active');
-      });
-    });
+        <div class="demo-container">
+            <h3 style="color: var(--secondary); margin-bottom: 1.5rem;">Générateur d'Images par IA</h3>
+            <p style="margin-bottom: 1rem;">Saisissez une description pour créer une image :</p>
+            
+            <input type="text" id="prompt-input" placeholder="Ex: Un coucher de soleil sur une planète alien..." 
+                   style="width: 100%; padding: 1rem; border-radius: 10px; border: 2px solid var(--primary); background: rgba(0,0,0,0.3); color: white; font-size: 1rem; margin-bottom: 1rem;">
+            
+            <button class="demo-button" onclick="generateImage()">🎨 Générer l'Image</button>
+            
+            <div class="demo-output" id="image-output">
+                <p class="pulse">🖼️ Entrez une description et cliquez sur Générer...</p>
+            </div>
+        </div>
+        
+        <div class="images-grid">
+            <div class="image-placeholder">🌌</div>
+            <div class="image-placeholder">🦄</div>
+            <div class="image-placeholder">🏰</div>
+            <div class="image-placeholder">🤖</div>
+        </div>
+        
+        <div style="max-width: 800px; margin-top: 3rem;">
+            <h3 style="color: var(--secondary); margin-bottom: 1rem;">Technologies utilisées :</h3>
+            <p style="line-height: 1.8; color: rgba(255,255,255,0.8);">
+                Les modèles de diffusion comme DALL-E, Midjourney et Stable Diffusion utilisent des réseaux de neurones profonds 
+                pour comprendre les descriptions textuelles et les transformer en images photoréalistes ou artistiques. 
+                Ces systèmes ont appris à partir de millions d'images pour comprendre les concepts visuels, les styles artistiques, 
+                et les relations entre objets.
+            </p>
+        </div>
+    </section>
 
-    // Element SDK implementation
-    async function onConfigChange(config) {
-      // Update page titles
-      const homeTitle = document.querySelector('#home h1');
-      if (homeTitle) {
-        homeTitle.textContent = config.home_title || defaultConfig.home_title;
-      }
+    <section id="histoire">
+        <h2>L'Histoire de l'IA</h2>
+        <p class="subtitle">Des origines à aujourd'hui : un voyage fascinant</p>
+        
+        <div class="timeline">
+            <div class="timeline-item" style="animation-delay: 0.2s;">
+                <div class="timeline-content">
+                    <div class="timeline-year">1950</div>
+                    <h3>Le Test de Turing</h3>
+                    <p>Alan Turing propose le célèbre "Test de Turing" pour évaluer l'intelligence d'une machine. Il publie "Computing Machinery and Intelligence", posant la question fondamentale : "Les machines peuvent-elles penser ?"</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item" style="animation-delay: 0.3s;">
+                <div class="timeline-content">
+                    <div class="timeline-year">1956</div>
+                    <h3>Naissance de l'IA</h3>
+                    <p>La conférence de Dartmouth marque la naissance officielle de l'intelligence artificielle en tant que domaine de recherche. John McCarthy invente le terme "Intelligence Artificielle".</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item" style="animation-delay: 0.4s;">
+                <div class="timeline-content">
+                    <div class="timeline-year">1997</div>
+                    <h3>Deep Blue bat Kasparov</h3>
+                    <p>L'ordinateur Deep Blue d'IBM bat le champion du monde d'échecs Garry Kasparov, démontrant la puissance du calcul et des algorithmes dans des tâches cognitives complexes.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item" style="animation-delay: 0.5s;">
+                <div class="timeline-content">
+                    <div class="timeline-year">2012</div>
+                    <h3>Révolution du Deep Learning</h3>
+                    <p>AlexNet remporte le concours ImageNet avec une marge impressionnante, marquant le début de l'ère moderne du deep learning et des réseaux de neurones profonds.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item" style="animation-delay: 0.6s;">
+                <div class="timeline-content">
+                    <div class="timeline-year">2016</div>
+                    <h3>AlphaGo et le jeu de Go</h3>
+                    <p>AlphaGo de DeepMind bat Lee Sedol, champion du monde de Go, dans un jeu considéré comme l'un des plus complexes. Une victoire historique pour l'apprentissage par renforcement.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item" style="animation-delay: 0.7s;">
+                <div class="timeline-content">
+                    <div class="timeline-year">2017</div>
+                    <h3>Architecture Transformer</h3>
+                    <p>Publication de "Attention Is All You Need" par Google, introduisant l'architecture Transformer qui révolutionnera le traitement du langage naturel et donnera naissance à GPT et BERT.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item" style="animation-delay: 0.8s;">
+                <div class="timeline-content">
+                    <div class="timeline-year">2020</div>
+                    <h3>GPT-3 et l'IA générative</h3>
+                    <p>OpenAI lance GPT-3 avec 175 milliards de paramètres, démontrant des capacités impressionnantes en génération de texte, traduction, et programmation.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item" style="animation-delay: 0.9s;">
+                <div class="timeline-content">
+                    <div class="timeline-year">2022-2023</div>
+                    <h3>L'explosion de l'IA générative</h3>
+                    <p>ChatGPT, DALL-E, Midjourney et Stable Diffusion deviennent accessibles au grand public. L'IA générative transforme la créativité, le travail et l'éducation à l'échelle mondiale.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+            
+            <div class="timeline-item" style="animation-delay: 1s;">
+                <div class="timeline-content">
+                    <div class="timeline-year">2024-2025</div>
+                    <h3>L'ère de l'IA multimodale</h3>
+                    <p>Les modèles d'IA intègrent texte, image, audio et vidéo de manière fluide. L'IA devient un assistant créatif et productif omniprésent dans notre quotidien.</p>
+                </div>
+                <div class="timeline-dot"></div>
+            </div>
+        </div>
+        
+        <div style="max-width: 800px; margin-top: 4rem; text-align: center;">
+            <h3 style="color: var(--secondary); margin-bottom: 1rem;">Et maintenant ?</h3>
+            <p style="line-height: 1.8; color: rgba(255,255,255,0.8);">
+                L'intelligence artificielle continue d'évoluer à une vitesse vertigineuse. Des recherches sur l'IA générale (AGI), 
+                l'apprentissage continu, et l'alignement de l'IA avec les valeurs humaines ouvrent de nouvelles perspectives fascinantes. 
+                Nous ne sommes qu'au début d'une révolution qui transformera profondément notre société.
+            </p>
+        </div>
+    </section>
 
-      const musicTitle = document.querySelector('#music h1');
-      if (musicTitle) {
-        musicTitle.textContent = config.music_title || defaultConfig.music_title;
-      }
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
-      const imageTitle = document.querySelector('#image h1');
-      if (imageTitle) {
-        imageTitle.textContent = config.image_title || defaultConfig.image_title;
-      }
+        // Music generation demo
+        function generateMusic(style) {
+            const output = document.getElementById('music-output');
+            const styles = {
+                classique: {
+                    title: '🎻 Composition Classique Générée',
+                    description: 'Mélodie en Sol majeur, structure sonate, influences de Mozart et Beethoven',
+                    notation: '♪ Sol-Si-Ré-Sol | Fa♯-La-Do-Fa♯ | Mi-Sol-Si-Mi | Ré-Fa♯-La-Ré ♪'
+                },
+                jazz: {
+                    title: '🎷 Improvisation Jazz Générée',
+                    description: 'Progression II-V-I en Fa majeur, swing tempo 120 BPM',
+                    notation: '♫ Gm7 → C7 → Fmaj7 → Dm7 → G7 → Cmaj7 ♫'
+                },
+                electronique: {
+                    title: '🎹 Track Électronique Générée',
+                    description: 'Genre: Progressive House, Tempo: 128 BPM, Tonalité: La mineur',
+                    notation: '⚡ Kick-Bass-Lead-Pad | Build-up | Drop | Breakdown ⚡'
+                },
+                ambient: {
+                    title: '🌊 Ambiance Atmosphérique Générée',
+                    description: 'Nappes éthérées, réverbération spatiale, tempo libre',
+                    notation: '～ Drones harmoniques | Textures évolutives | Silence dynamique ～'
+                }
+            };
+            
+            const selected = styles[style];
+            output.innerHTML = `
+                <div style="animation: fadeInUp 0.5s;">
+                    <h4 style="color: var(--primary); margin-bottom: 1rem;">${selected.title}</h4>
+                    <p style="margin-bottom: 1rem;">${selected.description}</p>
+                    <div style="background: rgba(139, 92, 246, 0.2); padding: 1rem; border-radius: 10px; font-family: monospace;">
+                        ${selected.notation}
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: rgba(255,255,255,0.6);">
+                        ✨ Composition générée par algorithme d'IA en temps réel
+                    </p>
+                </div>
+            `;
+        }
 
-      const aboutTitle = document.querySelector('#about h1');
-      if (aboutTitle) {
-        aboutTitle.textContent = config.about_title || defaultConfig.about_title;
-      }
+        // Image generation demo
+        function generateImage() {
+            const prompt = document.getElementById('prompt-input').value;
+            const output = document.getElementById('image-output');
+            
+            if (!prompt) {
+                output.innerHTML = '<p style="color: #ff6b6b;">⚠️ Veuillez entrer une description</p>';
+                return;
+            }
+            
+            output.innerHTML = '<p class="pulse">🔄 Génération en cours...</p>';
+            
+            setTimeout(() => {
+                output.innerHTML = `
+                    <div style="animation: fadeInUp 0.5s;">
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">✨ Image Générée</h4>
+                        <p style="margin-bottom: 1rem;"><strong>Prompt:</strong> "${prompt}"</p>
+                        <div style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.3) 0%, rgba(167, 139, 250, 0.3) 100%); 
+                                    aspect-ratio: 16/9; border-radius: 10px; display: flex; align-items: center; 
+                                    justify-content: center; font-size: 3rem; margin: 1rem 0;">
+                            🎨
+                        </div>
+                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">
+                            📊 Résolution: 1024x1024 | ⚙️ Modèle: Diffusion v2.1 | ⏱️ Temps: 2.3s
+                        </p>
+                    </div>
+                `;
+            }, 2000);
+        }
 
-      // Update navigation links
-      const navLinkElements = document.querySelectorAll('.nav-link');
-      if (navLinkElements[0]) {
-        navLinkElements[0].textContent = config.nav_home || defaultConfig.nav_home;
-      }
-      if (navLinkElements[1]) {
-        navLinkElements[1].textContent = config.nav_music || defaultConfig.nav_music;
-      }
-      if (navLinkElements[2]) {
-        navLinkElements[2].textContent = config.nav_image || defaultConfig.nav_image;
-      }
-      if (navLinkElements[3]) {
-        navLinkElements[3].textContent = config.nav_about || defaultConfig.nav_about;
-      }
-    }
-
-    function mapToCapabilities(config) {
-      return {
-        recolorables: [],
-        borderables: [],
-        fontEditable: undefined,
-        fontSizeable: undefined
-      };
-    }
-
-    function mapToEditPanelValues(config) {
-      return new Map([
-        ["home_title", config.home_title || defaultConfig.home_title],
-        ["music_title", config.music_title || defaultConfig.music_title],
-        ["image_title", config.image_title || defaultConfig.image_title],
-        ["about_title", config.about_title || defaultConfig.about_title],
-        ["nav_home", config.nav_home || defaultConfig.nav_home],
-        ["nav_music", config.nav_music || defaultConfig.nav_music],
-        ["nav_image", config.nav_image || defaultConfig.nav_image],
-        ["nav_about", config.nav_about || defaultConfig.nav_about]
-      ]);
-    }
-
-    // Initialize Element SDK
-    if (window.elementSdk) {
-      window.elementSdk.init({
-        defaultConfig,
-        onConfigChange,
-        mapToCapabilities,
-        mapToEditPanelValues
-      });
-    }
-  </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a58bb5aa2417900',t:'MTc2NDMyMTAyMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const circles = document.querySelectorAll('.circle');
+            circles.forEach((circle, index) => {
+                const speed = (index + 1) * 0.1;
+                circle.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+</body>
 </html>
