@@ -3,8 +3,7 @@
     --secondary: #1a0b2e;
     --accent: #8b5cf6;
     --accent-glow: #7c3aed;
-    --neon-pink: #c084fc;
-    --neon-cyan: #a78bfa;
+    --neon-violet: #a78bfa;
     --neon-purple: #9333ea;
     --text: #e9d5ff;
     --text-dim: #a78bfa;
@@ -22,9 +21,7 @@ body {
     background: var(--primary);
     color: var(--text);
     overflow-x: hidden;
-    line-height: 1.6;
-}
-
+    line
 /* Neon Grid Background */
 body::before {
     content: '';
