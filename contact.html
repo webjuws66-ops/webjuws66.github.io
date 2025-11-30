@@ -10,7 +10,7 @@ body {
     margin: 0;
     font-family: "Poppins", sans-serif;
     background: url('contact-background.jpg') center/cover no-repeat fixed;
-    color: #f3eaff;
+    color: #ffffff;
     height: 100vh;
     overflow-y: auto;
 }
@@ -21,7 +21,7 @@ body {
     text-shadow: 0 0 8px rgba(0,0,0,0.75);
 }
 
-/* ----- HEADER ----- */
+/* ----- HEADER FUTURISTE ----- */
 header {
     position: fixed;
     top: 20px;
@@ -31,16 +31,15 @@ header {
     padding: 14px 28px;
     border-radius: 999px;
 
-    background: rgba(10,10,20,0.55);
+    background: rgba(10,10,20,0.55);          
     backdrop-filter: blur(18px);
-    border: 1px solid rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.25);   
 
     display: flex;
     justify-content: space-between;
     z-index: 10;
 }
 
-/* --- liens du menu --- */
 nav a {
     margin: 0 14px;
     text-decoration: none;
@@ -128,14 +127,13 @@ h1 {
     font-size: 1.9rem;
     margin-bottom: 14px;
 }
+
 .contact-item {
     margin-top: 12px;
     font-size: 1.05rem;
 }
-.contact-item strong {
-    color: #fff;
-}
 </style>
+
 
 <script>
 // Menu actif
@@ -148,7 +146,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     });
 });
 
-// Accordéon ouverture unique
+// Accordéon — ouverture unique
 document.addEventListener("DOMContentLoaded", () => {
     const headers = document.querySelectorAll(".accordion-header");
 
@@ -198,81 +196,163 @@ document.addEventListener("DOMContentLoaded", () => {
 Une rétrospective en 7 chapitres couvrant plus de 80 ans de découvertes majeures.
 </p>
 
-<!-- =====================
-     ACCORDÉON COMPLET
-====================== -->
+<!-- ========================== -->
+<!-- ACCORDÉON COMPLET          -->
+<!-- ========================== -->
+
 <div class="accordion">
 
-    <!-- 1 -->
-    <div class="accordion-item">
-        <div class="accordion-header">📘 1940–1960 : Les origines de l’IA</div>
-        <div class="accordion-content">
-            • Alan Turing publie son test d’intelligence (1950).<br>
-            • Développement des premières machines programmables.<br>
-            • Cybernétique, réseaux logiques, Dartmouth 1956, etc.
-        </div>
-    </div>
-
-    <!-- 2 -->
-    <div class="accordion-item">
-        <div class="accordion-header">📗 1960–1980 : Réseaux, logique & heuristiques</div>
-        <div class="accordion-content">
-            • Perceptron, ELIZA, LISP, systèmes experts, vision par ordinateur…
-        </div>
-    </div>
-
-    <!-- 3 -->
-    <div class="accordion-item">
-        <div class="accordion-header">📙 1980–2000 : L’ère des systèmes experts</div>
-        <div class="accordion-content">
-            • Backpropagation, IA industrielle, data mining, robots autonomes…
-        </div>
-    </div>
-
-    <!-- 4 -->
-    <div class="accordion-item">
-        <div class="accordion-header">📒 2000–2010 : Machine Learning & Big Data</div>
-        <div class="accordion-content">
-            • Big Data, moteurs de recherche, recommandations, IA embarquée…
-        </div>
-    </div>
-
-    <!-- 5 -->
-    <div class="accordion-item">
-        <div class="accordion-header">📕 2010–2020 : Révolution Deep Learning</div>
-        <div class="accordion-content">
-            • AlphaGo, deepfake, GANs, assistants vocaux, voitures autonomes…
-        </div>
-    </div>
-
-    <!-- 6 -->
-    <div class="accordion-item">
-        <div class="accordion-header">📓 2020–2024 : IA générative & modèles géants</div>
-        <div class="accordion-content">
-            • GPT, Midjourney, Suno, Pika, robots IA, agents autonomes…
-        </div>
-    </div>
-
-    <!-- 7 -->
-    <div class="accordion-item">
-        <div class="accordion-header">📔 2025+ : Le futur de l’IA</div>
-        <div class="accordion-content">
-            • IA conversationnelle quasi-humaine, robotique, villes intelligentes…
-        </div>
-    </div>
-
+<!-- ------------------------------- -->
+<!-- 🚀 1940–1960 COMPLET (15 lignes) -->
+<!-- ------------------------------- -->
+<div class="accordion-item">
+<div class="accordion-header">📘 1940–1960 : Les origines de l’IA</div>
+<div class="accordion-content">
+• Alan Turing publie son test d’intelligence (1950).<br>
+• Naissance de la cybernétique (Wiener).<br>
+• Premiers programmes de résolution logique.<br>
+• Apparition des premiers ordinateurs programmables.<br>
+• McCarthy invente le terme “IA”.<br>
+• Création du langage LISP.<br>
+• Études sur la traduction automatique.<br>
+• Début des réseaux logiques.<br>
+• Premiers robots rudimentaires autonomes.<br>
+• Théorie des automates cellulaires.<br>
+• Conférence de Dartmouth (1956) : acte fondateur.<br>
+• Premiers modèles mathématiques du raisonnement.<br>
+• Essais d’apprentissage machine élémentaire.<br>
+• Début des applications militaires IA.<br>
+• Développement des premiers algorithmes symboliques.
+</div>
 </div>
 
-<!-- CONTACT -->
-<div class="contact-box">
-    <h2>Contact</h2>
-    <p>Pour toute question, collaboration ou retour :</p>
-
-    <div class="contact-item"><strong>Email :</strong> votre-email@exemple.com</div>
-    <div class="contact-item"><strong>Réseaux :</strong> LinkedIn, Instagram, etc.</div>
+<!-- ------------------------------- -->
+<!-- 🚀 1960–1980 COMPLET -->
+<!-- ------------------------------- -->
+<div class="accordion-item">
+<div class="accordion-header">📗 1960–1980 : Réseaux, logique & heuristiques</div>
+<div class="accordion-content">
+• Naissance du perceptron (Rosenblatt).<br>
+• Création d’ELIZA, premier chatbot (1966).<br>
+• Développement d’heuristiques avancées.<br>
+• Avancées majeures en vision par ordinateur.<br>
+• Premiers robots mobiles intelligents.<br>
+• Systèmes symboliques dominants.<br>
+• Premiers systèmes experts naissants.<br>
+• Débat IA symbolique vs IA connexionniste.<br>
+• Début du financement massif (USA, Japon).<br>
+• Premiers systèmes de compréhension du langage.<br>
+• Langages IA : LISP, Prolog.<br>
+• Modélisation du raisonnement humain.<br>
+• Interfaces IA simplifiées.<br>
+• Découverte des limites du perceptron simple.<br>
+• Premières IA industrielles simples.
+</div>
 </div>
 
-</section>
+<!-- ------------------------------- -->
+<!-- 🚀 1980–2000 COMPLET -->
+<!-- ------------------------------- -->
+<div class="accordion-item">
+<div class="accordion-header">📙 1980–2000 : L’ère des systèmes experts</div>
+<div class="accordion-content">
+• Explosion des systèmes experts.<br>
+• Backpropagation : retour des réseaux de neurones.<br>
+• IA dans la finance et la médecine.<br>
+• Algorithmes génétiques et évolutionnaires.<br>
+• Premiers véhicules autonomes expérimentaux.<br>
+• Reconnaissance d’écriture manuscrite.<br>
+• Début des agents intelligents.<br>
+• IA dans les jeux vidéo (meilleure logique).<br>
+• Apprentissage profond théorique précurseur.<br>
+• IA dans les machines industrielles.<br>
+• Data mining : extraction de données.<br>
+• Algorithmes de classification modernes.<br>
+• NLP statistiques.<br>
+• Réseaux plus profonds émergents.<br>
+• Développement des bases de connaissance.
+</div>
+</div>
 
-</body>
-</html>
+<!-- ------------------------------- -->
+<!-- 🚀 2000–2010 COMPLET -->
+<!-- ------------------------------- -->
+<div class="accordion-item">
+<div class="accordion-header">📒 2000–2010 : Machine Learning & Big Data</div>
+<div class="accordion-content">
+• Explosion du numérique & Big Data.<br>
+• IA dans les moteurs de recherche.<br>
+• Systèmes de recommandation (Netflix, YouTube).<br>
+• Traduction statistique avancée.<br>
+• Deep Learning opérationnel.<br>
+• Détection faciale performante.<br>
+• Smartphones + IA embarquée.<br>
+• Premières voitures semi-autonomes.<br>
+• Classification massive d’images.<br>
+• Traitement vocal amélioré.<br>
+• Prédiction financière robuste.<br>
+• Détection automatique des spams.<br>
+• IA en cybersécurité.<br>
+• Gestion automatique des données massives.<br>
+• Premières IA médicales efficaces.
+</div>
+</div>
+
+<!-- ------------------------------- -->
+<!-- 🚀 2010–2020 COMPLET -->
+<!-- ------------------------------- -->
+<div class="accordion-item">
+<div class="accordion-header">📕 2010–2020 : Révolution Deep Learning</div>
+<div class="accordion-content">
+• AlphaGo bat le champion du monde (DeepMind).<br>
+• Explosion du Deep Learning mondial.<br>
+• Assistants vocaux (Siri, Alexa).<br>
+• Traduction neuronale.<br>
+• Vision par ordinateur ultra précise.<br>
+• GANs (images réalistes).<br>
+• Deepfake & enjeux éthiques.<br>
+• Voitures autonomes avancées.<br>
+• Médecine prédictive.<br>
+• Robotique humanoïde meilleure.<br>
+• TensorFlow & PyTorch dominent.<br>
+• Synthèse vocale réaliste.<br>
+• Agents autonomes multi-tâches.<br>
+• NLP neuronal moderne.<br>
+• Précurseurs modèles géants.
+</div>
+</div>
+
+<!-- ------------------------------- -->
+<!-- 🚀 2020–2024 COMPLET -->
+<!-- ------------------------------- -->
+<div class="accordion-item">
+<div class="accordion-header">📓 2020–2024 : IA générative & modèles géants</div>
+<div class="accordion-content">
+• GPT-3, GPT-4 : révolution du langage.<br>
+• Diffusion : Midjourney, Stable Diffusion.<br>
+• Musique IA (Suno, Udio).<br>
+• Vidéo IA (Pika, Runway).<br>
+• Robots plus cohérents.<br>
+• IA intégrée dans Microsoft + Google.<br>
+• IA dans l’éducation massive.<br>
+• Régulation deepfake.<br>
+• IA multimodale.<br>
+• Modèles IA open-source géants.<br>
+• IA véhicules autonomes.<br>
+• Explosion créativité IA.<br>
+• Agents autonomes réels.<br>
+• IA dans la justice & l'administration.<br>
+• Débat global sur l’éthique.
+</div>
+</div>
+
+<!-- ------------------------------- -->
+<!-- 🚀 2025+ COMPLET -->
+<!-- ------------------------------- -->
+<div class="accordion-item">
+<div class="accordion-header">📔 2025+ : Le futur de l’IA</div>
+<div class="accordion-content">
+• IA conversationnelle quasi humaine.<br>
+• Robots compagnons évolués.<br>
+• IA dans les villes intelligentes.<br>
+• Médecine
