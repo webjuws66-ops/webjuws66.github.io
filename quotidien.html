@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>IA & Quotidien</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #f5f7ff;
+    color: #111827;
+    height: 100vh;
+    overflow: hidden;
+}
+
+header {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 86%;
+    padding: 14px 28px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(14px);
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid rgba(160,160,255,0.4);
+    z-index: 10;
+}
+nav a {
+    margin: 0 14px;
+    text-decoration: none;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+nav a.active { color:#6366f1; }
+
+.page {
+    height: 100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding: 0 60px;
+}
+h1 { font-size: 2.4rem; margin-bottom: 12px; }
+p { font-size:1.05rem; max-width:650px; color:#6b7280; }
+
+ul {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.6;
+}
+ul li::before {
+    content: "• ";
+    color: #6366f1;
+}
+
+.btn {
+    margin-top:25px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: linear-gradient(120deg,#fff,#dcdfff);
+    border: 1px solid #c7d2fe;
+    text-decoration:none;
+    color:#111;
+    font-size:1rem;
+}
+</style>
+
+<script>
+// Active automatiquement le lien du menu correspondant à la page
+document.addEventListener("DOMContentLoaded", ()=>{
+    const current = location.pathname.split("/").pop();
+    document.querySelectorAll("nav a").forEach(a=>{
+        if(a.getAttribute("href")===current){
+            a.classList.add("active");
+        }
+    });
+});
+</script>
+
+</head>
+<body>
+
+<header>
+    <div class="logo">IA Vision</div>
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="ia-simple.html">IA Simplifiée</a>
+        <a href="quotidien.html">Quotidien</a>
+        <a href="creative.html">Créative</a>
+        <a href="innovations.html">Innovations</a>
+        <a href="risques.html">Risques</a>
+        <a href="futur.html">Futur</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="page">
+    <h1>L’IA dans notre quotidien</h1>
+    <p>
+        L’intelligence artificielle est déjà présente partout autour de nous, souvent de manière invisible.
+        Elle optimise nos choix, personnalise nos outils et rend de nombreuses tâches plus simples.
+    </p>
+
+    <ul>
+        <li><strong>Assistants vocaux</strong> – Ils répondent, programment, pilotent la maison.</li>
+        <li><strong>Recommandations</strong> – Films, musique, achats : tout devient personnalisé.</li>
+        <li><strong>Santé</strong> – Aide au diagnostic, analyse d’images médicales.</li>
+        <li><strong>Mobilité</strong> – GPS intelligents, optimisation des trajets.</li>
+    </ul>
+
+    <a href="creative.html" class="btn">Page suivante → IA Créative</a>
+</section>
+
+</body>
+</html>
