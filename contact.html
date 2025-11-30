@@ -21,7 +21,7 @@ body {
     text-shadow: 0 0 8px rgba(0,0,0,0.75);
 }
 
-/* ----- HEADER NOIR TRANSPARENT ÉLÉGANT ----- */
+/* ----- HEADER ----- */
 header {
     position: fixed;
     top: 20px;
@@ -31,9 +31,9 @@ header {
     padding: 14px 28px;
     border-radius: 999px;
 
-    background: rgba(10,10,20,0.55);            /* sombre transparent */
+    background: rgba(10,10,20,0.55);
     backdrop-filter: blur(18px);
-    border: 1px solid rgba(255,255,255,0.25);    /* bord lumineux léger */
+    border: 1px solid rgba(255,255,255,0.25);
 
     display: flex;
     justify-content: space-between;
@@ -44,12 +44,11 @@ header {
 nav a {
     margin: 0 14px;
     text-decoration: none;
-    color: #ffffff !important;                  /* texte blanc pur */
+    color: #ffffff !important;
     font-weight: 500;
-    text-shadow: 0 0 8px rgba(0,0,0,0.5);       /* glow pour lisibilité */
+    text-shadow: 0 0 8px rgba(0,0,0,0.5);
 }
 
-/* lien actif = bleu/violet IA */
 nav a.active {
     color: #a58bff !important;
     font-weight: 600;
@@ -105,11 +104,11 @@ h1 {
     border-top: 1px solid rgba(255,255,255,0.25);
 }
 
-/* Animation douce */
 .accordion-content.show {
     display: block;
     animation: fadeIn 0.25s ease;
 }
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-4px); }
     to { opacity: 1; transform: translateY(0); }
@@ -129,7 +128,6 @@ h1 {
     font-size: 1.9rem;
     margin-bottom: 14px;
 }
-
 .contact-item {
     margin-top: 12px;
     font-size: 1.05rem;
@@ -138,7 +136,6 @@ h1 {
     color: #fff;
 }
 </style>
-
 
 <script>
 // Menu actif
@@ -151,7 +148,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     });
 });
 
-// Accordéon — ouverture unique
+// Accordéon ouverture unique
 document.addEventListener("DOMContentLoaded", () => {
     const headers = document.querySelectorAll(".accordion-header");
 
@@ -201,23 +198,78 @@ document.addEventListener("DOMContentLoaded", () => {
 Une rétrospective en 7 chapitres couvrant plus de 80 ans de découvertes majeures.
 </p>
 
-<!-- ACCORDÉON FULL CONTENT (inchangé) -->
+<!-- =====================
+     ACCORDÉON COMPLET
+====================== -->
 <div class="accordion">
-    <!-- tes items ici, inchangés -->
-    <!-- (je ne les recopie pas pour alléger la réponse, ils restent identiques à ton code) -->
+
+    <!-- 1 -->
+    <div class="accordion-item">
+        <div class="accordion-header">📘 1940–1960 : Les origines de l’IA</div>
+        <div class="accordion-content">
+            • Alan Turing publie son test d’intelligence (1950).<br>
+            • Développement des premières machines programmables.<br>
+            • Cybernétique, réseaux logiques, Dartmouth 1956, etc.
+        </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="accordion-item">
+        <div class="accordion-header">📗 1960–1980 : Réseaux, logique & heuristiques</div>
+        <div class="accordion-content">
+            • Perceptron, ELIZA, LISP, systèmes experts, vision par ordinateur…
+        </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="accordion-item">
+        <div class="accordion-header">📙 1980–2000 : L’ère des systèmes experts</div>
+        <div class="accordion-content">
+            • Backpropagation, IA industrielle, data mining, robots autonomes…
+        </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="accordion-item">
+        <div class="accordion-header">📒 2000–2010 : Machine Learning & Big Data</div>
+        <div class="accordion-content">
+            • Big Data, moteurs de recherche, recommandations, IA embarquée…
+        </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="accordion-item">
+        <div class="accordion-header">📕 2010–2020 : Révolution Deep Learning</div>
+        <div class="accordion-content">
+            • AlphaGo, deepfake, GANs, assistants vocaux, voitures autonomes…
+        </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="accordion-item">
+        <div class="accordion-header">📓 2020–2024 : IA générative & modèles géants</div>
+        <div class="accordion-content">
+            • GPT, Midjourney, Suno, Pika, robots IA, agents autonomes…
+        </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="accordion-item">
+        <div class="accordion-header">📔 2025+ : Le futur de l’IA</div>
+        <div class="accordion-content">
+            • IA conversationnelle quasi-humaine, robotique, villes intelligentes…
+        </div>
+    </div>
+
 </div>
 
 <!-- CONTACT -->
 <div class="contact-box">
     <h2>Contact</h2>
-    <p>Pour toute question ou collaboration :</p>
+    <p>Pour toute question, collaboration ou retour :</p>
 
-    <div class="contact-item">
-        <strong>Email :</strong> votre-email@exemple.com
-    </div>
-    <div class="contact-item">
-        <strong>Réseaux :</strong> LinkedIn, Instagram, etc.
-    </div>
+    <div class="contact-item"><strong>Email :</strong> votre-email@exemple.com</div>
+    <div class="contact-item"><strong>Réseaux :</strong> LinkedIn, Instagram, etc.</div>
 </div>
 
 </section>
