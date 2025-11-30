@@ -31,56 +31,69 @@ body, .page {
     border-radius: 10px;
 }
 
-/* ======= HEADER GLASS PREMIUM ======= */
+/* ===== HEADER FUTURISTE PREMIUM ===== */
 header {
     position: fixed;
-    top: 20px;
+    top: 18px;
     left: 50%;
     transform: translateX(-50%);
-    width: 88%;
-    padding: 16px 28px;
-    
-    background: rgba(255, 255, 255, 0.22); /* plus clair, plus propre */
-    backdrop-filter: blur(12px);           /* flou net et doux */
-    -webkit-backdrop-filter: blur(12px);
-    
-    border-radius: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    width: 86%;
+
+    padding: 14px 24px;
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.14); /* plus transparent */
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.18);
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     z-index: 50;
 }
 
 /* Logo */
 header .logo {
     font-weight: 600;
-    font-size: 1.1rem;
-    color: #f5f5ff;        /* très lisible */
-    text-shadow: 0 0 10px rgba(0,0,0,0.6);
+    font-size: 1.15rem;
+    color: #ffffff;
+    text-shadow: 0 0 12px rgba(255,255,255,0.8);
 }
 
 /* Navigation */
 nav a {
-    margin: 0 14px;
+    margin: 0 10px;
+    padding: 6px 10px;
+
     text-decoration: none;
-    font-size: 0.92rem;
-    color: #f3f3f3;
-    text-shadow: 0 0 8px rgba(0,0,0,0.55);
-    transition: color 0.2s ease;
+    color: #f1f1f1;
+
+    font-size: 0.95rem;
+    font-weight: 500;
+
+    text-shadow: 0 0 6px rgba(0,0,0,0.6);
+    transition: 0.25s ease;
+    border-radius: 8px;
 }
 
+/* Survol futuriste */
 nav a:hover {
-    color: #c8caff; /* violet clair */
+    background: rgba(255,255,255,0.22);
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(200,150,255,0.6);
 }
 
+/* Lien actif */
 nav a.active {
-    color: #a8aaff;   /* violet plus soutenu */
-    font-weight: 600;
+    color: #ffffff;
+    font-weight: 700;
+    background: rgba(255,255,255,0.30);
+    box-shadow: 0 0 12px rgba(180,120,255,0.6);
 }
+
 
 </style>
 
