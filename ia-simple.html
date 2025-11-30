@@ -85,6 +85,7 @@ h1 {
     text-shadow: 0 0 14px rgba(0,0,0,1);
 }
 
+/* Textes */
 p {
     font-size:1.22rem;
     max-width:650px;
@@ -93,10 +94,13 @@ p {
     text-shadow: 0 0 14px rgba(0,0,0,1);
 }
 
-/* Icônes puces */
-p strong {
-    color: #ffefae;
-    text-shadow: 0 0 12px rgba(0,0,0,0.9);
+/* Mots-clés jaunes lisibles (comme page 3) */
+.key {
+    color: #ffe88a;
+    font-weight: 700;
+    text-shadow:
+        0 0 8px rgba(0,0,0,1),
+        0 0 12px rgba(255,215,0,0.7);
 }
 
 /* ===== BOUTON ===== */
@@ -159,9 +163,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
     </p>
 
     <p style="margin-top:22px;">
-        📌 <strong>Observer</strong> — elle analyse images, textes et sons<br>
-        📌 <strong>Apprendre</strong> — elle s’adapte avec les données<br>
-        📌 <strong>Agir</strong> — elle répond, prédit, conseille ou crée
+        📌 <span class="key">Observer</span> — elle analyse images, textes et sons<br>
+        📌 <span class="key">Apprendre</span> — elle s’adapte avec les données<br>
+        📌 <span class="key">Agir</span> — elle répond, prédit, conseille ou crée
     </p>
 
     <a href="quotidien.html" class="btn">Page suivante → IA & Quotidien</a>
