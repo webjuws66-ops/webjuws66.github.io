@@ -574,3 +574,34 @@ textarea:focus {
         height: 220px;
     }
 }
+/* Fade-in sections */
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Active nav link */
+.main-nav a.active {
+    color: #111827;
+}
+
+.main-nav a.active::after {
+    width: 100%;
+}
+
+/* Header shadow on scroll */
+.header-shadow {
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.15);
+}
+
+/* Orbital pulse */
+.orbital-core.pulse {
+    transform: scale(1.06);
+    transition: transform 0.6s ease;
+}
