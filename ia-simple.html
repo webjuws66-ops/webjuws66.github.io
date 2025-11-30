@@ -95,46 +95,48 @@ nav a.active {
     display: inline-block;
 }
 
-/* TITRE */
+/* ===== TITRE ===== */
 h1 {
-    font-size: 3rem;
-    margin-bottom: 18px;
+    font-size: 3.4rem;     /* +20% */
+    margin-bottom: 22px;
+    font-weight: 700;
     color: #ffffff;
     text-shadow:
-        0 0 12px rgba(0,0,0,1),
-        0 0 24px rgba(0,0,0,0.9);
+        0 0 14px rgba(0,0,0,1),
+        0 0 28px rgba(0,0,0,0.9);
     -webkit-text-stroke: 1px rgba(0,0,0,0.9);
 }
 
-/* MOTS CLÉS JAUNES */
-.key {
-    color: #ffeb79 !important;
-    font-weight: 700;
-    text-shadow: 
-        0 0 12px rgba(0,0,0,1),
-        0 0 22px rgba(0,0,0,0.8);
-    -webkit-text-stroke: 0.6px rgba(0,0,0,0.8);
+/* ===== PARAGRAPHES ===== */
+.text {
+    font-size: 1.35rem;    /* +20% */
+    line-height: 1.75;     /* plus d’air */
+    color: #ffffff !important;
+    text-shadow:
+        0 0 14px rgba(0,0,0,0.95),
+        0 0 22px rgba(0,0,0,0.85);
+    -webkit-text-stroke: 0.8px rgba(0,0,0,0.85);
 }
 
-/* ===== BOUTON ===== */
-.btn {
-    margin-top:40px;
-    padding: 14px 24px;
+/* ===== BLOCS TRANSLUCIDES ===== */
+.text-block {
+    background: rgba(0,0,0,0.32);    /* plus sombre → + lisible */
+    padding: 16px 22px;             /* plus large */
     border-radius: 14px;
-    width: fit-content;
-    background: rgba(255,255,255,0.85);
-    text-decoration:none;
-    color:#111 !important;
-    font-size:1.05rem;
-    font-weight:600;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.28);
-    transition: 0.25s ease;
+    backdrop-filter: blur(6px);
 }
 
-.btn:hover {
-    background: #ffffff;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+/* ===== MOTS CLÉS JAUNES ===== */
+.key {
+    font-size: 1.4rem;      /* +25% */
+    color: #ffe066 !important;
+    font-weight: 700;
+    text-shadow:
+        0 0 14px rgba(0,0,0,1),
+        0 0 28px rgba(0,0,0,1);
+    -webkit-text-stroke: 0.85px rgba(0,0,0,0.9);
 }
+
 </style>
 
 
