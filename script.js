@@ -1,106 +1,121 @@
-/* ==============================
-   1. YEAR AUTO-UPDATE
-============================== */
-document.addEventListener("DOMContentLoaded", () => {
-    const yearSpan = document.getElementById("year");
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-    }
-});
+/* =============================
+   RESET & VARIABLES
+============================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ==============================
-   2. SCROLL SHADOW ON HEADER
-============================== */
-const header = document.querySelector(".site-header");
-
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 30) {
-        header.classList.add("header-shadow");
-    } else {
-        header.classList.remove("header-shadow");
-    }
-});
-
-/* ==============================
-   3. REVEAL ANIMATION ON SECTIONS
-============================== */
-const observer = new IntersectionObserver(
-    (entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-            }
-        });
-    },
-    {
-        threshold: 0.18,
-    }
-);
-
-document.querySelectorAll(".section, .hero").forEach((sec) => {
-    sec.classList.add("reveal");
-    observer.observe(sec);
-});
-
-/* ==============================
-   4. ACTIVE NAVIGATION LINK
-============================== */
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll(".main-nav a[href^='#']");
-
-window.addEventListener("scroll", () => {
-    let current = "";
-
-    sections.forEach((section) => {
-        const top = section.offsetTop - 200;
-        if (pageYOffset >= top) current = section.getAttribute("id");
-    });
-
-    navLinks.forEach((link) => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === `#${current}`) {
-            link.classList.add("active");
-        }
-    });
-});
-
-/* ==============================
-   5. OPTIONAL – ORBITAL PULSE
-============================== */
-const orbital = document.querySelector(".orbital-core");
-if (orbital) {
-    setInterval(() => {
-        orbital.classList.toggle("pulse");
-    }, 2200);
-}
-/* Fade-in sections */
-.reveal {
-    opacity: 0;
-    transform: translateY(25px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+:root {
+    --bg: #f4f6ff;
+    --white: #ffffff;
+    --text: #111827;
+    --muted: #6b7280;
+    --accent: #6366f1;
+    --accent-soft: #c7d2fe;
+    --radius: 24px;
 }
 
-.visible {
-    opacity: 1;
-    transform: translateY(0);
+body {
+    font-family: "Poppins", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    height: 100vh;
+    overflow: hidden;
 }
 
-/* Active nav link */
-.main-nav a.active {
-    color: #111827;
-}
-
-.main-nav a.active::after {
+/* =============================
+   PAGE (full screen)
+============================= */
+.page {
+    height: 100vh;
     width: 100%;
+    padding: 120px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    animation: fade 0.8s ease forwards;
 }
 
-/* Header shadow on scroll */
-.header-shadow {
-    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.15);
+@keyframes fade {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Orbital pulse */
-.orbital-core.pulse {
-    transform: scale(1.06);
-    transition: transform 0.6s ease;
+/* =============================
+   HEADER NAV
+============================= */
+header {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(200,200,255,0.5);
+    border-radius: 999px;
+    padding: 14px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 20;
+}
+
+nav a {
+    margin: 0 14px;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.9rem;
+    position: relative;
+}
+
+nav a:hover {
+    color: var(--text);
+}
+
+nav a.active {
+    color: var(--accent);
+}
+
+nav a.active::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 999px;
+}
+
+/* =============================
+   TITRES & TEXTES
+============================= */
+h1 {
+    font-size: 2.6rem;
+    margin-bottom: 12px;
+}
+p {
+    max-width: 650px;
+    font-size: 1.05rem;
+    color: var(--muted);
+}
+
+/* =============================
+   BOUTONS
+============================= */
+.btn {
+    margin-top: 22px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 1rem;
+    display: inline-block;
+    background: linear-gradient(120deg, var(--white), var(--accent-soft));
+    border: 1px solid var(--accent-soft);
+    color: var(--text);
+    transition: 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 22px rgba(99,102,241,0.25);
 }
