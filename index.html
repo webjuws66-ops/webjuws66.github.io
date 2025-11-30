@@ -3,32 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <title>IA – Accueil</title>
+
 <style>
-/* ====== STYLE GLOBAL (automatique) ====== */
+/* ====== STYLE GLOBAL ====== */
 body {
     margin: 0;
     font-family: "Poppins", sans-serif;
     background: url('hero-background.jpg') center/cover no-repeat fixed;
-    color: #111827;
     height: 100vh;
     overflow: hidden;
-}
-/* --- Améliorer la lisibilité du texte --- */
-body, .page {
-    color: #f2f2f2 !important;
-    text-shadow: 0 0 6px rgba(0,0,0,0.85) !important;
-}
-/* Améliorer lisibilité du texte sous le titre */
-.subtitle {
-    display: inline-block;
-    font-size: 1.3rem;
-    color: #f8eaff !important;
-    text-shadow:
-        0 0 6px rgba(0,0,0,0.8),
-        0 0 12px rgba(0,0,0,0.5);
-    backdrop-filter: blur(6px);
-    padding: 6px 12px;
-    border-radius: 10px;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0,0,0,0.8);
 }
 
 /* ===== HEADER FUTURISTE PREMIUM ===== */
@@ -38,15 +23,14 @@ header {
     left: 50%;
     transform: translateX(-50%);
     width: 86%;
-
     padding: 14px 24px;
     border-radius: 18px;
 
-    background: rgba(255, 255, 255, 0.14); /* plus transparent */
+    background: rgba(255, 255, 255, 0.14);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
 
-    border: 1px solid rgba(255, 255, 255, 0.28);
+    border: 1px solid rgba(255,255,255,0.28);
     box-shadow: 0 8px 22px rgba(0,0,0,0.18);
 
     display: flex;
@@ -67,10 +51,9 @@ header .logo {
 nav a {
     margin: 0 10px;
     padding: 6px 10px;
-
     text-decoration: none;
-    color: #f1f1f1;
 
+    color: #f1f1f1;
     font-size: 0.95rem;
     font-weight: 500;
 
@@ -78,23 +61,64 @@ nav a {
     transition: 0.25s ease;
     border-radius: 8px;
 }
-
-/* Survol futuriste */
 nav a:hover {
     background: rgba(255,255,255,0.22);
-    color: #ffffff;
     box-shadow: 0 0 10px rgba(200,150,255,0.6);
 }
-
-/* Lien actif */
 nav a.active {
-    color: #ffffff;
-    font-weight: 700;
     background: rgba(255,255,255,0.30);
     box-shadow: 0 0 12px rgba(180,120,255,0.6);
+    font-weight: 700;
+    color: #ffffff;
 }
 
+/* ===== CONTENU PAGE ===== */
+.page {
+    padding: 180px 60px;
+}
 
+/* Grand titre */
+.page h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    max-width: 900px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 14px rgba(0,0,0,0.9);
+}
+
+/* Sous-titre */
+.subtitle {
+    font-size: 1.25rem;
+    max-width: 750px;
+    display: block;
+    margin-bottom: 40px;
+
+    color: #f5eaff;
+    padding: 6px 12px;
+    border-radius: 10px;
+
+    backdrop-filter: blur(6px);
+    text-shadow:
+        0 0 6px rgba(0,0,0,0.85),
+        0 0 14px rgba(0,0,0,0.6);
+}
+
+/* Bouton Commencer */
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    background: rgba(255,255,255,0.85);
+    color: #000;
+    font-weight: 600;
+    border-radius: 14px;
+    text-decoration: none;
+    box-shadow: 0 0 12px rgba(255,255,255,0.9);
+    transition: 0.25s ease;
+}
+.btn:hover {
+    background: white;
+    box-shadow: 0 0 20px rgba(255,255,255,1);
+}
 </style>
 
 <script>
@@ -102,51 +126,11 @@ nav a.active {
 document.addEventListener("DOMContentLoaded", ()=>{
     const current = location.pathname.split("/").pop();
     document.querySelectorAll("nav a").forEach(a=>{
-        if(a.getAttribute("href")===current){
+        if(a.getAttribute("href") === current){
             a.classList.add("active");
         }
     });
 });
-    /* ======= Correction — ne pas toucher au contenu ======= */
-
-/* Empêche le header d'affecter les liens du corps */
-
-header nav a {
-    color: #ffffff;
-    text-shadow: 0 0 6px rgba(0,0,0,0.6);
-}
-
-.page a {
-    background: none !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    color: #e2e2ff !important;
-    text-shadow: 0 0 4px rgba(0,0,0,0.6) !important;
-}
-
-/* Correction du bouton Commencer */
-.btn,
-button,
-.start-button,
-a.start-link {
-    background: rgba(255,255,255,0.85) !important;
-    color: black !important;
-    padding: 10px 20px !important;
-    border-radius: 12px !important;
-    text-shadow: none !important;
-    font-weight: 600 !important;
-}
-
-/* Correction du texte de description (le sous-titre) */
-.subtitle,
-.hero-subtext,
-p.hero-description {
-    color: #f4f4f4 !important;
-    font-size: 1.1rem !important;
-    max-width: 650px !important;
-    text-shadow: 0 0 14px rgba(0,0,0,0.7) !important;
-}
-
 </script>
 
 </head>
@@ -168,7 +152,11 @@ p.hero-description {
 
 <section class="page">
     <h1>L'intelligence artificielle : le futur commence ici.</h1>
-    <p class="subtitle">Découvrez comment l’IA transforme notre monde, notre travail, notre créativité et notre avenir.</p>
+
+    <p class="subtitle">
+        Découvrez comment l’IA transforme notre monde, notre travail, notre créativité et notre avenir.
+    </p>
+
     <a href="ia-simple.html" class="btn">Commencer</a>
 </section>
 
