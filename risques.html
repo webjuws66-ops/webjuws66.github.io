@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Risques & Éthique</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #f5f7ff;
+    color: #111827;
+    height: 100vh;
+    overflow: hidden;
+}
+
+header {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 86%;
+    padding: 14px 28px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(14px);
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid rgba(160,160,255,0.4);
+    z-index: 10;
+}
+nav a {
+    margin: 0 14px;
+    text-decoration: none;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+nav a.active { color:#6366f1; }
+
+.page {
+    height: 100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding: 0 60px;
+}
+h1 { font-size: 2.4rem; margin-bottom: 12px; }
+p { font-size:1.05rem; max-width:650px; color:#6b7280; }
+
+ul {
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.7;
+}
+ul li {
+    margin-bottom: 10px;
+}
+ul li strong {
+    color: #111;
+}
+
+.alert {
+    margin-top: 25px;
+    padding: 18px 22px;
+    background: #fee2e2;
+    border-left: 4px solid #ef4444;
+    border-radius: 12px;
+    max-width: 620px;
+    color: #7f1d1d;
+}
+
+.btn {
+    margin-top:25px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: linear-gradient(120deg,#fff,#dcdfff);
+    border: 1px solid #c7d2fe;
+    text-decoration:none;
+    color:#111;
+    font-size:1rem;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", ()=>{
+    const current = location.pathname.split("/").pop();
+    document.querySelectorAll("nav a").forEach(a=>{
+        if(a.getAttribute("href")===current){
+            a.classList.add("active");
+        }
+    });
+});
+</script>
+
+</head>
+<body>
+
+<header>
+    <div class="logo">IA Vision</div>
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="ia-simple.html">IA Simplifiée</a>
+        <a href="quotidien.html">Quotidien</a>
+        <a href="creative.html">Créative</a>
+        <a href="innovations.html">Innovations</a>
+        <a href="risques.html">Risques</a>
+        <a href="futur.html">Futur</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="page">
+    <h1>Risques, limites & éthique</h1>
+    <p>
+        Plus l’IA devient puissante, plus l’éthique et la transparence sont essentielles.
+        L’enjeu n’est pas seulement ce qu’elle peut faire, mais ce que nous voulons qu’elle fasse.
+    </p>
+
+    <ul>
+        <li><strong>Données & vie privée</strong> — risques de mauvaise utilisation ou d’accès non autorisé.</li>
+        <li><strong>Biais algorithmiques</strong> — l’IA peut reproduire des discriminations déjà présentes.</li>
+        <li><strong>Dépendance</strong> — automatisation excessive, perte de compétences humaines.</li>
+        <li><strong>Emploi</strong> — transformation des métiers, disparition de certaines tâches.</li>
+    </ul>
+
+    <div class="alert">
+        <strong>Confiance & transparence :</strong>  
+        Expliquer les décisions, rendre visibles les règles du jeu et garder l’humain au centre.
+    </div>
+
+    <a href="futur.html" class="btn">Page suivante → Futur humain + IA</a>
+</section>
+
+</body>
+</html>
