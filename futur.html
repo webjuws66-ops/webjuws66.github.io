@@ -5,42 +5,73 @@
 <title>Futur humain + IA</title>
 
 <style>
+/* ====== STYLE GLOBAL ====== */
 body {
     margin: 0;
     font-family: "Poppins", sans-serif;
-   background: url('future-background.jpg') center/cover no-repeat fixed;
-   color: #1a1a1a;
-backdrop-filter: blur(2px);
-padding: 6px 10px;
-border-radius: 8px;
-
+    background: url('future-background.jpg') center/cover no-repeat fixed;
     height: 100vh;
     overflow: hidden;
+    color: #f8f8f8;
+    text-shadow: 0 0 8px rgba(0,0,0,0.75);
 }
 
+/* ===== HEADER FUTURISTE UNIFORME ===== */
 header {
     position: fixed;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
     width: 86%;
-    padding: 14px 28px;
+    padding: 14px 24px;
     border-radius: 999px;
-    background: rgba(255,255,255,0.7);
-    backdrop-filter: blur(14px);
+
+    background: rgba(255,255,255,0.14);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255,255,255,0.35);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+
     display: flex;
     justify-content: space-between;
-    border: 1px solid rgba(160,160,255,0.4);
-    z-index: 10;
+    align-items: center;
+    z-index: 50;
 }
-nav a {
-    margin: 0 14px;
-    text-decoration: none;
-    color: #6b7280;
-    font-size: 0.9rem;
-}
-nav a.active { color:#6366f1; }
 
+/* Logo */
+header .logo {
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: #ffffff;
+    text-shadow: 0 0 12px rgba(255,255,255,0.8);
+}
+
+/* Navigation */
+nav a {
+    margin: 0 10px;
+    padding: 6px 10px;
+    text-decoration: none;
+    color: #f1f1f1;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-shadow: 0 0 4px rgba(0,0,0,0.6);
+    transition: 0.25s ease;
+    border-radius: 8px;
+}
+nav a:hover {
+    background: rgba(255,255,255,0.22);
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(200,150,255,0.6);
+}
+nav a.active {
+    background: rgba(255,255,255,0.30);
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 0 12px rgba(180,120,255,0.6);
+}
+
+/* ===== CONTENU ===== */
 .page {
     height: 100vh;
     display:flex;
@@ -48,27 +79,43 @@ nav a.active { color:#6366f1; }
     justify-content:center;
     padding: 0 60px;
 }
-h1 { 
-    font-size: 2.6rem; 
-    margin-bottom: 12px; 
+
+/* Titre doré premium */
+h1 {
+    font-size: 2.6rem;
+    margin-bottom: 12px;
+    color: #ffe98a; /* OR DOUX */
+    text-shadow:
+        0 0 8px rgba(0,0,0,0.85),
+        0 0 14px rgba(0,0,0,0.55);
 }
-p { 
-    font-size:1.05rem; 
-    max-width:650px; 
-    color:#6b7280; 
+
+/* Paragraphe lisible sur fond clair */
+p {
+    font-size: 1.15rem;
+    max-width: 680px;
+    color: #fafafa;
+    text-shadow:
+        0 0 10px rgba(0,0,0,0.9),
+        0 0 16px rgba(0,0,0,0.7);
     margin-bottom: 25px;
 }
 
+/* Citation */
 .quote {
-    max-width: 650px;
+    max-width: 680px;
     padding: 22px 26px;
-    background: #eef2ff;
-    border-left: 4px solid #6366f1;
+    background: rgba(20,20,20,0.45);
+    border-left: 4px solid #ffdd55;
     border-radius: 12px;
     font-style: italic;
-    color: #3730a3;
+    color: #ffefb0;
+    text-shadow:
+        0 0 10px rgba(0,0,0,0.9),
+        0 0 14px rgba(0,0,0,0.6);
 }
 
+/* Bouton */
 .btn {
     margin-top:25px;
     padding: 12px 22px;
@@ -78,6 +125,7 @@ p {
     text-decoration:none;
     color:#111;
     font-size:1rem;
+    font-weight: 600;
 }
 </style>
 
@@ -93,6 +141,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 </script>
 
 </head>
+
 <body>
 
 <header>
@@ -110,11 +159,13 @@ document.addEventListener("DOMContentLoaded", ()=>{
 </header>
 
 <section class="page">
+
     <h1>Et si le futur de l’IA était profondément humain ?</h1>
+
     <p>
-        L’intelligence artificielle n’est pas une destination mais un outil, une amplification de 
-        ce que nous choisissons de créer, protéger et imaginer.  
-        Le futur dépend de la façon dont nous construisons ce partenariat.
+        L’intelligence artificielle n’est pas une destination — 
+        mais un outil, une amplification de ce que nous décidons de créer, protéger et imaginer.
+        Le futur dépend entièrement des valeurs que nous choisissons d’y placer.
     </p>
 
     <div class="quote">
@@ -123,6 +174,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     </div>
 
     <a href="contact.html" class="btn">Dernière page → Contact</a>
+
 </section>
 
 </body>
