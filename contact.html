@@ -21,7 +21,7 @@ body {
     text-shadow: 0 0 8px rgba(0,0,0,0.75);
 }
 
-/* ----- HEADER ----- */
+/* ----- HEADER NOIR TRANSPARENT ÉLÉGANT ----- */
 header {
     position: fixed;
     top: 20px;
@@ -30,21 +30,29 @@ header {
     width: 86%;
     padding: 14px 28px;
     border-radius: 999px;
-    background: rgba(255,255,255,0.65);
+
+    background: rgba(10,10,20,0.55);            /* sombre transparent */
     backdrop-filter: blur(18px);
-    border: 1px solid rgba(180,180,255,0.45);
+    border: 1px solid rgba(255,255,255,0.25);    /* bord lumineux léger */
+
     display: flex;
     justify-content: space-between;
     z-index: 10;
 }
+
+/* --- liens du menu --- */
 nav a {
     margin: 0 14px;
     text-decoration: none;
-    color: #ece8ff !important;
+    color: #ffffff !important;                  /* texte blanc pur */
     font-weight: 500;
+    text-shadow: 0 0 8px rgba(0,0,0,0.5);       /* glow pour lisibilité */
 }
+
+/* lien actif = bleu/violet IA */
 nav a.active {
-    color:#cbb8ff !important;
+    color: #a58bff !important;
+    font-weight: 600;
 }
 
 /* ----- PAGE ----- */
