@@ -13,7 +13,6 @@ body {
     color: #ffffff !important;
     height: 100vh;
     overflow: hidden;
-    text-shadow: 0 0 10px rgba(0,0,0,0.7);
 }
 
 /* ===== HEADER ==== */
@@ -78,29 +77,43 @@ nav a.active {
     z-index: 5;
 }
 
+/* ===== LISIBILITÉ BOOSTÉE ===== */
+.text {
+    color: #ffffff !important;
+    text-shadow:
+        0 0 12px rgba(0,0,0,0.95),
+        0 0 22px rgba(0,0,0,0.9),
+        0 0 32px rgba(0,0,0,0.85);
+    -webkit-text-stroke: 0.6px rgba(0,0,0,0.9);
+}
+
+.text-block {
+    background: rgba(0,0,0,0.22);
+    padding: 14px 18px;
+    border-radius: 12px;
+    backdrop-filter: blur(4px);
+    display: inline-block;
+}
+
+/* TITRE */
 h1 {
     font-size: 3rem;
     margin-bottom: 18px;
     color: #ffffff;
-    text-shadow: 0 0 14px rgba(0,0,0,1);
-}
-
-/* Textes */
-p {
-    font-size:1.22rem;
-    max-width:650px;
-    color:#ffffff !important;
-    line-height:1.6;
-    text-shadow: 0 0 14px rgba(0,0,0,1);
-}
-
-/* Mots-clés jaunes lisibles (comme page 3) */
-.key {
-    color: #ffe88a;
-    font-weight: 700;
     text-shadow:
-        0 0 8px rgba(0,0,0,1),
-        0 0 12px rgba(255,215,0,0.7);
+        0 0 12px rgba(0,0,0,1),
+        0 0 24px rgba(0,0,0,0.9);
+    -webkit-text-stroke: 1px rgba(0,0,0,0.9);
+}
+
+/* MOTS CLÉS JAUNES */
+.key {
+    color: #ffeb79 !important;
+    font-weight: 700;
+    text-shadow: 
+        0 0 12px rgba(0,0,0,1),
+        0 0 22px rgba(0,0,0,0.8);
+    -webkit-text-stroke: 0.6px rgba(0,0,0,0.8);
 }
 
 /* ===== BOUTON ===== */
@@ -155,20 +168,22 @@ document.addEventListener("DOMContentLoaded", ()=>{
 </header>
 
 <section class="page">
-    <h1>Comprendre l’IA simplement</h1>
 
-    <p>
+    <h1 class="text">Comprendre l’IA simplement</h1>
+
+    <p class="text text-block">
         L’intelligence artificielle observe, apprend et agit.<br>
         Elle repère des modèles, améliore ses résultats et accompagne l’humain dans toutes ses tâches.
     </p>
 
-    <p style="margin-top:22px;">
+    <p class="text text-block" style="margin-top:22px;">
         📌 <span class="key">Observer</span> — elle analyse images, textes et sons<br>
         📌 <span class="key">Apprendre</span> — elle s’adapte avec les données<br>
         📌 <span class="key">Agir</span> — elle répond, prédit, conseille ou crée
     </p>
 
     <a href="quotidien.html" class="btn">Page suivante → IA & Quotidien</a>
+
 </section>
 
 </body>
