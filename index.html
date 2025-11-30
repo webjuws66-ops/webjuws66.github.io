@@ -1,289 +1,99 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Futur de l'Intelligence Artificielle</title>
+<meta charset="UTF-8">
+<title>IA – Accueil</title>
 
-    <!-- Police moderne -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ====== STYLE GLOBAL (automatique) ====== */
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #f5f7ff;
+    color: #111827;
+    height: 100vh;
+    overflow: hidden;
+}
 
-    <!-- Feuille de style principale -->
-    <link rel="stylesheet" href="style.css">
+header {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 86%;
+    padding: 14px 28px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(14px);
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid rgba(160,160,255,0.4);
+    z-index: 10;
+}
+nav a {
+    margin: 0 14px;
+    text-decoration: none;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+nav a.active { color:#6366f1; }
+
+.page {
+    height: 100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding: 0 60px;
+}
+h1 { font-size: 2.6rem; margin-bottom: 12px; }
+p { font-size:1.05rem; max-width:600px; color:#6b7280; }
+
+.btn {
+    margin-top:25px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: linear-gradient(120deg,#fff,#dcdfff);
+    border: 1px solid #c7d2fe;
+    text-decoration:none;
+    color:#111;
+    font-size:1rem;
+}
+</style>
+
+<script>
+// Active automatiquement le lien correspondant à la page
+document.addEventListener("DOMContentLoaded", ()=>{
+    const current = location.pathname.split("/").pop();
+    document.querySelectorAll("nav a").forEach(a=>{
+        if(a.getAttribute("href")===current){
+            a.classList.add("active");
+        }
+    });
+});
+</script>
+
 </head>
 <body>
-    <header class="site-header">
-        <div class="logo">
-            <span class="logo-mark">IA</span>
-            <span class="logo-text">Futur & Vision</span>
-        </div>
-        <nav class="main-nav">
-            <a href="#intro">Introduction</a>
-            <a href="#quotidien">IA & Quotidien</a>
-            <a href="#creative">IA Créative</a>
-            <a href="#innovations">Innovations</a>
-            <a href="#risques">Risques & Éthique</a>
-            <a href="#futur">Futur</a>
-            <a href="#contact" class="btn-nav">Contact</a>
-        </nav>
-    </header>
 
-    <main>
-        <!-- HERO -->
-        <section class="hero" id="intro">
-            <div class="hero-content">
-                <p class="tagline">INTELLIGENCE ARTIFICIELLE • DEMAIN COMMENCE AUJOURD'HUI</p>
-                <h1>L’IA, moteur d’un futur plus intelligent, plus créatif, plus humain.</h1>
-                <p class="hero-text">
-                    Découvrez comment l’intelligence artificielle transforme déjà notre quotidien
-                    et dessine les contours du monde de demain : plus rapide, plus fluide, plus connecté.
-                </p>
-                <div class="hero-actions">
-                    <a href="#innovations" class="btn primary">Explorer les innovations</a>
-                    <a href="#futur" class="btn ghost">Imaginer le futur</a>
-                </div>
-                <div class="hero-meta">
-                    <span>⚪ Design futuriste épuré</span>
-                    <span>⚪ Focus sur pédagogie & inspiration</span>
-                </div>
-            </div>
+<header>
+    <div class="logo">IA Vision</div>
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="ia-simple.html">IA Simplifiée</a>
+        <a href="quotidien.html">Quotidien</a>
+        <a href="creative.html">Créative</a>
+        <a href="innovations.html">Innovations</a>
+        <a href="risques.html">Risques</a>
+        <a href="futur.html">Futur</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
 
-            <div class="hero-visual">
-                <div class="orbital">
-                    <div class="orbital-core"></div>
-                    <div class="orbital-ring ring-1"></div>
-                    <div class="orbital-ring ring-2"></div>
-                    <div class="orbital-ring ring-3"></div>
-                </div>
-                <p class="hero-caption">
-                    Un cerveau numérique lumineux, symbole d’une IA discrète, puissante et omniprésente.
-                </p>
-            </div>
-        </section>
+<section class="page">
+    <h1>L'intelligence artificielle : le futur commence ici.</h1>
+    <p>Découvrez comment l’IA transforme notre monde, notre travail, notre créativité et notre avenir.</p>
+    <a href="ia-simple.html" class="btn">Commencer</a>
+</section>
 
-        <!-- IA EXPLIQUÉE SIMPLEMENT -->
-        <section class="section" id="ia-simple">
-            <div class="section-header">
-                <h2>Comprendre l’intelligence artificielle simplement</h2>
-                <p>
-                    Pas besoin d’être expert pour comprendre l’IA. C’est avant tout un ensemble d’algorithmes capables
-                    d’apprendre à partir des données pour prendre des décisions, assister l’humain, ou créer du contenu.
-                </p>
-            </div>
-
-            <div class="grid grid-3">
-                <article class="card">
-                    <h3>Observer</h3>
-                    <p>
-                        L’IA analyse des images, des sons, des textes ou des chiffres, pour détecter des modèles
-                        qu’un humain ne verrait pas toujours à l’œil nu.
-                    </p>
-                </article>
-                <article class="card">
-                    <h3>Apprendre</h3>
-                    <p>
-                        Grâce au machine learning, les systèmes s’améliorent au fil du temps, gagnent en précision
-                        et deviennent plus pertinents.
-                    </p>
-                </article>
-                <article class="card">
-                    <h3>Agir</h3>
-                    <p>
-                        L’IA peut proposer, assister ou automatiser des actions : recommandations, réponses, prévisions,
-                        création de textes, d’images, de musiques…
-                    </p>
-                </article>
-            </div>
-        </section>
-
-        <!-- IA DANS LE QUOTIDIEN -->
-        <section class="section" id="quotidien">
-            <div class="section-layout">
-                <div class="section-text">
-                    <h2>Quand l’IA se glisse dans notre quotidien</h2>
-                    <p>
-                        L’IA n’est plus un concept abstrait : elle est déjà dans nos poches, nos maisons et nos outils
-                        professionnels. Très souvent, on l’utilise sans même s’en rendre compte.
-                    </p>
-                    <ul class="bullet-list">
-                        <li><strong>Assistants vocaux :</strong> répondre à nos questions, piloter la maison, gérer nos rappels.</li>
-                        <li><strong>Recommandations :</strong> séries, musique, produits… l’IA personnalise nos expériences.</li>
-                        <li><strong>Santé :</strong> aide au diagnostic, analyse d’images médicales, suivi personnalisé.</li>
-                        <li><strong>Mobilité :</strong> GPS intelligents, voitures assistées, optimisation des trajets.</li>
-                    </ul>
-                </div>
-                <div class="section-side">
-                    <div class="card highlight">
-                        <h3>Une présence discrète mais puissante</h3>
-                        <p>
-                            La vraie révolution de l’IA : être partout, tout le temps, sans s’imposer visuellement.
-                            Elle augmente nos capacités sans remplacer notre identité.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- IA CRÉATIVE -->
-        <section class="section" id="creative">
-            <div class="section-header">
-                <h2>L’IA créative : quand les machines imaginent avec nous</h2>
-                <p>
-                    Musique, images, vidéos, textes… L’IA devient un partenaire créatif, un studio complet à portée de clic.
-                </p>
-            </div>
-
-            <div class="grid grid-3">
-                <article class="card soft">
-                    <h3>Art & Design</h3>
-                    <p>
-                        Générer des visuels, explorer des univers graphiques, tester des identités visuelles en quelques secondes.
-                    </p>
-                </article>
-                <article class="card soft">
-                    <h3>Musique & Son</h3>
-                    <p>
-                        Composer des ambiances, des thèmes, des textures sonores, offrir des idées nouvelles aux artistes.
-                    </p>
-                </article>
-                <article class="card soft">
-                    <h3>Écriture & Contenu</h3>
-                    <p>
-                        Aider à structurer une idée, rédiger un premier jet, suggérer des variantes, débloquer la page blanche.
-                    </p>
-                </article>
-            </div>
-        </section>
-
-        <!-- INNOVATIONS -->
-        <section class="section" id="innovations">
-            <div class="section-header">
-                <h2>Innovations de demain</h2>
-                <p>
-                    L’IA de demain sera encore plus contextuelle, proactive et intégrée. Elle ne sera plus un outil,
-                    mais une couche invisible de nos environnements.
-                </p>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>IA conversationnelle avancée</h3>
-                        <p>
-                            Des assistants capables de suivre nos projets sur la durée, de connaître nos préférences
-                            et de collaborer comme de véritables partenaires.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Interfaces adaptatives</h3>
-                        <p>
-                            Des interfaces qui se reconfigurent automatiquement selon notre contexte : travail, détente,
-                            création, apprentissage…
-                        </p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                            <h3>Villes intelligentes</h3>
-                            <p>
-                                Optimisation de l’énergie, des transports, de la sécurité, pour des villes plus fluides,
-                                plus sobres, plus agréables à vivre.
-                            </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- RISQUES & ÉTHIQUE -->
-        <section class="section" id="risques">
-            <div class="section-layout">
-                <div class="section-text">
-                    <h2>Risques, limites & éthique</h2>
-                    <p>
-                        Plus l’IA devient puissante, plus la question de l’éthique devient centrale. Il ne s’agit pas
-                        seulement de ce qu’elle peut faire, mais de ce que nous voulons lui laisser faire.
-                    </p>
-                    <ul class="bullet-list">
-                        <li>Données & vie privée</li>
-                        <li>Biais et discriminations algorithmiques</li>
-                        <li>Dépendance aux systèmes automatisés</li>
-                        <li>Impact sur l’emploi et les compétences</li>
-                    </ul>
-                </div>
-                <div class="section-side">
-                    <div class="card alert">
-                        <h3>Confiance & transparence</h3>
-                        <p>
-                            Construire une IA digne de confiance, c’est rendre visibles les règles du jeu, expliquer
-                            les décisions, et garder l’humain au centre.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FUTUR -->
-        <section class="section" id="futur">
-            <div class="section-header">
-                <h2>Et si le futur de l’IA était profondément humain ?</h2>
-                <p>
-                    L’IA n’est pas une fin, mais un moyen : augmenter notre capacité à comprendre, créer, relier, protéger.
-                    Le vrai enjeu : décider ensemble du futur que nous voulons construire.
-                </p>
-            </div>
-
-            <div class="quote-block">
-                <p>
-                    « L’intelligence artificielle ne remplacera pas l’humain.
-                    Elle amplifiera ce qu’il décide de cultiver. »
-                </p>
-            </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section class="section" id="contact">
-            <div class="section-header">
-                <h2>Entrer en contact</h2>
-                <p>
-                    Un projet, une idée, une envie de collaboration autour de l’IA et de son futur ?
-                    Laissez un message.
-                </p>
-            </div>
-
-            <form class="contact-form">
-                <div class="form-row">
-                    <div class="form-field">
-                        <label for="name">Nom</label>
-                        <input type="text" id="name" placeholder="Votre nom">
-                    </div>
-                    <div class="form-field">
-                        <label for="email">E-mail</label>
-                        <input type="email" id="email" placeholder="votre@email.com">
-                    </div>
-                </div>
-                <div class="form-field">
-                    <label for="message">Message</label>
-                    <textarea id="message" rows="4" placeholder="Parlez-moi de votre projet..."></textarea>
-                </div>
-                <button type="submit" class="btn primary full-width">Envoyer le message</button>
-            </form>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <p>© <span id="year"></span> Futur & Vision – Intelligence Artificielle & Avenir</p>
-    </footer>
-
-    <script>
-        // Met l'année à jour automatiquement
-        document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
 </body>
 </html>
