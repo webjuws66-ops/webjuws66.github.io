@@ -5,77 +5,164 @@
 <title>Innovations de demain</title>
 
 <style>
+/* ======== STYLE GLOBAL ======== */
 body {
     margin: 0;
     font-family: "Poppins", sans-serif;
-   background: url('innovations-background.jpg') center/cover no-repeat fixed;
-    color: #111827;
+    background: url('innovations-background.jpg') center/cover no-repeat fixed;
     height: 100vh;
     overflow: hidden;
 }
 
+/* Lisibilité globale sur fond lumineux */
+.page, h1, p, .block div {
+    color: #ffffff !important;
+    text-shadow:
+        0 0 8px rgba(0,0,0,0.85),
+        0 0 18px rgba(0,0,0,0.65);
+}
+
+/* ======== HEADER PREMIUM ======== */
 header {
     position: fixed;
-    top: 20px;
+    top: 18px;
     left: 50%;
     transform: translateX(-50%);
     width: 86%;
-    padding: 14px 28px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.7);
-    backdrop-filter: blur(14px);
+
+    padding: 14px 24px;
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255,255,255,0.25);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+
     display: flex;
     justify-content: space-between;
-    border: 1px solid rgba(160,160,255,0.4);
-    z-index: 10;
+    align-items: center;
+    z-index: 50;
 }
-nav a {
-    margin: 0 14px;
-    text-decoration: none;
-    color: #6b7280;
-    font-size: 0.9rem;
-}
-nav a.active { color:#6366f1; }
 
+.logo {
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: #ffffff;
+    text-shadow: 0 0 12px rgba(255,255,255,0.9);
+}
+
+nav a {
+    margin: 0 10px;
+    padding: 6px 10px;
+    text-decoration: none;
+
+    color: #f1f1f1;
+    font-size: 0.95rem;
+    font-weight: 500;
+
+    text-shadow: 0 0 6px rgba(0,0,0,0.6);
+    transition: 0.25s;
+    border-radius: 8px;
+}
+
+nav a:hover {
+    background: rgba(255,255,255,0.22);
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(200,150,255,0.6);
+}
+
+nav a.active {
+    color: #ffffff;
+    font-weight: 700;
+    background: rgba(255,255,255,0.30);
+    box-shadow: 0 0 14px rgba(180,120,255,0.7);
+}
+
+/* ======== CONTENU ======== */
 .page {
     height: 100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: 0 60px;
 }
-h1 { font-size: 2.4rem; margin-bottom: 12px; }
-p { font-size:1.05rem; max-width:650px; color:#6b7280; }
 
+h1 {
+    font-size: 2.6rem;
+    margin-bottom: 16px;
+    color: #ffffff;
+    text-shadow:
+        0 0 14px rgba(0,0,0,0.9),
+        0 0 22px rgba(0,0,0,0.8);
+}
+
+p {
+    font-size: 1.15rem;
+    max-width: 720px;
+    line-height: 1.45;
+    color: #f7f7f7 !important;
+    margin-bottom: 20px;
+    text-shadow:
+        0 0 10px rgba(0,0,0,0.85),
+        0 0 20px rgba(0,0,0,0.65);
+}
+
+/* ======== BLOCS INNOVATIONS ======== */
 .block {
-    margin-top: 25px;
-}
-.block div {
-    margin-bottom: 18px;
-    padding-left: 12px;
-    border-left: 3px solid #c7d2fe;
-}
-.block div strong {
-    color: #111;
+    margin-top: 28px;
+    max-width: 720px;
 }
 
+.block div {
+    margin-bottom: 22px;
+    padding: 10px 14px;
+    border-left: 4px solid #a78bfa;
+    background: rgba(0,0,0,0.25);
+    border-radius: 8px;
+
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    text-shadow:
+        0 0 10px rgba(0,0,0,0.9),
+        0 0 18px rgba(0,0,0,0.7);
+}
+
+.block strong {
+    font-size: 1.15rem;
+    color: #ffffff;
+}
+
+/* ======== BOUTON PREMIUM ======== */
 .btn {
-    margin-top:25px;
-    padding: 12px 22px;
+    margin-top: 28px;
+    padding: 14px 26px;
     border-radius: 999px;
-    background: linear-gradient(120deg,#fff,#dcdfff);
-    border: 1px solid #c7d2fe;
-    text-decoration:none;
-    color:#111;
-    font-size:1rem;
+    background: rgba(255,255,255,0.85);
+    border: 1px solid rgba(255,255,255,0.5);
+
+    text-decoration: none;
+    color: #000;
+    font-size: 1.1rem;
+    font-weight: 600;
+
+    transition: 0.25s;
+}
+
+.btn:hover {
+    background: #ffffff;
+    box-shadow: 0 0 20px rgba(255,255,255,0.7);
 }
 </style>
 
 <script>
-document.addEventListener("DOMContentLoaded", ()=>{
+// Active automatiquement le lien correspondant à la page
+document.addEventListener("DOMContentLoaded", () => {
     const current = location.pathname.split("/").pop();
-    document.querySelectorAll("nav a").forEach(a=>{
-        if(a.getAttribute("href")===current){
+    document.querySelectorAll("nav a").forEach(a => {
+        if(a.getAttribute("href") === current){
             a.classList.add("active");
         }
     });
@@ -101,27 +188,30 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 <section class="page">
     <h1>Les innovations de demain</h1>
+
     <p>
         L’IA devient plus contextuelle, proactive et intégrée.
-        Elle ne sera plus un outil isolé, mais une couche intelligente qui accompagne 
-        toutes les facettes de notre vie.
+        Non plus un outil isolé, mais une couche intelligente 
+        qui accompagne toutes les facettes de notre vie.
     </p>
 
     <div class="block">
         <div>
             <strong>IA conversationnelle avancée</strong><br>
-            Des assistants capables de suivre nos projets sur la durée 
-            et de collaborer réellement avec nous.
+            Des assistants capables de suivre nos projets sur la durée, 
+            comprendre nos objectifs et collaborer réellement avec nous.
         </div>
 
         <div>
             <strong>Interfaces adaptatives</strong><br>
-            Des interfaces qui s’ajustent automatiquement selon notre activité, nos préférences et nos besoins.
+            Des interfaces visuelles et vocales qui s’ajustent automatiquement 
+            selon notre activité, nos préférences et nos besoins.
         </div>
 
         <div>
             <strong>Villes intelligentes</strong><br>
-            Gestion optimisée de l’énergie, des transports, de la sécurité et du bien-être urbain.
+            Gestion optimisée de l’énergie, des transports, de la sécurité 
+            et du bien-être urbain grâce à l’intelligence distribuée.
         </div>
     </div>
 
