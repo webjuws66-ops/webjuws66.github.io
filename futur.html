@@ -5,131 +5,111 @@
 <title>Futur humain + IA</title>
 
 <style>
-/* ====== STYLE GLOBAL ====== */
 body {
     margin: 0;
     font-family: "Poppins", sans-serif;
     background: url('future-background.jpg') center/cover no-repeat fixed;
     height: 100vh;
     overflow: hidden;
-    color: #f8f8f8;
-    text-shadow: 0 0 8px rgba(0,0,0,0.75);
+    position: relative;
 }
 
-/* ===== HEADER FUTURISTE UNIFORME ===== */
+/* ===== OVERLAY POUR RENDRE LE TEXTE LISIBLE ===== */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.35),
+        rgba(0,0,0,0.55)
+    );
+    z-index: 0;
+}
+
+/* HEADER */
 header {
     position: fixed;
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
     width: 86%;
-    padding: 14px 24px;
+    padding: 14px 28px;
     border-radius: 999px;
-
-    background: rgba(255,255,255,0.14);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-
-    border: 1px solid rgba(255,255,255,0.35);
-    box-shadow: 0 8px 22px rgba(0,0,0,0.18);
-
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(14px);
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    z-index: 50;
+    border: 1px solid rgba(200,200,255,0.4);
+    z-index: 10;
 }
 
-/* Logo */
-header .logo {
-    font-weight: 600;
-    font-size: 1.15rem;
-    color: #ffffff;
-    text-shadow: 0 0 12px rgba(255,255,255,0.8);
-}
-
-/* Navigation */
 nav a {
-    margin: 0 10px;
-    padding: 6px 10px;
+    margin: 0 14px;
     text-decoration: none;
-    color: #f1f1f1;
-    font-size: 0.95rem;
-    font-weight: 500;
-    text-shadow: 0 0 4px rgba(0,0,0,0.6);
-    transition: 0.25s ease;
-    border-radius: 8px;
+    color: #f4f4f9;
+    font-size: 0.9rem;
+    text-shadow: 0 0 6px rgba(0,0,0,0.7);
 }
-nav a:hover {
-    background: rgba(255,255,255,0.22);
-    color: #ffffff;
-    box-shadow: 0 0 10px rgba(200,150,255,0.6);
-}
-nav a.active {
-    background: rgba(255,255,255,0.30);
-    color: #ffffff;
-    font-weight: 700;
-    box-shadow: 0 0 12px rgba(180,120,255,0.6);
-}
+nav a.active { color:#dcdcff; }
 
-/* ===== CONTENU ===== */
+/* PAGE */
 .page {
     height: 100vh;
     display:flex;
     flex-direction:column;
     justify-content:center;
     padding: 0 60px;
+    position: relative;
+    z-index: 2;
 }
 
-/* Titre doré premium */
+/* TITRES + TEXTES LISIBLES */
 h1 {
-    font-size: 2.6rem;
+    font-size: 2.8rem;
     margin-bottom: 12px;
-    color: #ffe98a; /* OR DOUX */
-    text-shadow:
-        0 0 8px rgba(0,0,0,0.85),
-        0 0 14px rgba(0,0,0,0.55);
+    color: #ffffff;
+    text-shadow: 0 0 18px rgba(0,0,0,1);
 }
 
-/* Paragraphe lisible sur fond clair */
 p {
-    font-size: 1.15rem;
-    max-width: 680px;
-    color: #fafafa;
-    text-shadow:
-        0 0 10px rgba(0,0,0,0.9),
-        0 0 16px rgba(0,0,0,0.7);
-    margin-bottom: 25px;
+    font-size: 1.2rem;
+    max-width: 650px;
+    color: #eeeeee;
+    text-shadow: 0 0 14px rgba(0,0,0,1);
 }
 
-/* Citation */
+/* CITATION / ENCADRÉ */
 .quote {
-    max-width: 680px;
-    padding: 22px 26px;
-    background: rgba(20,20,20,0.45);
-    border-left: 4px solid #ffdd55;
+    max-width: 650px;
+    margin-top: 25px;
+    padding: 18px 22px;
+    background: rgba(255,255,255,0.35);
+    border-left: 4px solid #8ea6ff;
     border-radius: 12px;
     font-style: italic;
-    color: #ffefb0;
-    text-shadow:
-        0 0 10px rgba(0,0,0,0.9),
-        0 0 14px rgba(0,0,0,0.6);
+    color: #ffffff;
+    text-shadow: 0 0 12px rgba(0,0,0,1);
+    backdrop-filter: blur(6px);
 }
 
-/* Bouton */
+/* BOUTON FINAL */
 .btn {
-    margin-top:25px;
-    padding: 12px 22px;
+    margin-top: 35px;
+    padding: 14px 26px;
     border-radius: 999px;
-    background: linear-gradient(120deg,#fff,#dcdfff);
-    border: 1px solid #c7d2fe;
-    text-decoration:none;
-    color:#111;
-    font-size:1rem;
+    background: rgba(255,255,255,0.85);
+    border: 1px solid #d5d8ff;
+    text-decoration: none;
+    color: #111;
+    font-size: 1.05rem;
     font-weight: 600;
 }
 </style>
 
 <script>
+// Active automatiquement le lien du menu correspondant à la page
 document.addEventListener("DOMContentLoaded", ()=>{
     const current = location.pathname.split("/").pop();
     document.querySelectorAll("nav a").forEach(a=>{
@@ -141,11 +121,12 @@ document.addEventListener("DOMContentLoaded", ()=>{
 </script>
 
 </head>
-
 <body>
 
 <header>
-    <div class="logo">IA Vision</div>
+    <div class="logo" style="color:white; font-weight:600; text-shadow:0 0 8px black;">
+        IA Vision
+    </div>
     <nav>
         <a href="index.html">Accueil</a>
         <a href="ia-simple.html">IA Simplifiée</a>
@@ -153,28 +134,25 @@ document.addEventListener("DOMContentLoaded", ()=>{
         <a href="creative.html">Créative</a>
         <a href="innovations.html">Innovations</a>
         <a href="risques.html">Risques</a>
-        <a href="futur.html">Futur</a>
+        <a href="futur.html" class="active">Futur</a>
         <a href="contact.html">Contact</a>
     </nav>
 </header>
 
 <section class="page">
-
     <h1>Et si le futur de l’IA était profondément humain ?</h1>
 
     <p>
-        L’intelligence artificielle n’est pas une destination — 
-        mais un outil, une amplification de ce que nous décidons de créer, protéger et imaginer.
-        Le futur dépend entièrement des valeurs que nous choisissons d’y placer.
+        L’intelligence artificielle n’est pas une destination, mais une extension 
+        de notre capacité à imaginer, protéger, créer et transmettre.  
+        Le futur dépend de la façon dont nous construisons ce partenariat.
     </p>
 
     <div class="quote">
-        « L’IA ne remplacera pas l’humain.  
-        Elle amplifie ce que l’humain décide de cultiver. »
+        « L’IA ne remplacera pas l’humain. Elle amplifie ce que l’humain décide de cultiver. »
     </div>
 
     <a href="contact.html" class="btn">Dernière page → Contact</a>
-
 </section>
 
 </body>
