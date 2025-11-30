@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Contact & Histoire de l’IA</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #f5f7ff;
+    color: #111827;
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+/* Header identique aux autres pages */
+header {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 86%;
+    padding: 14px 28px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(14px);
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid rgba(160,160,255,0.4);
+    z-index: 10;
+}
+nav a {
+    margin: 0 14px;
+    text-decoration: none;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+nav a.active { color:#6366f1; }
+
+/* Page container */
+.page {
+    padding: 160px 60px 60px;
+}
+
+/* Accordion */
+.accordion {
+    max-width: 900px;
+    margin-bottom: 40px;
+}
+.accordion-item {
+    background: #ffffffb7;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+}
+.accordion-header {
+    padding: 18px 24px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: #eef2ff;
+    border-bottom: 1px solid #e5e7eb;
+}
+.accordion-content {
+    display: none;
+    padding: 20px 26px;
+    line-height: 1.65;
+    background: #fff;
+    animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Contact section */
+.contact-box {
+    background: #ffffffb7;
+    padding: 22px 28px;
+    border-radius: 12px;
+    border: 1px solid #d1d5db;
+    max-width: 650px;
+    margin-top: 50px;
+}
+.contact-box h2 {
+    margin-bottom: 12px;
+    font-size: 1.7rem;
+}
+.contact-box p {
+    color: #6b7280;
+    margin-bottom: 14px;
+}
+.contact-item {
+    margin-top: 14px;
+}
+.contact-item strong {
+    color: #111;
+    font-weight: 600;
+}
+</style>
+
+<script>
+// Active le lien du menu
+document.addEventListener("DOMContentLoaded", ()=>{
+    const current = location.pathname.split("/").pop();
+    document.querySelectorAll("nav a").forEach(a=>{
+        if(a.getAttribute("href")===current){
+            a.classList.add("active");
+        }
+    });
+});
+
+// Accordéon style A — un seul ouvert à la fois
+document.addEventListener("DOMContentLoaded", () => {
+    const headers = document.querySelectorAll(".accordion-header");
+
+    headers.forEach(header => {
+        header.addEventListener("click", () => {
+            const openItem = document.querySelector(".accordion-content.show");
+            const content = header.nextElementSibling;
+            
+            if (openItem && openItem !== content) {
+                openItem.classList.remove("show");
+                openItem.style.display = "none";
+            }
+
+            if (content.classList.contains("show")) {
+                content.classList.remove("show");
+                content.style.display = "none";
+            } else {
+                content.classList.add("show");
+                content.style.display = "block";
+            }
+        });
+    });
+});
+</script>
+
+</head>
+<body>
+
+<header>
+    <div class="logo">IA Vision</div>
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="ia-simple.html">IA Simplifiée</a>
+        <a href="quotidien.html">Quotidien</a>
+        <a href="creative.html">Créative</a>
+        <a href="innovations.html">Innovations</a>
+        <a href="risques.html">Risques</a>
+        <a href="futur.html">Futur</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="page">
+
+<h1 style="font-size:2.4rem; margin-bottom:20px;">Histoire complète de l’intelligence artificielle</h1>
+<p style="max-width:700px; color:#6b7280;">
+Une rétrospective en 7 grands chapitres, couvrant plus de 80 ans de découvertes, d’innovations et d’avancées majeures.
+</p>
+
+<div class="accordion">
+
+<!-- 1 — 1940–1960 -->
+<div class="accordion-item">
+    <div class="accordion-header">📘 1940–1960 : Les origines de l’IA</div>
+    <div class="accordion-content">
+        • Alan Turing publie son test d’intelligence (1950).<br>
+        • Développement des premières machines programmables.<br>
+        • Naissance de la cybernétique (Norbert Wiener).<br>
+        • Apparition des premiers concepts de réseaux logiques.<br>
+        • Conférence de Dartmouth (1956) — naissance officielle de l’IA.<br>
+        • McCarthy invente le terme “Artificial Intelligence”.<br>
+        • Premiers programmes de résolution logique.<br>
+        • Début des recherches sur la traduction automatique.<br>
+        • Premiers robots autonomes rudimentaires.<br>
+        • Concept d’agent intelligent théorisé.<br>
+        • Premiers travaux sur la reconnaissance symbolique.<br>
+        • Apparition des premiers automates cellulaires.<br>
+        • Avancées dans les modèles mathématiques du raisonnement.<br>
+        • Premiers essais d’apprentissage machine rudimentaire.<br>
+        • Premières applications militaires de calcul automatisé.
+    </div>
+</div>
+
+<!-- 2 — 1960–1980 -->
+<div class="accordion-item">
+    <div class="accordion-header">📗 1960–1980 : Réseaux, logique et heuristiques</div>
+    <div class="accordion-content">
+        • Développement du premier réseau de neurones perceptron.<br>
+        • Premiers chatbots (ELIZA en 1966).<br>
+        • Développement d’algorithmes heuristiques.<br>
+        • Premiers langages dédiés à l’IA (LISP).<br>
+        • Avancées majeures en reconnaissance vocale.<br>
+        • Modélisation informatique du raisonnement humain.<br>
+        • Début des recherches sur les systèmes experts.<br>
+        • Naissance de la vision par ordinateur.<br>
+        • Premiers robots mobiles programmables.<br>
+        • Théories de l’apprentissage statistique.<br>
+        • Découverte des limites du perceptron simple.<br>
+        • Début du financement massif par les gouvernements.<br>
+        • Systèmes de jeu comme SHRDLU.<br>
+        • Approche symbolique dominante.<br>
+        • Premières IA dans l’industrie (diagnostic simple).
+    </div>
+</div>
+
+<!-- 3 — 1980–2000 -->
+<div class="accordion-item">
+    <div class="accordion-header">📙 1980–2000 : L’ère des systèmes experts</div>
+    <div class="accordion-content">
+        • Explosion des systèmes experts en entreprise.<br>
+        • Développement intense des bases de connaissance.<br>
+        • Retour des réseaux de neurones (backpropagation).<br>
+        • IA dans la finance et la médecine.<br>
+        • Algorithmes génétiques et optimisation.<br>
+        • Premiers véhicules autonomes expérimentaux.<br>
+        • Reconnaissance d’écriture manuscrite.<br>
+        • Agents intelligents en robotique.<br>
+        • Jeux vidéo : premiers comportements évolués.<br>
+        • Début de l’apprentissage profond théorique.<br>
+        • IA intégrée aux machines industrielles.<br>
+        • Fouille de données (data mining).<br>
+        • Création d’algorithmes de classification performants.<br>
+        • Avancées en NLP statistiques.<br>
+        • Premières architectures plus profondes.
+    </div>
+</div>
+
+<!-- 4 — 2000–2010 -->
+<div class="accordion-item">
+    <div class="accordion-header">📒 2000–2010 : Machine Learning & Big Data</div>
+    <div class="accordion-content">
+        • Explosion des données numériques.<br>
+        • IA dans les moteurs de recherche.<br>
+        • Recommandations : YouTube, Amazon, Netflix.<br>
+        • Naissance du concept Big Data.<br>
+        • Deep Learning opérationnel.<br>
+        • Premières IA embarquées sur smartphone.<br>
+        • Systèmes de détection faciale fiables.<br>
+        • Traduction statistique améliorée.<br>
+        • Premières voitures semi-autonomes.<br>
+        • Classification massive d’images.<br>
+        • Traitement vocal avancé.<br>
+        • Prédiction robuste dans la finance.<br>
+        • Détection automatique des spams via réseaux.<br>
+        • Avancées spectaculaires en reconnaissance vocale.<br>
+        • Premières IA biomédicales efficaces.
+    </div>
+</div>
+
+<!-- 5 — 2010–2020 -->
+<div class="accordion-item">
+    <div class="accordion-header">📕 2010–2020 : Révolution Deep Learning</div>
+    <div class="accordion-content">
+        • Google DeepMind bat le champion du Go (AlphaGo).<br>
+        • Explosion des réseaux neuronaux profonds.<br>
+        • IA dans les assistants (Siri, Alexa, Google Assistant).<br>
+        • Traduction neuronale (Google NMT).<br>
+        • Vision par ordinateur super performante.<br>
+        • GANs (création d'images réalistes).<br>
+        • Deepfake & défis éthiques.<br>
+        • Arrivée des voitures autonomes avancées.<br>
+        • Avancées en médecine prédictive.<br>
+        • IA dans la robotique humanoïde.<br>
+        • Explosion de TensorFlow & PyTorch.<br>
+        • Voix synthétiques réalistes.<br>
+        • Agents autonomes multi-tâches.<br>
+        • NLP neuronal révolutionnaire.<br>
+        • Précurseurs des modèles géants.
+    </div>
+</div>
+
+<!-- 6 — 2020–2024 -->
+<div class="accordion-item">
+    <div class="accordion-header">📓 2020–2024 : IA générative & modèles géants</div>
+    <div class="accordion-content">
+        • GPT-3 puis GPT-4 révolutionnent le langage.<br>
+        • Stable Diffusion, Midjourney : images IA réalistes.<br>
+        • Musique IA grand public (Suno, Udio).<br>
+        • Vidéo générative (Pika, Runway).<br>
+        • Robots IA plus cohérents.<br>
+        • IA intégrée dans la suite Microsoft.<br>
+        • Explosion de l'IA dans l'éducation.<br>
+        • Deepfake régulés et contrôles éthiques.<br>
+        • IA multimodale (texte + images + sons).<br>
+        • Premiers modèles IA open-source massifs.<br>
+        • IA dans les véhicules autonomes de série.<br>
+        • Explosion de la créativité IA.<br>
+        • Agents autonomes réels.<br>
+        • IA dans la justice et l'administration.<br>
+        • Réflexion globale sur l’éthique IA.
+    </div>
+</div>
+
+<!-- 7 — 2025+ -->
+<div class="accordion-item">
+    <div class="accordion-header">📔 2025+ : Le futur de l’IA</div>
+    <div class="accordion-content">
+        • IA conversationnelle quasi-humaine.<br>
+        • Robots compagnons évolués.<br>
+        • IA dans les villes intelligentes.<br>
+        • Médecine IA prédictive généralisée.<br>
+        • Humanoïdes assistifs au quotidien.<br>
+        • Interfaces cerveau-IA émergentes.<br>
+        • Fusion IA + réalité augmentée.<br>
+        • Véhicules 100% autonomes.<br>
+        • IA dans les gouvernements locaux.<br>
+        • Création audiovisuelle temps réel.<br>
+        • Agents personnels IA pour tout.<br>
+        • IA éthique normée mondialement.<br>
+        • Émergence d’IA créatives professionnelles.<br>
+        • Systèmes IA collaboratifs.<br>
+        • Repenser l’éducation & le travail.
+    </div>
+</div>
+
+</div>
+
+<!-- CONTACT BOX -->
+<div class="contact-box">
+    <h2>Contact</h2>
+    <p>Pour toute question, collaboration ou retour, vous pouvez me contacter :</p>
+
+    <div class="contact-item">
+        <strong>Email :</strong> votre-email@exemple.com
+    </div>
+    <div class="contact-item">
+        <strong>Réseaux :</strong> LinkedIn, Instagram, etc.
+    </div>
+</div>
+
+</section>
+
+</body>
+</html>
