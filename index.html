@@ -107,6 +107,46 @@ document.addEventListener("DOMContentLoaded", ()=>{
         }
     });
 });
+    /* ======= Correction — ne pas toucher au contenu ======= */
+
+/* Empêche le header d'affecter les liens du corps */
+
+header nav a {
+    color: #ffffff;
+    text-shadow: 0 0 6px rgba(0,0,0,0.6);
+}
+
+.page a {
+    background: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    color: #e2e2ff !important;
+    text-shadow: 0 0 4px rgba(0,0,0,0.6) !important;
+}
+
+/* Correction du bouton Commencer */
+.btn,
+button,
+.start-button,
+a.start-link {
+    background: rgba(255,255,255,0.85) !important;
+    color: black !important;
+    padding: 10px 20px !important;
+    border-radius: 12px !important;
+    text-shadow: none !important;
+    font-weight: 600 !important;
+}
+
+/* Correction du texte de description (le sous-titre) */
+.subtitle,
+.hero-subtext,
+p.hero-description {
+    color: #f4f4f4 !important;
+    font-size: 1.1rem !important;
+    max-width: 650px !important;
+    text-shadow: 0 0 14px rgba(0,0,0,0.7) !important;
+}
+
 </script>
 
 </head>
