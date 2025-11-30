@@ -5,157 +5,137 @@
 <title>IA Créative</title>
 
 <style>
-/* ======== STYLE GLOBAL ======== */
+/* ===== GLOBAL ===== */
 body {
     margin: 0;
     font-family: "Poppins", sans-serif;
     background: url('creative-background.jpg') center/cover no-repeat fixed;
+    color: #ffffff !important;
     height: 100vh;
     overflow: hidden;
 }
 
-/* Lisibilité globale sur fond lumineux */
-.page, h1, p, .list div {
-    color: #ffffff !important;
-    text-shadow:
-        0 0 8px rgba(0,0,0,0.85),
-        0 0 18px rgba(0,0,0,0.65);
-}
-
-/* ======== HEADER PREMIUM ======== */
+/* ===== HEADER ===== */
 header {
     position: fixed;
     top: 18px;
     left: 50%;
     transform: translateX(-50%);
     width: 86%;
-
     padding: 14px 24px;
     border-radius: 18px;
-
-    background: rgba(255, 255, 255, 0.14);
+    background: rgba(255,255,255,0.14);
     backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-
     border: 1px solid rgba(255,255,255,0.25);
     box-shadow: 0 8px 22px rgba(0,0,0,0.18);
-
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 50;
 }
 
-.logo {
+header .logo {
     font-weight: 600;
     font-size: 1.15rem;
     color: #ffffff;
-    text-shadow: 0 0 12px rgba(255,255,255,0.9);
+    text-shadow: 0 0 12px rgba(255,255,255,0.85);
 }
 
+/* Navigation */
 nav a {
     margin: 0 10px;
     padding: 6px 10px;
     text-decoration: none;
-
-    color: #f1f1f1;
+    color: #e8e8ff;
     font-size: 0.95rem;
     font-weight: 500;
-
-    text-shadow: 0 0 6px rgba(0,0,0,0.6);
-    transition: 0.25s;
     border-radius: 8px;
+    text-shadow: 0 0 8px rgba(0,0,0,0.8);
+    transition: 0.25s ease;
 }
-
 nav a:hover {
     background: rgba(255,255,255,0.22);
-    color: #ffffff;
-    box-shadow: 0 0 10px rgba(200,150,255,0.6);
+    color: #fff;
 }
-
 nav a.active {
-    color: #ffffff;
-    font-weight: 700;
     background: rgba(255,255,255,0.30);
-    box-shadow: 0 0 14px rgba(180,120,255,0.7);
+    font-weight: 700;
+    box-shadow: 0 0 12px rgba(180,120,255,0.6);
+    color: #fff;
 }
 
-/* ======== CONTENU ======== */
+/* ===== PAGE ===== */
 .page {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0 60px;
+    padding: 0 70px;
 }
 
+/* ===== LISIBILITÉ BOOSTÉE ===== */
+.text {
+    color: #ffffff !important;
+    font-size: 1.35rem;
+    line-height: 1.75;
+    text-shadow:
+        0 0 12px rgba(0,0,0,1),
+        0 0 22px rgba(0,0,0,0.95);
+    -webkit-text-stroke: 0.8px rgba(0,0,0,0.8);
+}
+
+.text-block {
+    background: rgba(0,0,0,0.32);
+    padding: 16px 22px;
+    border-radius: 14px;
+    display: inline-block;
+    backdrop-filter: blur(6px);
+}
+
+/* TITRE */
 h1 {
-    font-size: 2.6rem;
-    margin-bottom: 16px;
-    color: #ffffff;
+    font-size: 3.4rem;
+    margin-bottom: 24px;
     text-shadow:
-        0 0 14px rgba(0,0,0,0.9),
-        0 0 22px rgba(0,0,0,0.8);
+        0 0 14px rgba(0,0,0,1),
+        0 0 28px rgba(0,0,0,1);
+    -webkit-text-stroke: 1px rgba(0,0,0,0.9);
 }
 
-p {
-    font-size: 1.15rem;
-    max-width: 720px;
-    line-height: 1.45;
-    color: #f7f7f7 !important;
-    margin-bottom: 20px;
+/* MOTS CLÉS JAUNES */
+.key {
+    color: #ffe066 !important;
+    font-weight: 700;
+    font-size: 1.4rem;
+    -webkit-text-stroke: 0.85px rgba(0,0,0,1);
     text-shadow:
-        0 0 10px rgba(0,0,0,0.85),
-        0 0 20px rgba(0,0,0,0.65);
+        0 0 14px rgba(0,0,0,1),
+        0 0 30px rgba(0,0,0,1);
 }
 
-/* Liste améliorée */
-.list {
-    margin-top: 25px;
-    font-size: 1.12rem;
-}
-
-.list div {
-    margin-bottom: 14px;
-    line-height: 1.55;
-}
-
-/* Icônes bien visibles */
-.list div::before {
-    content: "✨ ";
-    color: #ffffff;
-    text-shadow: 0 0 10px rgba(255,255,255,0.9);
-    font-size: 1.3rem;
-}
-
-/* ======== BOUTON PREMIUM ======== */
+/* ===== BUTTON ===== */
 .btn {
-    margin-top: 28px;
-    padding: 14px 26px;
-    border-radius: 999px;
+    margin-top: 40px;
+    padding: 14px 24px;
+    border-radius: 14px;
+    width: fit-content;
     background: rgba(255,255,255,0.85);
-    border: 1px solid rgba(255,255,255,0.5);
-
     text-decoration: none;
-    color: #000;
-    font-size: 1.1rem;
+    color: #111 !important;
+    font-size: 1.05rem;
     font-weight: 600;
-
-    transition: 0.25s;
 }
-
 .btn:hover {
-    background: #ffffff;
-    box-shadow: 0 0 20px rgba(255,255,255,0.7);
+    background: #fff;
 }
 </style>
 
 <script>
-// Active automatiquement le lien correspondant à la page
-document.addEventListener("DOMContentLoaded", () => {
+// Active le lien du menu
+document.addEventListener("DOMContentLoaded", ()=>{
     const current = location.pathname.split("/").pop();
-    document.querySelectorAll("nav a").forEach(a => {
-        if(a.getAttribute("href") === current){
+    document.querySelectorAll("nav a").forEach(a=>{
+        if(a.getAttribute("href")===current){
             a.classList.add("active");
         }
     });
@@ -180,21 +160,22 @@ document.addEventListener("DOMContentLoaded", () => {
 </header>
 
 <section class="page">
-    <h1>L’IA créative : un nouveau partenaire artistique</h1>
 
-    <p>
-        L’IA ne remplace pas la créativité humaine, elle l’amplifie.
-        Elle propose idées, variations, ambiances, et ouvre des univers graphiques ou musicaux
-        impossibles autrefois.
+    <h1 class="text">L’IA créative : un nouveau partenaire artistique</h1>
+
+    <p class="text text-block">
+        L’IA ne remplace pas la créativité humaine — elle l’amplifie.  
+        Elle propose idées, variations, ambiances, et ouvre des univers graphiques ou musicaux impossibles autrefois.
     </p>
 
-    <div class="list">
-        <div><strong>Art & Design</strong> — générer des visuels, styles, concepts instantanément.</div>
-        <div><strong>Musique & Son</strong> — créer ambiances, mélodies, textures sonores.</div>
-        <div><strong>Écriture & Contenu</strong> — rédiger, structurer, suggérer des idées nouvelles.</div>
-    </div>
+    <p class="text text-block" style="margin-top:22px;">
+        🎨 <span class="key">Art & Design</span> — générer des visuels, styles, concepts instantanément.<br>
+        🎵 <span class="key">Musique & Son</span> — créer ambiances, mélodies, textures sonores.<br>
+        ✍️ <span class="key">Écriture & Contenu</span> — rédiger, structurer, suggérer des idées nouvelles.
+    </p>
 
     <a href="innovations.html" class="btn">Page suivante → Innovations de demain</a>
+
 </section>
 
 </body>
