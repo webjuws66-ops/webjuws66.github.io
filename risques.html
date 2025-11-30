@@ -5,15 +5,19 @@
 <title>Risques & Éthique</title>
 
 <style>
+/* ====== GLOBAL ====== */
 body {
     margin: 0;
     font-family: "Poppins", sans-serif;
-  background: url('risques-background.jpg') center/cover no-repeat fixed;
-    color: #111827;
+    background: url('risques-background.jpg') center/cover no-repeat fixed;
     height: 100vh;
     overflow: hidden;
+
+    color: #f2f2f2 !important;
+    text-shadow: 0 0 8px rgba(0,0,0,0.85) !important;
 }
 
+/* ===== HEADER PREMIUM ===== */
 header {
     position: fixed;
     top: 20px;
@@ -21,64 +25,135 @@ header {
     transform: translateX(-50%);
     width: 86%;
     padding: 14px 28px;
+
     border-radius: 999px;
-    background: rgba(255,255,255,0.7);
-    backdrop-filter: blur(14px);
+    background: rgba(255,255,255,0.14);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+    border: 1px solid rgba(255,255,255,0.28);
+
     display: flex;
     justify-content: space-between;
-    border: 1px solid rgba(160,160,255,0.4);
+    align-items: center;
+
     z-index: 10;
 }
-nav a {
-    margin: 0 14px;
-    text-decoration: none;
-    color: #6b7280;
-    font-size: 0.9rem;
-}
-nav a.active { color:#6366f1; }
 
+header .logo {
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: #ffffff;
+    text-shadow: 0 0 12px rgba(255,255,255,0.8);
+}
+
+/* NAVIGATION */
+nav a {
+    margin: 0 10px;
+    padding: 6px 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+
+    text-decoration: none;
+    color: #e8e8ff;
+    text-shadow: 0 0 6px rgba(0,0,0,0.6);
+    transition: 0.25s ease;
+    border-radius: 8px;
+}
+nav a:hover {
+    background: rgba(255,255,255,0.22);
+    box-shadow: 0 0 10px rgba(200,150,255,0.6);
+}
+nav a.active {
+    background: rgba(255,255,255,0.30);
+    font-weight: 700;
+    color: #ffffff;
+    box-shadow: 0 0 12px rgba(180,120,255,0.6);
+}
+
+/* ====== CONTENT ====== */
 .page {
     height: 100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: 0 60px;
 }
-h1 { font-size: 2.4rem; margin-bottom: 12px; }
-p { font-size:1.05rem; max-width:650px; color:#6b7280; }
 
-ul {
-    margin-top: 20px;
-    font-size: 1rem;
-    color: #444;
-    line-height: 1.7;
+h1 {
+    font-size: 2.4rem;
+    margin-bottom: 16px;
+    color: #ffffff;
+    text-shadow: 0 0 18px rgba(0,0,0,1);
 }
+
+p {
+    max-width: 680px;
+    font-size: 1.12rem;
+    color: #f3f3ff !important;
+    text-shadow: 0 0 12px rgba(0,0,0,0.9) !important;
+}
+
+/* LISTE */
+ul {
+    margin-top: 25px;
+    font-size: 1.1rem;
+    line-height: 1.75;
+    list-style: none;
+    padding-left: 0;
+}
+
 ul li {
     margin-bottom: 10px;
+    padding-left: 16px;
+    position: relative;
 }
+
+ul li::before {
+    content: "✔";
+    color: #a78bfa;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
 ul li strong {
-    color: #111;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0,0,0,0.8);
 }
 
+/* ALERT */
 .alert {
-    margin-top: 25px;
+    margin-top: 30px;
     padding: 18px 22px;
-    background: #fee2e2;
-    border-left: 4px solid #ef4444;
-    border-radius: 12px;
-    max-width: 620px;
-    color: #7f1d1d;
+
+    background: rgba(255, 90, 90, 0.25);
+    border-left: 4px solid #ff4d4d;
+    backdrop-filter: blur(4px);
+
+    border-radius: 14px;
+    max-width: 680px;
+
+    color: #ffecec;
+    text-shadow: 0 0 10px rgba(0,0,0,1);
 }
 
+/* BUTTON */
 .btn {
-    margin-top:25px;
-    padding: 12px 22px;
+    margin-top:30px;
+    padding: 14px 26px;
     border-radius: 999px;
-    background: linear-gradient(120deg,#fff,#dcdfff);
-    border: 1px solid #c7d2fe;
+
+    background: rgba(255,255,255,0.85);
+    border: 1px solid rgba(255,255,255,0.4);
+
     text-decoration:none;
-    color:#111;
+    color:#000;
     font-size:1rem;
+    font-weight:600;
+
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
 }
 </style>
 
@@ -112,21 +187,22 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 <section class="page">
     <h1>Risques, limites & éthique</h1>
+
     <p>
         Plus l’IA devient puissante, plus l’éthique et la transparence sont essentielles.
         L’enjeu n’est pas seulement ce qu’elle peut faire, mais ce que nous voulons qu’elle fasse.
     </p>
 
     <ul>
-        <li><strong>Données & vie privée</strong> — risques de mauvaise utilisation ou d’accès non autorisé.</li>
-        <li><strong>Biais algorithmiques</strong> — l’IA peut reproduire des discriminations déjà présentes.</li>
+        <li><strong>Données & vie privée</strong> — risques d’utilisation abusive ou d’accès non autorisé.</li>
+        <li><strong>Biais algorithmiques</strong> — l’IA peut renforcer des discriminations existantes.</li>
         <li><strong>Dépendance</strong> — automatisation excessive, perte de compétences humaines.</li>
         <li><strong>Emploi</strong> — transformation des métiers, disparition de certaines tâches.</li>
     </ul>
 
     <div class="alert">
-        <strong>Confiance & transparence :</strong>  
-        Expliquer les décisions, rendre visibles les règles du jeu et garder l’humain au centre.
+        <strong>Confiance & transparence :</strong>
+        Expliquer les décisions, rendre visibles les règles du jeu, et garder l’humain au centre.
     </div>
 
     <a href="futur.html" class="btn">Page suivante → Futur humain + IA</a>
