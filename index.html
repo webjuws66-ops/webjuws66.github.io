@@ -3,711 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L'Intelligence Artificielle - Possibilités Infinies</title>
+    <title>Futur de l'Intelligence Artificielle</title>
+
+    <!-- Police moderne -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Feuille de style principale -->
     <link rel="stylesheet" href="style.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #8b5cf6;
-            --secondary: #a78bfa;
-            --dark: #1a0b2e;
-            --darker: #0f0722;
-            --light: #f3e8ff;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
-            color: white;
-            overflow-x: hidden;
-        }
-
-        /* Animations de fond */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .circle {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-            animation: float 20s infinite ease-in-out;
-            opacity: 0.1;
-        }
-
-        .circle:nth-child(1) {
-            width: 400px;
-            height: 400px;
-            top: 10%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .circle:nth-child(2) {
-            width: 300px;
-            height: 300px;
-            top: 60%;
-            right: 10%;
-            animation-delay: 5s;
-        }
-
-        .circle:nth-child(3) {
-            width: 500px;
-            height: 500px;
-            bottom: 10%;
-            left: 50%;
-            animation-delay: 10s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(50px, -50px) scale(1.1); }
-            66% { transform: translate(-30px, 30px) scale(0.9); }
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(26, 11, 46, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 5%;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(139, 92, 246, 0.3);
-        }
-
-        nav ul {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            list-style: none;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        nav a:hover {
-            color: var(--secondary);
-        }
-
-        /* Sections */
-        section {
-            min-height: 100vh;
-            padding: 8rem 5% 4rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 1s;
-        }
-
-        h2 {
-            font-size: 3rem;
-            margin-bottom: 2rem;
-            color: var(--primary);
-            animation: fadeInUp 1s;
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            color: var(--secondary);
-            margin-bottom: 3rem;
-            animation: fadeInUp 1s 0.2s both;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Hero Section */
-        #accueil {
-            text-align: center;
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 1rem 3rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            animation: fadeInUp 1s 0.4s both;
-            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.6);
-        }
-
-        /* Cards */
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            width: 100%;
-            max-width: 1200px;
-            margin-top: 2rem;
-        }
-
-        .card {
-            background: rgba(139, 92, 246, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: all 0.3s;
-            animation: fadeInUp 1s both;
-        }
-
-        .card:nth-child(1) { animation-delay: 0.2s; }
-        .card:nth-child(2) { animation-delay: 0.4s; }
-        .card:nth-child(3) { animation-delay: 0.6s; }
-
-        .card:hover {
-            transform: translateY(-10px);
-            background: rgba(139, 92, 246, 0.2);
-            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
-        }
-
-        .card h3 {
-            font-size: 1.8rem;
-            color: var(--secondary);
-            margin-bottom: 1rem;
-        }
-
-        .card p {
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Timeline */
-        .timeline {
-            max-width: 900px;
-            margin: 2rem auto;
-            position: relative;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 100%);
-        }
-
-        .timeline-item {
-            display: flex;
-            margin-bottom: 3rem;
-            position: relative;
-            animation: fadeInUp 1s both;
-        }
-
-        .timeline-item:nth-child(odd) {
-            flex-direction: row-reverse;
-        }
-
-        .timeline-content {
-            width: 45%;
-            background: rgba(139, 92, 246, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            border-radius: 15px;
-            padding: 1.5rem;
-            transition: all 0.3s;
-        }
-
-        .timeline-content:hover {
-            transform: scale(1.05);
-            background: rgba(139, 92, 246, 0.2);
-        }
-
-        .timeline-year {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: var(--primary);
-            border-radius: 50%;
-            border: 4px solid var(--darker);
-            box-shadow: 0 0 20px var(--primary);
-        }
-
-        /* Demo sections */
-        .demo-container {
-            max-width: 800px;
-            width: 100%;
-            background: rgba(139, 92, 246, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            border-radius: 20px;
-            padding: 2rem;
-            margin-top: 2rem;
-        }
-
-        .demo-button {
-            background: var(--primary);
-            color: white;
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin: 0.5rem;
-        }
-
-        .demo-button:hover {
-            background: var(--secondary);
-            transform: translateY(-2px);
-        }
-
-        .demo-output {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin-top: 1rem;
-            min-height: 100px;
-            color: var(--light);
-        }
-
-        /* Images grid */
-        .images-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            width: 100%;
-            max-width: 1000px;
-            margin-top: 2rem;
-        }
-
-        .image-placeholder {
-            aspect-ratio: 1;
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(167, 139, 250, 0.2) 100%);
-            border: 2px solid rgba(139, 92, 246, 0.3);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .image-placeholder:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 2rem; }
-            .subtitle { font-size: 1.2rem; }
-            
-            nav ul {
-                gap: 1.5rem;
-                flex-wrap: wrap;
-            }
-            
-            .cards-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .timeline::before {
-                left: 20px;
-            }
-            
-            .timeline-item {
-                flex-direction: row !important;
-            }
-            
-            .timeline-content {
-                width: calc(100% - 60px);
-                margin-left: 60px;
-            }
-            
-            .timeline-dot {
-                left: 20px;
-            }
-        }
-
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-    </style>
 </head>
 <body>
-    <div class="bg-animation">
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-    </div>
-
-    <nav>
-        <ul>
-            <li><a href="#accueil">Accueil</a></li>
-            <li><a href="#musique">IA Musicale</a></li>
-            <li><a href="#images">IA Image</a></li>
-            <li><a href="#histoire">À Propos</a></li>
-        </ul>
-    </nav>
-
-    <section id="accueil">
-        <h1>Intelligence Artificielle</h1>
-        <p class="subtitle">Découvrez les possibilités infinies de l'IA</p>
-        <button class="cta-button" onclick="document.getElementById('musique').scrollIntoView({behavior: 'smooth'})">
-            Explorer
-        </button>
-        
-        <div class="cards-container">
-            <div class="card">
-                <div class="card-icon">🎵</div>
-                <h3>Création Musicale</h3>
-                <p>L'IA compose, harmonise et génère des mélodies originales dans tous les styles musicaux imaginables.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">🎨</div>
-                <h3>Génération d'Images</h3>
-                <p>Transformez vos idées en œuvres visuelles spectaculaires grâce aux réseaux neuronaux avancés.</p>
-            </div>
-            <div class="card">
-                <div class="card-icon">🧠</div>
-                <h3>Innovation Continue</h3>
-                <p>Une évolution constante qui repousse les limites de la créativité et de l'intelligence artificielle.</p>
-            </div>
+    <header class="site-header">
+        <div class="logo">
+            <span class="logo-mark">IA</span>
+            <span class="logo-text">Futur & Vision</span>
         </div>
-    </section>
+        <nav class="main-nav">
+            <a href="#intro">Introduction</a>
+            <a href="#quotidien">IA & Quotidien</a>
+            <a href="#creative">IA Créative</a>
+            <a href="#innovations">Innovations</a>
+            <a href="#risques">Risques & Éthique</a>
+            <a href="#futur">Futur</a>
+            <a href="#contact" class="btn-nav">Contact</a>
+        </nav>
+    </header>
 
-    <section id="musique">
-        <h2>IA Musicale</h2>
-        <p class="subtitle">Quand l'intelligence artificielle compose la musique de demain</p>
-        
-        <div class="demo-container">
-            <h3 style="color: var(--secondary); margin-bottom: 1.5rem;">Démonstration Interactive</h3>
-            <p style="margin-bottom: 1rem;">L'IA peut créer de la musique dans différents styles :</p>
-            
-            <div>
-                <button class="demo-button" onclick="generateMusic('classique')">🎻 Classique</button>
-                <button class="demo-button" onclick="generateMusic('jazz')">🎷 Jazz</button>
-                <button class="demo-button" onclick="generateMusic('electronique')">🎹 Électronique</button>
-                <button class="demo-button" onclick="generateMusic('ambient')">🌊 Ambient</button>
+    <main>
+        <!-- HERO -->
+        <section class="hero" id="intro">
+            <div class="hero-content">
+                <p class="tagline">INTELLIGENCE ARTIFICIELLE • DEMAIN COMMENCE AUJOURD'HUI</p>
+                <h1>L’IA, moteur d’un futur plus intelligent, plus créatif, plus humain.</h1>
+                <p class="hero-text">
+                    Découvrez comment l’intelligence artificielle transforme déjà notre quotidien
+                    et dessine les contours du monde de demain : plus rapide, plus fluide, plus connecté.
+                </p>
+                <div class="hero-actions">
+                    <a href="#innovations" class="btn primary">Explorer les innovations</a>
+                    <a href="#futur" class="btn ghost">Imaginer le futur</a>
+                </div>
+                <div class="hero-meta">
+                    <span>⚪ Design futuriste épuré</span>
+                    <span>⚪ Focus sur pédagogie & inspiration</span>
+                </div>
             </div>
-            
-            <div class="demo-output" id="music-output">
-                <p class="pulse">🎵 Cliquez sur un style pour générer une composition...</p>
-            </div>
-            
-            <div style="margin-top: 2rem;">
-                <h4 style="color: var(--secondary);">Capacités de l'IA Musicale :</h4>
-                <ul style="margin-top: 1rem; line-height: 2;">
-                    <li>✨ Composition de mélodies originales</li>
-                    <li>🎼 Harmonisation automatique</li>
-                    <li>🎚️ Arrangement multi-instruments</li>
-                    <li>🎭 Adaptation au style et à l'émotion</li>
-                    <li>🔄 Génération de variations infinies</li>
-                </ul>
-            </div>
-        </div>
-    </section>
 
-    <section id="images">
-        <h2>IA & Génération d'Images</h2>
-        <p class="subtitle">De l'imagination à la réalité visuelle en quelques secondes</p>
-        
-        <div class="demo-container">
-            <h3 style="color: var(--secondary); margin-bottom: 1.5rem;">Générateur d'Images par IA</h3>
-            <p style="margin-bottom: 1rem;">Saisissez une description pour créer une image :</p>
-            
-            <input type="text" id="prompt-input" placeholder="Ex: Un coucher de soleil sur une planète alien..." 
-                   style="width: 100%; padding: 1rem; border-radius: 10px; border: 2px solid var(--primary); background: rgba(0,0,0,0.3); color: white; font-size: 1rem; margin-bottom: 1rem;">
-            
-            <button class="demo-button" onclick="generateImage()">🎨 Générer l'Image</button>
-            
-            <div class="demo-output" id="image-output">
-                <p class="pulse">🖼️ Entrez une description et cliquez sur Générer...</p>
+            <div class="hero-visual">
+                <div class="orbital">
+                    <div class="orbital-core"></div>
+                    <div class="orbital-ring ring-1"></div>
+                    <div class="orbital-ring ring-2"></div>
+                    <div class="orbital-ring ring-3"></div>
+                </div>
+                <p class="hero-caption">
+                    Un cerveau numérique lumineux, symbole d’une IA discrète, puissante et omniprésente.
+                </p>
             </div>
-        </div>
-        
-        <div class="images-grid">
-            <div class="image-placeholder">🌌</div>
-            <div class="image-placeholder">🦄</div>
-            <div class="image-placeholder">🏰</div>
-            <div class="image-placeholder">🤖</div>
-        </div>
-        
-        <div style="max-width: 800px; margin-top: 3rem;">
-            <h3 style="color: var(--secondary); margin-bottom: 1rem;">Technologies utilisées :</h3>
-            <p style="line-height: 1.8; color: rgba(255,255,255,0.8);">
-                Les modèles de diffusion comme DALL-E, Midjourney et Stable Diffusion utilisent des réseaux de neurones profonds 
-                pour comprendre les descriptions textuelles et les transformer en images photoréalistes ou artistiques. 
-                Ces systèmes ont appris à partir de millions d'images pour comprendre les concepts visuels, les styles artistiques, 
-                et les relations entre objets.
-            </p>
-        </div>
-    </section>
+        </section>
 
-    <section id="histoire">
-        <h2>L'Histoire de l'IA</h2>
-        <p class="subtitle">Des origines à aujourd'hui : un voyage fascinant</p>
-        
-        <div class="timeline">
-            <div class="timeline-item" style="animation-delay: 0.2s;">
-                <div class="timeline-content">
-                    <div class="timeline-year">1950</div>
-                    <h3>Le Test de Turing</h3>
-                    <p>Alan Turing propose le célèbre "Test de Turing" pour évaluer l'intelligence d'une machine. Il publie "Computing Machinery and Intelligence", posant la question fondamentale : "Les machines peuvent-elles penser ?"</p>
-                </div>
-                <div class="timeline-dot"></div>
+        <!-- IA EXPLIQUÉE SIMPLEMENT -->
+        <section class="section" id="ia-simple">
+            <div class="section-header">
+                <h2>Comprendre l’intelligence artificielle simplement</h2>
+                <p>
+                    Pas besoin d’être expert pour comprendre l’IA. C’est avant tout un ensemble d’algorithmes capables
+                    d’apprendre à partir des données pour prendre des décisions, assister l’humain, ou créer du contenu.
+                </p>
             </div>
-            
-            <div class="timeline-item" style="animation-delay: 0.3s;">
-                <div class="timeline-content">
-                    <div class="timeline-year">1956</div>
-                    <h3>Naissance de l'IA</h3>
-                    <p>La conférence de Dartmouth marque la naissance officielle de l'intelligence artificielle en tant que domaine de recherche. John McCarthy invente le terme "Intelligence Artificielle".</p>
-                </div>
-                <div class="timeline-dot"></div>
-            </div>
-            
-            <div class="timeline-item" style="animation-delay: 0.4s;">
-                <div class="timeline-content">
-                    <div class="timeline-year">1997</div>
-                    <h3>Deep Blue bat Kasparov</h3>
-                    <p>L'ordinateur Deep Blue d'IBM bat le champion du monde d'échecs Garry Kasparov, démontrant la puissance du calcul et des algorithmes dans des tâches cognitives complexes.</p>
-                </div>
-                <div class="timeline-dot"></div>
-            </div>
-            
-            <div class="timeline-item" style="animation-delay: 0.5s;">
-                <div class="timeline-content">
-                    <div class="timeline-year">2012</div>
-                    <h3>Révolution du Deep Learning</h3>
-                    <p>AlexNet remporte le concours ImageNet avec une marge impressionnante, marquant le début de l'ère moderne du deep learning et des réseaux de neurones profonds.</p>
-                </div>
-                <div class="timeline-dot"></div>
-            </div>
-            
-            <div class="timeline-item" style="animation-delay: 0.6s;">
-                <div class="timeline-content">
-                    <div class="timeline-year">2016</div>
-                    <h3>AlphaGo et le jeu de Go</h3>
-                    <p>AlphaGo de DeepMind bat Lee Sedol, champion du monde de Go, dans un jeu considéré comme l'un des plus complexes. Une victoire historique pour l'apprentissage par renforcement.</p>
-                </div>
-                <div class="timeline-dot"></div>
-            </div>
-            
-            <div class="timeline-item" style="animation-delay: 0.7s;">
-                <div class="timeline-content">
-                    <div class="timeline-year">2017</div>
-                    <h3>Architecture Transformer</h3>
-                    <p>Publication de "Attention Is All You Need" par Google, introduisant l'architecture Transformer qui révolutionnera le traitement du langage naturel et donnera naissance à GPT et BERT.</p>
-                </div>
-                <div class="timeline-dot"></div>
-            </div>
-            
-            <div class="timeline-item" style="animation-delay: 0.8s;">
-                <div class="timeline-content">
-                    <div class="timeline-year">2020</div>
-                    <h3>GPT-3 et l'IA générative</h3>
-                    <p>OpenAI lance GPT-3 avec 175 milliards de paramètres, démontrant des capacités impressionnantes en génération de texte, traduction, et programmation.</p>
-                </div>
-                <div class="timeline-dot"></div>
-            </div>
-            
-            <div class="timeline-item" style="animation-delay: 0.9s;">
-                <div class="timeline-content">
-                    <div class="timeline-year">2022-2023</div>
-                    <h3>L'explosion de l'IA générative</h3>
-                    <p>ChatGPT, DALL-E, Midjourney et Stable Diffusion deviennent accessibles au grand public. L'IA générative transforme la créativité, le travail et l'éducation à l'échelle mondiale.</p>
-                </div>
-                <div class="timeline-dot"></div>
-            </div>
-            
-            <div class="timeline-item" style="animation-delay: 1s;">
-                <div class="timeline-content">
-                    <div class="timeline-year">2024-2025</div>
-                    <h3>L'ère de l'IA multimodale</h3>
-                    <p>Les modèles d'IA intègrent texte, image, audio et vidéo de manière fluide. L'IA devient un assistant créatif et productif omniprésent dans notre quotidien.</p>
-                </div>
-                <div class="timeline-dot"></div>
-            </div>
-        </div>
-        
-        <div style="max-width: 800px; margin-top: 4rem; text-align: center;">
-            <h3 style="color: var(--secondary); margin-bottom: 1rem;">Et maintenant ?</h3>
-            <p style="line-height: 1.8; color: rgba(255,255,255,0.8);">
-                L'intelligence artificielle continue d'évoluer à une vitesse vertigineuse. Des recherches sur l'IA générale (AGI), 
-                l'apprentissage continu, et l'alignement de l'IA avec les valeurs humaines ouvrent de nouvelles perspectives fascinantes. 
-                Nous ne sommes qu'au début d'une révolution qui transformera profondément notre société.
-            </p>
-        </div>
-    </section>
 
-    <script>
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Music generation demo
-        function generateMusic(style) {
-            const output = document.getElementById('music-output');
-            const styles = {
-                classique: {
-                    title: '🎻 Composition Classique Générée',
-                    description: 'Mélodie en Sol majeur, structure sonate, influences de Mozart et Beethoven',
-                    notation: '♪ Sol-Si-Ré-Sol | Fa♯-La-Do-Fa♯ | Mi-Sol-Si-Mi | Ré-Fa♯-La-Ré ♪'
-                },
-                jazz: {
-                    title: '🎷 Improvisation Jazz Générée',
-                    description: 'Progression II-V-I en Fa majeur, swing tempo 120 BPM',
-                    notation: '♫ Gm7 → C7 → Fmaj7 → Dm7 → G7 → Cmaj7 ♫'
-                },
-                electronique: {
-                    title: '🎹 Track Électronique Générée',
-                    description: 'Genre: Progressive House, Tempo: 128 BPM, Tonalité: La mineur',
-                    notation: '⚡ Kick-Bass-Lead-Pad | Build-up | Drop | Breakdown ⚡'
-                },
-                ambient: {
-                    title: '🌊 Ambiance Atmosphérique Générée',
-                    description: 'Nappes éthérées, réverbération spatiale, tempo libre',
-                    notation: '～ Drones harmoniques | Textures évolutives | Silence dynamique ～'
-                }
-            };
-            
-            const selected = styles[style];
-            output.innerHTML = `
-                <div style="animation: fadeInUp 0.5s;">
-                    <h4 style="color: var(--primary); margin-bottom: 1rem;">${selected.title}</h4>
-                    <p style="margin-bottom: 1rem;">${selected.description}</p>
-                    <div style="background: rgba(139, 92, 246, 0.2); padding: 1rem; border-radius: 10px; font-family: monospace;">
-                        ${selected.notation}
-                    </div>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; color: rgba(255,255,255,0.6);">
-                        ✨ Composition générée par algorithme d'IA en temps réel
+            <div class="grid grid-3">
+                <article class="card">
+                    <h3>Observer</h3>
+                    <p>
+                        L’IA analyse des images, des sons, des textes ou des chiffres, pour détecter des modèles
+                        qu’un humain ne verrait pas toujours à l’œil nu.
                     </p>
-                </div>
-            `;
-        }
+                </article>
+                <article class="card">
+                    <h3>Apprendre</h3>
+                    <p>
+                        Grâce au machine learning, les systèmes s’améliorent au fil du temps, gagnent en précision
+                        et deviennent plus pertinents.
+                    </p>
+                </article>
+                <article class="card">
+                    <h3>Agir</h3>
+                    <p>
+                        L’IA peut proposer, assister ou automatiser des actions : recommandations, réponses, prévisions,
+                        création de textes, d’images, de musiques…
+                    </p>
+                </article>
+            </div>
+        </section>
 
-        // Image generation demo
-        function generateImage() {
-            const prompt = document.getElementById('prompt-input').value;
-            const output = document.getElementById('image-output');
-            
-            if (!prompt) {
-                output.innerHTML = '<p style="color: #ff6b6b;">⚠️ Veuillez entrer une description</p>';
-                return;
-            }
-            
-            output.innerHTML = '<p class="pulse">🔄 Génération en cours...</p>';
-            
-            setTimeout(() => {
-                output.innerHTML = `
-                    <div style="animation: fadeInUp 0.5s;">
-                        <h4 style="color: var(--primary); margin-bottom: 1rem;">✨ Image Générée</h4>
-                        <p style="margin-bottom: 1rem;"><strong>Prompt:</strong> "${prompt}"</p>
-                        <div style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.3) 0%, rgba(167, 139, 250, 0.3) 100%); 
-                                    aspect-ratio: 16/9; border-radius: 10px; display: flex; align-items: center; 
-                                    justify-content: center; font-size: 3rem; margin: 1rem 0;">
-                            🎨
-                        </div>
-                        <p style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">
-                            📊 Résolution: 1024x1024 | ⚙️ Modèle: Diffusion v2.1 | ⏱️ Temps: 2.3s
+        <!-- IA DANS LE QUOTIDIEN -->
+        <section class="section" id="quotidien">
+            <div class="section-layout">
+                <div class="section-text">
+                    <h2>Quand l’IA se glisse dans notre quotidien</h2>
+                    <p>
+                        L’IA n’est plus un concept abstrait : elle est déjà dans nos poches, nos maisons et nos outils
+                        professionnels. Très souvent, on l’utilise sans même s’en rendre compte.
+                    </p>
+                    <ul class="bullet-list">
+                        <li><strong>Assistants vocaux :</strong> répondre à nos questions, piloter la maison, gérer nos rappels.</li>
+                        <li><strong>Recommandations :</strong> séries, musique, produits… l’IA personnalise nos expériences.</li>
+                        <li><strong>Santé :</strong> aide au diagnostic, analyse d’images médicales, suivi personnalisé.</li>
+                        <li><strong>Mobilité :</strong> GPS intelligents, voitures assistées, optimisation des trajets.</li>
+                    </ul>
+                </div>
+                <div class="section-side">
+                    <div class="card highlight">
+                        <h3>Une présence discrète mais puissante</h3>
+                        <p>
+                            La vraie révolution de l’IA : être partout, tout le temps, sans s’imposer visuellement.
+                            Elle augmente nos capacités sans remplacer notre identité.
                         </p>
                     </div>
-                `;
-            }, 2000);
-        }
+                </div>
+            </div>
+        </section>
 
-        // Parallax effect
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const circles = document.querySelectorAll('.circle');
-            circles.forEach((circle, index) => {
-                const speed = (index + 1) * 0.1;
-                circle.style.transform = `translateY(${scrolled * speed}px)`;
-            });
-        });
+        <!-- IA CRÉATIVE -->
+        <section class="section" id="creative">
+            <div class="section-header">
+                <h2>L’IA créative : quand les machines imaginent avec nous</h2>
+                <p>
+                    Musique, images, vidéos, textes… L’IA devient un partenaire créatif, un studio complet à portée de clic.
+                </p>
+            </div>
+
+            <div class="grid grid-3">
+                <article class="card soft">
+                    <h3>Art & Design</h3>
+                    <p>
+                        Générer des visuels, explorer des univers graphiques, tester des identités visuelles en quelques secondes.
+                    </p>
+                </article>
+                <article class="card soft">
+                    <h3>Musique & Son</h3>
+                    <p>
+                        Composer des ambiances, des thèmes, des textures sonores, offrir des idées nouvelles aux artistes.
+                    </p>
+                </article>
+                <article class="card soft">
+                    <h3>Écriture & Contenu</h3>
+                    <p>
+                        Aider à structurer une idée, rédiger un premier jet, suggérer des variantes, débloquer la page blanche.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- INNOVATIONS -->
+        <section class="section" id="innovations">
+            <div class="section-header">
+                <h2>Innovations de demain</h2>
+                <p>
+                    L’IA de demain sera encore plus contextuelle, proactive et intégrée. Elle ne sera plus un outil,
+                    mais une couche invisible de nos environnements.
+                </p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>IA conversationnelle avancée</h3>
+                        <p>
+                            Des assistants capables de suivre nos projets sur la durée, de connaître nos préférences
+                            et de collaborer comme de véritables partenaires.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Interfaces adaptatives</h3>
+                        <p>
+                            Des interfaces qui se reconfigurent automatiquement selon notre contexte : travail, détente,
+                            création, apprentissage…
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                            <h3>Villes intelligentes</h3>
+                            <p>
+                                Optimisation de l’énergie, des transports, de la sécurité, pour des villes plus fluides,
+                                plus sobres, plus agréables à vivre.
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RISQUES & ÉTHIQUE -->
+        <section class="section" id="risques">
+            <div class="section-layout">
+                <div class="section-text">
+                    <h2>Risques, limites & éthique</h2>
+                    <p>
+                        Plus l’IA devient puissante, plus la question de l’éthique devient centrale. Il ne s’agit pas
+                        seulement de ce qu’elle peut faire, mais de ce que nous voulons lui laisser faire.
+                    </p>
+                    <ul class="bullet-list">
+                        <li>Données & vie privée</li>
+                        <li>Biais et discriminations algorithmiques</li>
+                        <li>Dépendance aux systèmes automatisés</li>
+                        <li>Impact sur l’emploi et les compétences</li>
+                    </ul>
+                </div>
+                <div class="section-side">
+                    <div class="card alert">
+                        <h3>Confiance & transparence</h3>
+                        <p>
+                            Construire une IA digne de confiance, c’est rendre visibles les règles du jeu, expliquer
+                            les décisions, et garder l’humain au centre.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FUTUR -->
+        <section class="section" id="futur">
+            <div class="section-header">
+                <h2>Et si le futur de l’IA était profondément humain ?</h2>
+                <p>
+                    L’IA n’est pas une fin, mais un moyen : augmenter notre capacité à comprendre, créer, relier, protéger.
+                    Le vrai enjeu : décider ensemble du futur que nous voulons construire.
+                </p>
+            </div>
+
+            <div class="quote-block">
+                <p>
+                    « L’intelligence artificielle ne remplacera pas l’humain.
+                    Elle amplifiera ce qu’il décide de cultiver. »
+                </p>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="section" id="contact">
+            <div class="section-header">
+                <h2>Entrer en contact</h2>
+                <p>
+                    Un projet, une idée, une envie de collaboration autour de l’IA et de son futur ?
+                    Laissez un message.
+                </p>
+            </div>
+
+            <form class="contact-form">
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="name">Nom</label>
+                        <input type="text" id="name" placeholder="Votre nom">
+                    </div>
+                    <div class="form-field">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" placeholder="votre@email.com">
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="4" placeholder="Parlez-moi de votre projet..."></textarea>
+                </div>
+                <button type="submit" class="btn primary full-width">Envoyer le message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>© <span id="year"></span> Futur & Vision – Intelligence Artificielle & Avenir</p>
+    </footer>
+
+    <script>
+        // Met l'année à jour automatiquement
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
