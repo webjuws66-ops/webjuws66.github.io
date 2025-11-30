@@ -5,81 +5,144 @@
 <title>IA & Quotidien</title>
 
 <style>
+/* ===== FOND & STYLE GLOBAL ===== */
 body {
     margin: 0;
     font-family: "Poppins", sans-serif;
     background: url('daily-background.jpg') center/cover no-repeat fixed;
-    color: #1a1a1a;
-backdrop-filter: blur(2px);
-padding: 6px 10px;
-border-radius: 8px;
-
     height: 100vh;
     overflow: hidden;
 }
-/* --- Améliorer la lisibilité du texte --- */
-body, .page {
+
+/* --- Lisibilité du texte sur fond lumineux --- */
+.page, body {
     color: #f2f2f2 !important;
     text-shadow: 0 0 6px rgba(0,0,0,0.85) !important;
 }
+
+/* ===== HEADER PREMIUM (identique à la page 1) ===== */
 header {
     position: fixed;
-    top: 20px;
+    top: 18px;
     left: 50%;
     transform: translateX(-50%);
     width: 86%;
-    padding: 14px 28px;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.7);
-    backdrop-filter: blur(14px);
+    padding: 14px 24px;
+    border-radius: 18px;
+
+    background: rgba(255,255,255,0.14);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255,255,255,0.28);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+
     display: flex;
     justify-content: space-between;
-    border: 1px solid rgba(160,160,255,0.4);
-    z-index: 10;
+    align-items: center;
+    z-index: 50;
 }
-nav a {
-    margin: 0 14px;
-    text-decoration: none;
-    color: #6b7280;
-    font-size: 0.9rem;
-}
-nav a.active { color:#6366f1; }
 
+/* Logo */
+header .logo {
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: white;
+    text-shadow: 0 0 12px rgba(255,255,255,0.8);
+}
+
+/* Navigation */
+nav a {
+    margin: 0 10px;
+    padding: 6px 10px;
+    text-decoration: none;
+    color: #f1f1f1;
+
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-shadow: 0 0 6px rgba(0,0,0,0.6);
+
+    transition: 0.25s ease;
+    border-radius: 8px;
+}
+
+/* Survol */
+nav a:hover {
+    background: rgba(255,255,255,0.22);
+    box-shadow: 0 0 10px rgba(200,150,255,0.6);
+}
+
+/* Lien actif */
+nav a.active {
+    background: rgba(255,255,255,0.30);
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 0 12px rgba(180,120,255,0.6);
+}
+
+/* ===== CONTENU ===== */
 .page {
     height: 100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: 0 60px;
 }
-h1 { font-size: 2.4rem; margin-bottom: 12px; }
-p { font-size:1.05rem; max-width:650px; color:#6b7280; }
 
+h1 {
+    font-size: 2.6rem;
+    margin-bottom: 14px;
+    text-shadow: 0 0 14px rgba(0,0,0,0.8);
+}
+
+p {
+    font-size: 1.1rem;
+    max-width: 650px;
+    margin-bottom: 10px;
+}
+
+/* Liste améliorée */
 ul {
     margin-top: 20px;
-    font-size: 1rem;
-    color: #444;
+    padding-left: 20px;
+    font-size: 1.1rem;
     line-height: 1.6;
 }
-ul li::before {
-    content: "• ";
-    color: #6366f1;
+
+ul li {
+    margin-bottom: 6px;
 }
 
+ul li::before {
+    content: "✔ ";
+    color: #ffbb66;
+    font-weight: bold;
+}
+
+/* ===== BOUTON ===== */
 .btn {
-    margin-top:25px;
-    padding: 12px 22px;
-    border-radius: 999px;
-    background: linear-gradient(120deg,#fff,#dcdfff);
-    border: 1px solid #c7d2fe;
-    text-decoration:none;
-    color:#111;
-    font-size:1rem;
+    margin-top: 30px;
+    padding: 14px 22px;
+    border-radius: 14px;
+
+    background: rgba(255,255,255,0.85);
+    color: black !important;
+
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+
+    box-shadow: 0 4px 14px rgba(255,255,255,0.25);
+    transition: 0.25s ease;
+}
+
+.btn:hover {
+    background: white;
+    box-shadow: 0 0 20px rgba(255,255,255,0.6);
 }
 </style>
 
 <script>
-// Active automatiquement le lien du menu correspondant à la page
 document.addEventListener("DOMContentLoaded", ()=>{
     const current = location.pathname.split("/").pop();
     document.querySelectorAll("nav a").forEach(a=>{
@@ -109,16 +172,19 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 <section class="page">
     <h1>L’IA dans notre quotidien</h1>
+
     <p>
-        L’intelligence artificielle est déjà présente partout autour de nous, souvent de manière invisible.
-        Elle optimise nos choix, personnalise nos outils et rend de nombreuses tâches plus simples.
+        L’intelligence artificielle est déjà présente partout autour de nous,
+        souvent de manière invisible.
+        Elle optimise nos choix, personnalise nos outils
+        et rend de nombreuses tâches plus simples.
     </p>
 
     <ul>
-        <li><strong>Assistants vocaux</strong> – Ils répondent, programment, pilotent la maison.</li>
-        <li><strong>Recommandations</strong> – Films, musique, achats : tout devient personnalisé.</li>
-        <li><strong>Santé</strong> – Aide au diagnostic, analyse d’images médicales.</li>
-        <li><strong>Mobilité</strong> – GPS intelligents, optimisation des trajets.</li>
+        <li><strong>Assistants vocaux</strong> — ils répondent, programment et pilotent la maison.</li>
+        <li><strong>Recommandations personnalisées</strong> — films, musique, achats.</li>
+        <li><strong>Santé</strong> — aide au diagnostic, analyse d’images médicales.</li>
+        <li><strong>Mobilité</strong> — GPS intelligents, optimisation des trajets.</li>
     </ul>
 
     <a href="creative.html" class="btn">Page suivante → IA Créative</a>
