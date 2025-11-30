@@ -5,22 +5,17 @@
 <title>IA & Quotidien</title>
 
 <style>
-/* ===== FOND & STYLE GLOBAL ===== */
+/* ====== STYLE GLOBAL ====== */
 body {
     margin: 0;
     font-family: "Poppins", sans-serif;
     background: url('daily-background.jpg') center/cover no-repeat fixed;
+    color: #ffffff !important;
     height: 100vh;
     overflow: hidden;
 }
 
-/* --- Lisibilité du texte sur fond lumineux --- */
-.page, body {
-    color: #f2f2f2 !important;
-    text-shadow: 0 0 6px rgba(0,0,0,0.85) !important;
-}
-
-/* ===== HEADER PREMIUM (identique à la page 1) ===== */
+/* ===== HEADER ==== */
 header {
     position: fixed;
     top: 18px;
@@ -29,26 +24,21 @@ header {
     width: 86%;
     padding: 14px 24px;
     border-radius: 18px;
-
     background: rgba(255,255,255,0.14);
     backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-
-    border: 1px solid rgba(255,255,255,0.28);
+    border: 1px solid rgba(255,255,255,0.25);
     box-shadow: 0 8px 22px rgba(0,0,0,0.18);
-
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 50;
 }
 
-/* Logo */
 header .logo {
     font-weight: 600;
     font-size: 1.15rem;
-    color: white;
-    text-shadow: 0 0 12px rgba(255,255,255,0.8);
+    color: #ffffff;
+    text-shadow: 0 0 12px rgba(255,255,255,0.85);
 }
 
 /* Navigation */
@@ -56,113 +46,93 @@ nav a {
     margin: 0 10px;
     padding: 6px 10px;
     text-decoration: none;
-    color: #f1f1f1;
-
+    color: #e8e8ff;
     font-size: 0.95rem;
     font-weight: 500;
-    text-shadow: 0 0 6px rgba(0,0,0,0.6);
-
-    transition: 0.25s ease;
     border-radius: 8px;
+    text-shadow: 0 0 8px rgba(0,0,0,0.8);
+    transition: 0.25s ease;
 }
-
-/* Survol */
 nav a:hover {
     background: rgba(255,255,255,0.22);
-    box-shadow: 0 0 10px rgba(200,150,255,0.6);
+    color: #fff;
 }
-
-/* Lien actif */
 nav a.active {
     background: rgba(255,255,255,0.30);
-    color: #ffffff;
     font-weight: 700;
     box-shadow: 0 0 12px rgba(180,120,255,0.6);
+    color: #fff;
 }
 
 /* ===== CONTENU ===== */
 .page {
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 60px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding: 0 70px;
 }
 
-h1 {
-     font-size: 2.6rem;
-    margin-bottom: 14px;
+/* ===== LISIBILITÉ ===== */
+.text {
     color: #ffffff !important;
+    font-size: 1.35rem;
+    line-height: 1.75;
     text-shadow:
-        0 0 10px rgba(255,255,255,0.9),
-        0 0 24px rgba(180,120,255,0.9),
-        0 0 36px rgba(120,70,200,0.8);
+        0 0 12px rgba(0,0,0,1),
+        0 0 22px rgba(0,0,0,0.95);
+    -webkit-text-stroke: 0.8px rgba(0,0,0,0.8);
 }
 
-
-p {
-    font-size: 1.15rem;
-    max-width: 650px;
-    color: #eef2ff !important;
-    text-shadow: 
-        0 0 10px rgba(0,0,0,0.9),
-        0 0 4px rgba(60,0,80,0.7);
+.text-block {
+    background: rgba(0,0,0,0.32);
+    padding: 16px 22px;
+    border-radius: 14px;
+    display: inline-block;
+    backdrop-filter: blur(6px);
 }
 
-/* Liste améliorée */
-ul {
-    margin-top: 20px;
-    padding-left: 20px;
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-ul li {
-    margin-bottom: 6px;
-    color: #f5f7ff !important;
-    font-weight: 500;
-    text-shadow: 
-        0 0 10px rgba(0,0,0,0.9),
-        0 0 4px rgba(40,0,60,0.8);
-}
-
-ul li::before {
-    content: "✔ ";
-    color: #ffd17a !important;
+/* TITRES */
+h1 {
+    font-size: 3.4rem;
+    margin-bottom: 24px;
     text-shadow:
-        0 0 10px rgba(255,190,70,0.9),
-        0 0 20px rgba(255,130,20,0.6);
+        0 0 14px rgba(0,0,0,1),
+        0 0 28px rgba(0,0,0,1);
+    -webkit-text-stroke: 1px rgba(0,0,0,0.9);
 }
 
-/* ===== BOUTON ===== */
-.btn {
-    margin-top: 30px;
-    padding: 14px 22px;
-    border-radius: 16px;
-
-    background: rgba(255,255,255,0.9) !important;
-    color: #000 !important;
-
-    font-size: 1rem;
+/* MOTS CLÉS JAUNES */
+.key {
+    color: #ffe066 !important;
     font-weight: 700;
-    text-shadow: none !important;
-
-    box-shadow: 
-        0 0 14px rgba(255,255,255,0.6),
-        0 0 30px rgba(150,100,255,0.4);
-    transition: 0.25s ease;
+    font-size: 1.4rem;
+    -webkit-text-stroke: 0.85px rgba(0,0,0,1);
+    text-shadow:
+        0 0 14px rgba(0,0,0,1),
+        0 0 30px rgba(0,0,0,1);
 }
 
+/* BOUTON */
+.btn {
+    margin-top:40px;
+    padding: 14px 24px;
+    border-radius: 14px;
+    width: fit-content;
+    background: rgba(255,255,255,0.85);
+    text-decoration:none;
+    color:#111 !important;
+    font-size:1.05rem;
+    font-weight:600;
+}
 .btn:hover {
-    background: white !important;
-    box-shadow: 
-        0 0 20px rgba(255,255,255,1),
-        0 0 40px rgba(180,120,255,0.8);
+    background: #fff;
 }
-
 </style>
 
+
 <script>
+// Active le lien du menu
 document.addEventListener("DOMContentLoaded", ()=>{
     const current = location.pathname.split("/").pop();
     document.querySelectorAll("nav a").forEach(a=>{
@@ -172,8 +142,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
     });
 });
 </script>
-
 </head>
+
 <body>
 
 <header>
@@ -191,23 +161,23 @@ document.addEventListener("DOMContentLoaded", ()=>{
 </header>
 
 <section class="page">
-    <h1>L’IA dans notre quotidien</h1>
 
-    <p>
-        L’intelligence artificielle est déjà présente partout autour de nous,
-        souvent de manière invisible.
-        Elle optimise nos choix, personnalise nos outils
-        et rend de nombreuses tâches plus simples.
+    <h1 class="text">L’IA dans notre quotidien</h1>
+
+    <p class="text text-block">
+        L’intelligence artificielle est déjà présente partout autour de nous, souvent de manière invisible.
+        Elle optimise nos choix, personnalise nos outils et rend de nombreuses tâches plus simples.
     </p>
 
-    <ul>
-        <li><strong>Assistants vocaux</strong> — ils répondent, programment et pilotent la maison.</li>
-        <li><strong>Recommandations personnalisées</strong> — films, musique, achats.</li>
-        <li><strong>Santé</strong> — aide au diagnostic, analyse d’images médicales.</li>
-        <li><strong>Mobilité</strong> — GPS intelligents, optimisation des trajets.</li>
-    </ul>
+    <p class="text text-block" style="margin-top:22px;">
+        ✨ <span class="key">Assistants vocaux</span> — ils répondent, programment et pilotent la maison.<br>
+        ✨ <span class="key">Recommandations personnalisées</span> — films, musique, achats.<br>
+        ✨ <span class="key">Santé</span> — aide au diagnostic, analyse d’images médicales.<br>
+        ✨ <span class="key">Mobilité</span> — GPS intelligents, optimisation des trajets.
+    </p>
 
     <a href="creative.html" class="btn">Page suivante → IA Créative</a>
+
 </section>
 
 </body>
