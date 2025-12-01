@@ -16,6 +16,15 @@ body {
     text-shadow: 0 0 10px rgba(0,0,0,0.8);
 }
 
+/* Overlay pour lisibilité */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.25);
+    z-index: -1;
+}
+
 /* ===== HEADER FUTURISTE PREMIUM ===== */
 header {
     position: fixed;
@@ -31,7 +40,11 @@ header {
     -webkit-backdrop-filter: blur(18px);
 
     border: 1px solid rgba(255,255,255,0.28);
-    box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+
+    /* Glow premium */
+    box-shadow:
+        0 8px 22px rgba(0,0,0,0.18),
+        0 0 22px rgba(180,120,255,0.35);
 
     display: flex;
     justify-content: space-between;
@@ -52,11 +65,9 @@ nav a {
     margin: 0 10px;
     padding: 6px 10px;
     text-decoration: none;
-
     color: #f1f1f1;
     font-size: 0.95rem;
     font-weight: 500;
-
     text-shadow: 0 0 6px rgba(0,0,0,0.6);
     transition: 0.25s ease;
     border-radius: 8px;
@@ -75,6 +86,23 @@ nav a.active {
 /* ===== CONTENU PAGE ===== */
 .page {
     padding: 180px 60px;
+}
+
+/* Animations premium */
+.page h1, .subtitle, .btn {
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeUp 0.9s ease forwards;
+}
+.page h1 { animation-delay: 0.1s; }
+.subtitle { animation-delay: 0.3s; }
+.btn { animation-delay: 0.5s; }
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Grand titre */
